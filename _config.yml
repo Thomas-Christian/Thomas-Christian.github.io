@@ -1,0 +1,23 @@
+title: Thomas Christian - Computer Science ePortfolio
+description: A showcase of my skills and abilities in software development
+theme: jekyll-theme-cayman  # Or another theme of your choice
+
+# Navigation
+nav:
+  - title: Home
+    url: /
+
+  - title: Code Review
+    url: /code-review
+
+  - title: Artifact 1
+    url: /artifacts/artifact1
+
+  - title: Artifact 2
+    url: /artifacts/artifact2
+
+  - title: Artifact 3
+    url: /artifacts/artifact3
+    
+  - title: Contact
+    url: /#contact
