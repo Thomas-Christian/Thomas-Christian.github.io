@@ -1,11 +1,1658 @@
 ---
 layout: default
 modal-id: 1
-date: 2014-07-18
-img: cabin.png
-alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Use this area of the page to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+date: 2023-04-20
+images:
+  - WeightLogger1.png
+  - WeightLogger2.png
+
+category: Software Design
+
+icon-img: SoftwareDesign.png
+
+alt: Weight Logger Android App
+project-date: January - March 2023
+client: CS-360 Mobile Architecture & Programming
+
+description: "Weight Logger is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis."
+
+# Artifact narrative
+artifact_narrative: |
+    <p> 
+    The artifact, "Weight Logger," is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis. Initially developed in CS-360 (Jan–Mar), the application underwent significant enhancements to improve its structure, maintainability, and security. The most notable improvement was the implementation of the MVVM architectural pattern, which introduced better separation of concerns and improved the app’s scalability.
+
+    This artifact was selected for inclusion in my ePortfolio because it effectively demonstrates my ability to design and implement a complete software solution while incorporating industry best practices. It highlights my proficiency in software engineering through its structured architecture and use of modern Android development techniques, such as LiveData for reactive UI updates and the repository pattern for data abstraction. The artifact also showcases algorithmic principles in features like password strength evaluation, weight trend analysis, and statistical calculations. Security enhancements, including the use of salted SHA-256 password hashing, input validation, and secure credential storage, reflect a strong understanding of secure software development practices.
+
+    The enhancements aligned with the Computer Science program outcomes by strengthening my ability to design well-structured, maintainable software solutions and apply advanced computing techniques. The improvements in UI design and data visualization refined my ability to create professional-quality visual communications, making complex data more accessible to users. The restructuring of validation logic into a centralized service reinforced my understanding of clean architecture principles and the importance of modular, reusable code.
+
+    Throughout the enhancement process, I gained a deeper appreciation for the trade-offs involved in software design. Refining the progress visualization required careful consideration of how to present data in a way that was both technically accurate and easy to interpret. Security improvements further reinforced the need to balance strong protection mechanisms with a seamless user experience. One of the biggest challenges was ensuring data consistency across multiple fragments, which I addressed using the observer pattern with LiveData. This experience deepened my understanding of proper state management in multi-view applications and helped me develop strategies for maintaining data integrity.
+    <p/>
+
+
+# Code snippets section
+original_code_snippets: |
+ <div class="code-snippets-grid">
+  <div class="row">
+  <div class="col-md-6">
+  <h4>MVVM Architecture</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.ViewModels;
+
+    import android.app.Application;
+    import androidx.annotation.NonNull;
+    import androidx.lifecycle.LiveData;
+    import androidx.lifecycle.MutableLiveData;
+    import com.zybooks.weightlogger.Data.UserRepository;
+    import com.zybooks.weightlogger.Data.UserSessionManager;
+
+    /**
+    * ViewModel for user registration with enhanced validation.
+    * Extends BaseValidationViewModel to leverage centralized validation logic.
+    */
+    public class RegisterViewModel extends BaseValidationViewModel {
+        private final UserRepository userRepository;
+        private final UserSessionManager sessionManager;
+
+        // Status indicators
+        private final MutableLiveData<Integer> passwordStrengthLiveData = new MutableLiveData<>(0);
+        private final MutableLiveData<Boolean> registrationSuccessLiveData = new MutableLiveData<>();
+        private final MutableLiveData<Boolean> loginSuccessLiveData = new MutableLiveData<>();
+
+        // Validation states
+        private final MutableLiveData<Boolean> usernameValidLiveData = new MutableLiveData<>(false);
+        private final MutableLiveData<Boolean> passwordValidLiveData = new MutableLiveData<>(false);
+        private final MutableLiveData<Boolean> confirmPasswordValidLiveData = new MutableLiveData<>(false);
+        private final MutableLiveData<Boolean> goalWeightValidLiveData = new MutableLiveData<>(true); // Optional field
+        private final MutableLiveData<Boolean> formValidLiveData = new MutableLiveData<>(false);
+
+        // Error messages
+        private final MutableLiveData<String> usernameErrorLiveData = new MutableLiveData<>();
+        private final MutableLiveData<String> passwordErrorLiveData = new MutableLiveData<>();
+        private final MutableLiveData<String> confirmPasswordErrorLiveData = new MutableLiveData<>();
+        private final MutableLiveData<String> goalWeightErrorLiveData = new MutableLiveData<>();
+
+        public RegisterViewModel(@NonNull Application application) {
+            super(application);
+            userRepository = new UserRepository(application);
+            sessionManager = new UserSessionManager(application);
+        }
+
+        // LiveData getters
+        public LiveData<String> getStatusMessageLiveData() { return statusMessageLiveData; }
+        public LiveData<Integer> getPasswordStrengthLiveData() { return passwordStrengthLiveData; }
+        public LiveData<Boolean> getRegistrationSuccessLiveData() { return registrationSuccessLiveData; }
+        public LiveData<Boolean> getFormValidLiveData() { return formValidLiveData; }
+        public LiveData<String> getUsernameErrorLiveData() { return usernameErrorLiveData; }
+        public LiveData<String> getPasswordErrorLiveData() { return passwordErrorLiveData; }
+        public LiveData<String> getConfirmPasswordErrorLiveData() { return confirmPasswordErrorLiveData; }
+        public LiveData<String> getGoalWeightErrorLiveData() { return goalWeightErrorLiveData; }
+
+        /**
+        * Validates username in real-time.
+        *
+        * @param username The username to validate
+        */
+        public void validateUsername(String username) {
+            validationService.validateUsername(
+                    username,
+                    usernameValidLiveData,
+                    usernameErrorLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Validates password in real-time and updates the password strength indicator.
+        *
+        * @param password The password to validate
+        */
+        public void validatePassword(String password) {
+            validationService.validatePassword(
+                    password,
+                    passwordValidLiveData,
+                    passwordErrorLiveData,
+                    passwordStrengthLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Validates that the confirmation password matches the original password.
+        *
+        * @param password The original password
+        * @param confirmPassword The confirmation password
+        */
+        public void validateConfirmPassword(String password, String confirmPassword) {
+            validationService.validatePasswordMatch(
+                    password,
+                    confirmPassword,
+                    confirmPasswordValidLiveData,
+                    confirmPasswordErrorLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Validates goal weight input.
+        * Since goal weight is optional, an empty string is considered valid.
+        *
+        * @param goalWeightStr The goal weight as a string
+        */
+        public void validateGoalWeight(String goalWeightStr) {
+            // Goal weight is optional, so an empty string is valid
+            if (goalWeightStr.isEmpty()) {
+                goalWeightValidLiveData.setValue(true);
+                goalWeightErrorLiveData.setValue(null);
+                updateFormValidity();
+                return;
+            }
+
+            validationService.validateWeight(
+                    goalWeightStr,
+                    goalWeightValidLiveData,
+                    goalWeightErrorLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Updates the overall form validity based on individual field validities.
+        */
+        private void updateFormValidity() {
+            super.updateFormValidity(
+                    formValidLiveData,
+                    usernameValidLiveData.getValue(),
+                    passwordValidLiveData.getValue(),
+                    confirmPasswordValidLiveData.getValue(),
+                    goalWeightValidLiveData.getValue()
+            );
+        }
+
+        /**
+        * Registers a new user after performing validation on all inputs.
+        *
+        * @param username The username for the new account
+        * @param password The password for the new account
+        * @param confirmPassword The confirmation password
+        * @param goalWeightStr The goal weight as a string (optional)
+        */
+        public void registerUser(String username, String password, String confirmPassword, String goalWeightStr) {
+            // Validate all fields
+            validateUsername(username);
+            validatePassword(password);
+            validateConfirmPassword(password, confirmPassword);
+            validateGoalWeight(goalWeightStr);
+
+            // Check if form is valid
+            if (Boolean.FALSE.equals(formValidLiveData.getValue())) {
+                statusMessageLiveData.setValue("Please correct the errors before registering.");
+                return;
+            }
+
+            // Check for username uniqueness
+            if (userRepository.userExists(username)) {
+                usernameErrorLiveData.setValue("This username is already taken.");
+                usernameValidLiveData.setValue(false);
+                updateFormValidity();
+                statusMessageLiveData.setValue("Username already exists. Please choose another.");
+                return;
+            }
+
+            // Process goal weight
+            double goalWeight = 0;
+            if (!goalWeightStr.isEmpty()) {
+                try {
+                    goalWeight = Double.parseDouble(goalWeightStr);
+                } catch (NumberFormatException e) {
+                    goalWeightErrorLiveData.setValue("Invalid weight format.");
+                    goalWeightValidLiveData.setValue(false);
+                    updateFormValidity();
+                    return;
+                }
+            }
+
+            // Register the user
+            boolean success = userRepository.insertUser(username, password, goalWeight);
+            if (success) {
+                statusMessageLiveData.setValue("Registration successful! You can now log in.");
+                registrationSuccessLiveData.setValue(true);
+                loginUser(username, password);
+            } else {
+                statusMessageLiveData.setValue("Registration failed. Please try again later.");
+                registrationSuccessLiveData.setValue(false);
+            }
+        }
+
+        /**
+        * Attempts to log in the newly registered user.
+        */
+        private void loginUser(String username, String password) {
+            if (userRepository.validateUser(username, password)) {
+                sessionManager.saveLoginSession(username);
+                loginSuccessLiveData.setValue(true);
+            }
+        }
+
+        /**
+        * Resets all validation states and error messages.
+        */
+        public void resetValidation() {
+            usernameValidLiveData.setValue(false);
+            passwordValidLiveData.setValue(false);
+            confirmPasswordValidLiveData.setValue(false);
+            goalWeightValidLiveData.setValue(true); // Optional field
+            formValidLiveData.setValue(false);
+
+            usernameErrorLiveData.setValue(null);
+            passwordErrorLiveData.setValue(null);
+            confirmPasswordErrorLiveData.setValue(null);
+            goalWeightErrorLiveData.setValue(null);
+
+            passwordStrengthLiveData.setValue(0);
+        }
+    }
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4>Password Hashing</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.Utilities;
+
+    import java.nio.charset.StandardCharsets;
+
+    import java.security.MessageDigest;
+    import java.security.NoSuchAlgorithmException;
+    import java.security.SecureRandom;
+
+    import java.util.Base64;
+
+    /**
+    * Utility class for securely hashing and verifying passwords.
+    * Implements salted SHA-256 hashing for increased security.
+    * Provides methods for creating password hashes and verifying passwords against stored hashes.
+    */
+    public class PasswordHash {
+        // Number of bytes in the salt
+        private static final int SALT_LENGTH = 16;
+
+        /**
+        * Generates a cryptographically secure random salt for password hashing.
+        *
+        * @return A random salt as a byte array
+        */
+        private static byte[] generateSalt() {
+            SecureRandom random = new SecureRandom();
+            byte[] salt = new byte[SALT_LENGTH];
+            random.nextBytes(salt);
+            return salt;
+        }
+
+        /**
+        * Hashes a password with a randomly generated salt.
+        * Uses SHA-256 algorithm to create a secure hash.
+        *
+        * @param password The password to hash
+        * @return A string in the format "salt:hash" where both salt and hash are Base64 encoded,
+        *         or null if an error occurs during hashing
+        */
+        public static String hashPassword(String password) {
+            try {
+                // Generate a new salt
+                byte[] salt = generateSalt();
+
+                // Hash the password with the salt
+                byte[] hash = hashWithSalt(password, salt);
+
+                // Encode salt and hash to Base64 for storage
+                String saltString = Base64.getEncoder().encodeToString(salt);
+                String hashString = Base64.getEncoder().encodeToString(hash);
+
+                // Return the combined string
+                return saltString + ":" + hashString;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        /**
+        * Hashes a password with a provided salt using the SHA-256 algorithm.
+        *
+        * @param password The password to hash
+        * @param salt The salt to use in the hashing process
+        * @return The hashed password as a byte array
+        * @throws NoSuchAlgorithmException If the SHA-256 algorithm is not available
+        */
+        private static byte[] hashWithSalt(String password, byte[] salt) throws NoSuchAlgorithmException {
+            // Create a SHA-256 MessageDigest instance
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Add the salt to the digest
+            digest.update(salt);
+
+            // Add the password bytes
+            byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+
+            // Get the hash
+            return digest.digest(passwordBytes);
+        }
+
+        /**
+        * Verifies that a plain text password matches a stored salted hash.
+        * Uses a constant-time comparison to prevent timing attacks.
+        *
+        * @param plainTextPassword The plain text password to verify
+        * @param storedHash The stored hash in the format "salt:hash"
+        * @return True if the passwords match, false otherwise
+        */
+        public static boolean verifyPassword(String plainTextPassword, String storedHash) {
+            try {
+                // Split the stored hash into salt and hash
+                String[] parts = storedHash.split(":");
+
+                if (parts.length != 2) {
+                    return false; // Invalid format
+                }
+
+                // Decode the salt and hash from Base64
+                byte[] salt = Base64.getDecoder().decode(parts[0]);
+                byte[] hash = Base64.getDecoder().decode(parts[1]);
+
+                // Hash the plain text password with the same salt
+                byte[] testHash = hashWithSalt(plainTextPassword, salt);
+
+                // Compare the hashes using constant-time comparison
+                if (hash.length != testHash.length) {
+                    return false;
+                }
+
+                int result = 0;
+                for (int i = 0; i < hash.length; i++) {
+                    result |= hash[i] ^ testHash[i]; // XOR will be 0 if bytes are the same
+                }
+
+                return result == 0; // If all bytes matched, result will be 0
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+  <h4>Notifications</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.Utilities;
+
+    import android.Manifest;
+
+    import android.annotation.SuppressLint;
+
+    import android.app.NotificationChannel;
+    import android.app.NotificationManager;
+    import android.app.PendingIntent;
+
+    import android.content.Context;
+    import android.content.Intent;
+    import android.content.pm.PackageManager;
+
+    import android.util.Log;
+    import java.util.Random;
+
+    import androidx.core.app.NotificationCompat;
+    import androidx.core.app.NotificationManagerCompat;
+    import androidx.core.content.ContextCompat;
+
+    import com.zybooks.weightlogger.MainActivity;
+
+
+    /**
+    * Helper class that manages the creation and sending of notifications related to weight goals.
+    * Handles notification channel setup and provides methods to send different types of
+    * motivational notifications based on user progress.
+    */
+    public class NotificationHelper {
+        private static final String CHANNEL_ID = "weight_goal_channel";
+        private static final String CHANNEL_NAME = "Weight Goal Notifications";
+        private static final String CHANNEL_DESC = "Notifications related to your weight goals";
+        private static final String TAG = "NotificationHelper";
+        private final Context context;
+        private static final Random random = new Random();
+
+        /**
+        * Creates a new NotificationHelper instance and initializes the notification channel.
+        *
+        * @param context The context used to access system services and resources
+        */
+        public NotificationHelper(Context context) {
+            this.context = context;
+            createNotificationChannel();
+        }
+
+        /**
+        * Creates the notification channel for weight goal notifications.
+        * This is required for notifications on Android 8.0 (API level 26) and higher.
+        */
+        private void createNotificationChannel() {
+
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_ID,
+                    CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+
+            // Register the channel with the system
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+
+        /**
+        * Checks if the app has permission to post notifications.
+        *
+        * @return true if notification permission is not granted, false otherwise
+        */
+        private boolean hasNotificationPermission() {
+
+            return ContextCompat.checkSelfPermission(context,
+                    Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED;
+
+        }
+
+        /**
+        * Sends a notification to inform the user about their progress toward their weight goal.
+        * Includes motivational messages based on how close they are to their goal.
+        *
+        * @param currentWeight The user's current weight
+        * @param goalWeight The user's goal weight
+        */
+        public void sendGoalProgressNotification(double currentWeight, double goalWeight) {
+            // Check permission before sending notification
+            if (hasNotificationPermission()) {
+                Log.d(TAG, "Cannot send notification: Permission not granted");
+                return;
+            }
+
+            // Create an explicit intent for the MainActivity
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context, 0, intent,
+                    PendingIntent.FLAG_IMMUTABLE);
+
+            String title = "You're making progress!";
+            String message;
+
+            // Calculate the difference
+            double difference = Math.abs(currentWeight - goalWeight);
+
+            // Choose a motivational message
+            @SuppressLint("DefaultLocale") String[] messages = {
+                    "Keep up the great work! You're getting closer to your goal weight.",
+                    "You're making amazing progress! Just " + String.format("%.1f", difference) + " lbs to go!",
+                    "Fantastic job on your weight journey! Keep going!",
+                    "You're getting closer to your goal of " + String.format("%.1f", goalWeight) + " lbs!"
+            };
+
+            message = messages[random.nextInt(messages.length)];
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            try {
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                notificationManager.notify(random.nextInt(1000), builder.build());
+            } catch (SecurityException e) {
+                Log.e(TAG, "Security exception when sending notification", e);
+            }
+        }
+
+        /**
+        * Sends a notification to congratulate the user on achieving their weight goal.
+        * Includes celebratory messages for this significant achievement.
+        */
+        public void sendGoalAchievedNotification() {
+            // Check permission before sending notification
+            if (hasNotificationPermission()) {
+                Log.d(TAG, "Cannot send notification: Permission not granted");
+                return;
+            }
+
+            // Create an explicit intent for the MainActivity
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context, 0, intent,
+                    PendingIntent.FLAG_IMMUTABLE);
+
+            String title = "Awesome Work!";
+
+            // Choose a congratulatory message
+            String[] messages = {
+                    "You've reached your goal weight! Amazing job!",
+                    "Goal achieved! You should be incredibly proud of yourself!",
+                    "You did it! You've reached your weight goal!",
+                    "Congratulations on achieving your weight goal! What an accomplishment!"
+            };
+
+            String message = messages[random.nextInt(messages.length)];
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            try {
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                notificationManager.notify(random.nextInt(1000), builder.build());
+            } catch (SecurityException e) {
+                Log.e(TAG, "Security exception when sending notification", e);
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4>Progress Visualization</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.Utilities;
+
+    import android.content.Context;
+    import android.graphics.Canvas;
+    import android.graphics.Color;
+    import android.graphics.Paint;
+    import android.graphics.Path;
+    import android.graphics.PointF;
+    import android.util.AttributeSet;
+    import android.util.Log;
+    import android.view.View;
+
+    import androidx.annotation.NonNull;
+    import androidx.annotation.Nullable;
+    import androidx.core.content.ContextCompat;
+
+    import com.zybooks.weightlogger.Data.WeightDatabaseHelper;
+    import com.zybooks.weightlogger.R;
+
+    import java.text.ParseException;
+    import java.text.SimpleDateFormat;
+    import java.util.ArrayList;
+    import java.util.Date;
+    import java.util.List;
+    import java.util.Locale;
+
+    public class WeightChartView extends View {
+        private static final String TAG = "WeightChartView";
+
+        private List<WeightDatabaseHelper.WeightEntry> entries = new ArrayList<>();
+        private double goalWeight = 0;
+        private boolean hasData = false;
+
+        private final Paint linePaint = new Paint();
+        private final Paint pointPaint = new Paint();
+        private final Paint textPaint = new Paint();
+        private final Paint gridPaint = new Paint();
+        private final Paint goalPaint = new Paint();
+        private final Paint axisLabelPaint = new Paint();
+
+        private float minWeight = 0;
+        private float maxWeight = 0;
+        private final Path linePath = new Path();
+        private final List<PointF> pointsCache = new ArrayList<>();
+        private final int paddingLeft = 80;
+        private final int paddingRight = 40;
+        private final int paddingTop = 40;
+        private final int paddingBottom = 80;
+        private final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        private final SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd", Locale.US);
+
+        public WeightChartView(Context context) {
+            super(context);
+            init();
+        }
+
+        public WeightChartView(Context context, @Nullable AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public WeightChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            init();
+        }
+
+        private void init() {
+            // Line paint
+            linePaint.setColor(ContextCompat.getColor(getContext(), R.color.teal_700));
+            linePaint.setStyle(Paint.Style.STROKE);
+            linePaint.setStrokeWidth(4f);
+            linePaint.setAntiAlias(true);
+
+            // Point paint
+            pointPaint.setColor(ContextCompat.getColor(getContext(), R.color.teal_700));
+            pointPaint.setStyle(Paint.Style.FILL);
+            pointPaint.setAntiAlias(true);
+
+            // Text paint
+            textPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_primary_light));
+            textPaint.setTextSize(28f);
+            textPaint.setAntiAlias(true);
+
+            // Grid paint
+            gridPaint.setColor(Color.LTGRAY);
+            gridPaint.setStyle(Paint.Style.STROKE);
+            gridPaint.setStrokeWidth(1f);
+            gridPaint.setAlpha(100);
+
+            // Goal line paint
+            goalPaint.setColor(ContextCompat.getColor(getContext(), R.color.amber_700));
+            goalPaint.setStyle(Paint.Style.STROKE);
+            goalPaint.setStrokeWidth(3f);
+            goalPaint.setPathEffect(new android.graphics.DashPathEffect(new float[]{10, 10}, 0));
+
+            // Axis label paint
+            axisLabelPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_secondary_light));
+            axisLabelPaint.setTextSize(24f);
+            axisLabelPaint.setAntiAlias(true);
+        }
+
+        public void setData(List<WeightDatabaseHelper.WeightEntry> entries, double goalWeight) {
+            this.entries = new ArrayList<>(entries);
+            // Sort by date from oldest to newest
+            this.entries.sort((entry1, entry2) -> {
+                try {
+                    Date date1 = inputFormat.parse(entry1.getDate());
+                    Date date2 = inputFormat.parse(entry2.getDate());
+                    if (date1 != null && date2 != null) {
+                        return date1.compareTo(date2);
+                    }
+                } catch (ParseException e) {
+                    Log.e(TAG, "Error parsing date", e);
+                }
+                return 0;
+            });
+
+            this.goalWeight = goalWeight;
+
+            // Calculate min and max weight
+            if (!entries.isEmpty()) {
+                hasData = true;
+                minWeight = Float.MAX_VALUE;
+                maxWeight = Float.MIN_VALUE;
+
+                for (WeightDatabaseHelper.WeightEntry entry : entries) {
+                    float weight = (float) entry.getWeight();
+                    if (weight < minWeight) minWeight = weight;
+                    if (weight > maxWeight) maxWeight = weight;
+                }
+
+                // Include goal weight in range
+                if (goalWeight > 0) {
+                    if (goalWeight < minWeight) minWeight = (float) goalWeight;
+                    if (goalWeight > maxWeight) maxWeight = (float) goalWeight;
+                }
+
+                // Add padding to range
+                float range = maxWeight - minWeight;
+                minWeight = Math.max(0, minWeight - range * 0.1f);
+                maxWeight = maxWeight + range * 0.1f;
+            }
+
+            // Precalculate the points before drawing
+            calculatePoints();
+            invalidate();
+        }
+
+        private void calculatePoints() {
+            // Clear cached points
+            pointsCache.clear();
+
+            if (!hasData || entries.isEmpty()) {
+                return;
+            }
+
+            int width = getWidth();
+            int height = getHeight();
+
+            // Handle the case when the view size isn't set yet
+            if (width <= 0 || height <= 0) {
+                return;
+            }
+
+            int chartWidth = width - paddingLeft - paddingRight;
+            int chartHeight = height - paddingTop - paddingBottom;
+            float weightRange = maxWeight - minWeight;
+
+            // Calculate points for line
+            for (int i = 0; i < entries.size(); i++) {
+                WeightDatabaseHelper.WeightEntry entry = entries.get(i);
+                float x = paddingLeft + ((float) (chartWidth * i) / (entries.size() - 1));
+                if (entries.size() == 1) {
+                    x = paddingLeft + chartWidth / 2f;
+                }
+
+                float normalizedWeight = (float) ((entry.getWeight() - minWeight) / weightRange);
+                float y = height - paddingBottom - (normalizedWeight * chartHeight);
+
+                pointsCache.add(new PointF(x, y));
+            }
+        }
+
+        @Override
+        protected void onSizeChanged(int w, int h, int old_width, int old_height) {
+            super.onSizeChanged(w, h, old_width, old_height);
+            calculatePoints();
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
+            super.onDraw(canvas);
+
+            if (!hasData || entries.isEmpty()) {
+                // Draw no data message
+                textPaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText("No weight data available", getWidth() / 2f, getHeight() / 2f, textPaint);
+                return;
+            }
+
+            int width = getWidth();
+            int height = getHeight();
+            int chartHeight = height - paddingTop - paddingBottom;
+
+            // Draw axes
+            canvas.drawLine(paddingLeft, height - paddingBottom, width - paddingRight, height - paddingBottom, gridPaint); // X-axis
+            canvas.drawLine(paddingLeft, paddingTop, paddingLeft, height - paddingBottom, gridPaint); // Y-axis
+
+            // Draw horizontal grid lines and Y-axis labels
+            int numYLabels = 5;
+            float weightRange = maxWeight - minWeight;
+            for (int i = 0; i <= numYLabels; i++) {
+                float y = height - paddingBottom - ((float) (chartHeight * i) / numYLabels);
+                canvas.drawLine(paddingLeft, y, width - paddingRight, y, gridPaint);
+
+                float labelValue = minWeight + (weightRange * i / numYLabels);
+                axisLabelPaint.setTextAlign(Paint.Align.RIGHT);
+                canvas.drawText(String.format(Locale.US, "%.1f", labelValue), paddingLeft - 10, y + axisLabelPaint.getTextSize() / 3, axisLabelPaint);
+            }
+
+            // Draw the weight data path
+            linePath.reset();
+            for (int i = 0; i < pointsCache.size(); i++) {
+                PointF point = pointsCache.get(i);
+                if (i == 0) {
+                    linePath.moveTo(point.x, point.y);
+                } else {
+                    linePath.lineTo(point.x, point.y);
+                }
+
+                // Draw point
+                canvas.drawCircle(point.x, point.y, 8, pointPaint);
+
+                // Draw weight value
+                textPaint.setTextAlign(Paint.Align.CENTER);
+                WeightDatabaseHelper.WeightEntry entry = entries.get(i);
+                canvas.drawText(String.format(Locale.US, "%.1f", entry.getWeight()), point.x, point.y - 15, textPaint);
+
+                // Draw X-axis label (date)
+                if (i == 0 || i == entries.size() - 1 || entries.size() <= 5 || i % (entries.size() / 5) == 0) {
+                    try {
+                        Date date = inputFormat.parse(entry.getDate());
+                        String formattedDate = date != null ? outputFormat.format(date) : entry.getDate();
+                        axisLabelPaint.setTextAlign(Paint.Align.CENTER);
+                        canvas.drawText(formattedDate, point.x, height - paddingBottom + 30, axisLabelPaint);
+                    } catch (ParseException e) {
+                        Log.e(TAG, "Error parsing date for label", e);
+                    }
+                }
+            }
+
+            // Draw the line connecting points
+            canvas.drawPath(linePath, linePaint);
+
+            // Draw goal weight line if available
+            if (goalWeight > 0) {
+                float normalizedGoal = (float) ((goalWeight - minWeight) / weightRange);
+                float goalY = height - paddingBottom - (normalizedGoal * chartHeight);
+
+                canvas.drawLine(paddingLeft, goalY, width - paddingRight, goalY, goalPaint);
+
+                // Draw goal label
+                textPaint.setColor(ContextCompat.getColor(getContext(), R.color.amber_700));
+                textPaint.setTextAlign(Paint.Align.LEFT);
+                canvas.drawText("Goal: " + String.format(Locale.US, "%.1f", goalWeight), paddingLeft + 10, goalY - 10, textPaint);
+                textPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_primary_light)); // Reset color
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  </div>
+  </div>
+  
+enhanced_code_snippets: |
+  <div class="code-snippets-grid">
+  <div class="row">
+  <div class="col-md-6">
+  <h4>MVVM Architecture</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.ViewModels;
+
+    import android.app.Application;
+    import androidx.annotation.NonNull;
+    import androidx.lifecycle.LiveData;
+    import androidx.lifecycle.MutableLiveData;
+    import com.zybooks.weightlogger.Data.UserRepository;
+    import com.zybooks.weightlogger.Data.UserSessionManager;
+
+    /**
+    * ViewModel for user registration with enhanced validation.
+    * Extends BaseValidationViewModel to leverage centralized validation logic.
+    */
+    public class RegisterViewModel extends BaseValidationViewModel {
+        private final UserRepository userRepository;
+        private final UserSessionManager sessionManager;
+
+        // Status indicators
+        private final MutableLiveData<Integer> passwordStrengthLiveData = new MutableLiveData<>(0);
+        private final MutableLiveData<Boolean> registrationSuccessLiveData = new MutableLiveData<>();
+        private final MutableLiveData<Boolean> loginSuccessLiveData = new MutableLiveData<>();
+
+        // Validation states
+        private final MutableLiveData<Boolean> usernameValidLiveData = new MutableLiveData<>(false);
+        private final MutableLiveData<Boolean> passwordValidLiveData = new MutableLiveData<>(false);
+        private final MutableLiveData<Boolean> confirmPasswordValidLiveData = new MutableLiveData<>(false);
+        private final MutableLiveData<Boolean> goalWeightValidLiveData = new MutableLiveData<>(true); // Optional field
+        private final MutableLiveData<Boolean> formValidLiveData = new MutableLiveData<>(false);
+
+        // Error messages
+        private final MutableLiveData<String> usernameErrorLiveData = new MutableLiveData<>();
+        private final MutableLiveData<String> passwordErrorLiveData = new MutableLiveData<>();
+        private final MutableLiveData<String> confirmPasswordErrorLiveData = new MutableLiveData<>();
+        private final MutableLiveData<String> goalWeightErrorLiveData = new MutableLiveData<>();
+
+        public RegisterViewModel(@NonNull Application application) {
+            super(application);
+            userRepository = new UserRepository(application);
+            sessionManager = new UserSessionManager(application);
+        }
+
+        // LiveData getters
+        public LiveData<String> getStatusMessageLiveData() { return statusMessageLiveData; }
+        public LiveData<Integer> getPasswordStrengthLiveData() { return passwordStrengthLiveData; }
+        public LiveData<Boolean> getRegistrationSuccessLiveData() { return registrationSuccessLiveData; }
+        public LiveData<Boolean> getFormValidLiveData() { return formValidLiveData; }
+        public LiveData<String> getUsernameErrorLiveData() { return usernameErrorLiveData; }
+        public LiveData<String> getPasswordErrorLiveData() { return passwordErrorLiveData; }
+        public LiveData<String> getConfirmPasswordErrorLiveData() { return confirmPasswordErrorLiveData; }
+        public LiveData<String> getGoalWeightErrorLiveData() { return goalWeightErrorLiveData; }
+
+        /**
+        * Validates username in real-time.
+        *
+        * @param username The username to validate
+        */
+        public void validateUsername(String username) {
+            validationService.validateUsername(
+                    username,
+                    usernameValidLiveData,
+                    usernameErrorLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Validates password in real-time and updates the password strength indicator.
+        *
+        * @param password The password to validate
+        */
+        public void validatePassword(String password) {
+            validationService.validatePassword(
+                    password,
+                    passwordValidLiveData,
+                    passwordErrorLiveData,
+                    passwordStrengthLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Validates that the confirmation password matches the original password.
+        *
+        * @param password The original password
+        * @param confirmPassword The confirmation password
+        */
+        public void validateConfirmPassword(String password, String confirmPassword) {
+            validationService.validatePasswordMatch(
+                    password,
+                    confirmPassword,
+                    confirmPasswordValidLiveData,
+                    confirmPasswordErrorLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Validates goal weight input.
+        * Since goal weight is optional, an empty string is considered valid.
+        *
+        * @param goalWeightStr The goal weight as a string
+        */
+        public void validateGoalWeight(String goalWeightStr) {
+            // Goal weight is optional, so an empty string is valid
+            if (goalWeightStr.isEmpty()) {
+                goalWeightValidLiveData.setValue(true);
+                goalWeightErrorLiveData.setValue(null);
+                updateFormValidity();
+                return;
+            }
+
+            validationService.validateWeight(
+                    goalWeightStr,
+                    goalWeightValidLiveData,
+                    goalWeightErrorLiveData
+            );
+            updateFormValidity();
+        }
+
+        /**
+        * Updates the overall form validity based on individual field validities.
+        */
+        private void updateFormValidity() {
+            super.updateFormValidity(
+                    formValidLiveData,
+                    usernameValidLiveData.getValue(),
+                    passwordValidLiveData.getValue(),
+                    confirmPasswordValidLiveData.getValue(),
+                    goalWeightValidLiveData.getValue()
+            );
+        }
+
+        /**
+        * Registers a new user after performing validation on all inputs.
+        *
+        * @param username The username for the new account
+        * @param password The password for the new account
+        * @param confirmPassword The confirmation password
+        * @param goalWeightStr The goal weight as a string (optional)
+        */
+        public void registerUser(String username, String password, String confirmPassword, String goalWeightStr) {
+            // Validate all fields
+            validateUsername(username);
+            validatePassword(password);
+            validateConfirmPassword(password, confirmPassword);
+            validateGoalWeight(goalWeightStr);
+
+            // Check if form is valid
+            if (Boolean.FALSE.equals(formValidLiveData.getValue())) {
+                statusMessageLiveData.setValue("Please correct the errors before registering.");
+                return;
+            }
+
+            // Check for username uniqueness
+            if (userRepository.userExists(username)) {
+                usernameErrorLiveData.setValue("This username is already taken.");
+                usernameValidLiveData.setValue(false);
+                updateFormValidity();
+                statusMessageLiveData.setValue("Username already exists. Please choose another.");
+                return;
+            }
+
+            // Process goal weight
+            double goalWeight = 0;
+            if (!goalWeightStr.isEmpty()) {
+                try {
+                    goalWeight = Double.parseDouble(goalWeightStr);
+                } catch (NumberFormatException e) {
+                    goalWeightErrorLiveData.setValue("Invalid weight format.");
+                    goalWeightValidLiveData.setValue(false);
+                    updateFormValidity();
+                    return;
+                }
+            }
+
+            // Register the user
+            boolean success = userRepository.insertUser(username, password, goalWeight);
+            if (success) {
+                statusMessageLiveData.setValue("Registration successful! You can now log in.");
+                registrationSuccessLiveData.setValue(true);
+                loginUser(username, password);
+            } else {
+                statusMessageLiveData.setValue("Registration failed. Please try again later.");
+                registrationSuccessLiveData.setValue(false);
+            }
+        }
+
+        /**
+        * Attempts to log in the newly registered user.
+        */
+        private void loginUser(String username, String password) {
+            if (userRepository.validateUser(username, password)) {
+                sessionManager.saveLoginSession(username);
+                loginSuccessLiveData.setValue(true);
+            }
+        }
+
+        /**
+        * Resets all validation states and error messages.
+        */
+        public void resetValidation() {
+            usernameValidLiveData.setValue(false);
+            passwordValidLiveData.setValue(false);
+            confirmPasswordValidLiveData.setValue(false);
+            goalWeightValidLiveData.setValue(true); // Optional field
+            formValidLiveData.setValue(false);
+
+            usernameErrorLiveData.setValue(null);
+            passwordErrorLiveData.setValue(null);
+            confirmPasswordErrorLiveData.setValue(null);
+            goalWeightErrorLiveData.setValue(null);
+
+            passwordStrengthLiveData.setValue(0);
+        }
+    }
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4>Password Hashing</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.Utilities;
+
+    import java.nio.charset.StandardCharsets;
+
+    import java.security.MessageDigest;
+    import java.security.NoSuchAlgorithmException;
+    import java.security.SecureRandom;
+
+    import java.util.Base64;
+
+    /**
+    * Utility class for securely hashing and verifying passwords.
+    * Implements salted SHA-256 hashing for increased security.
+    * Provides methods for creating password hashes and verifying passwords against stored hashes.
+    */
+    public class PasswordHash {
+        // Number of bytes in the salt
+        private static final int SALT_LENGTH = 16;
+
+        /**
+        * Generates a cryptographically secure random salt for password hashing.
+        *
+        * @return A random salt as a byte array
+        */
+        private static byte[] generateSalt() {
+            SecureRandom random = new SecureRandom();
+            byte[] salt = new byte[SALT_LENGTH];
+            random.nextBytes(salt);
+            return salt;
+        }
+
+        /**
+        * Hashes a password with a randomly generated salt.
+        * Uses SHA-256 algorithm to create a secure hash.
+        *
+        * @param password The password to hash
+        * @return A string in the format "salt:hash" where both salt and hash are Base64 encoded,
+        *         or null if an error occurs during hashing
+        */
+        public static String hashPassword(String password) {
+            try {
+                // Generate a new salt
+                byte[] salt = generateSalt();
+
+                // Hash the password with the salt
+                byte[] hash = hashWithSalt(password, salt);
+
+                // Encode salt and hash to Base64 for storage
+                String saltString = Base64.getEncoder().encodeToString(salt);
+                String hashString = Base64.getEncoder().encodeToString(hash);
+
+                // Return the combined string
+                return saltString + ":" + hashString;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        /**
+        * Hashes a password with a provided salt using the SHA-256 algorithm.
+        *
+        * @param password The password to hash
+        * @param salt The salt to use in the hashing process
+        * @return The hashed password as a byte array
+        * @throws NoSuchAlgorithmException If the SHA-256 algorithm is not available
+        */
+        private static byte[] hashWithSalt(String password, byte[] salt) throws NoSuchAlgorithmException {
+            // Create a SHA-256 MessageDigest instance
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Add the salt to the digest
+            digest.update(salt);
+
+            // Add the password bytes
+            byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+
+            // Get the hash
+            return digest.digest(passwordBytes);
+        }
+
+        /**
+        * Verifies that a plain text password matches a stored salted hash.
+        * Uses a constant-time comparison to prevent timing attacks.
+        *
+        * @param plainTextPassword The plain text password to verify
+        * @param storedHash The stored hash in the format "salt:hash"
+        * @return True if the passwords match, false otherwise
+        */
+        public static boolean verifyPassword(String plainTextPassword, String storedHash) {
+            try {
+                // Split the stored hash into salt and hash
+                String[] parts = storedHash.split(":");
+
+                if (parts.length != 2) {
+                    return false; // Invalid format
+                }
+
+                // Decode the salt and hash from Base64
+                byte[] salt = Base64.getDecoder().decode(parts[0]);
+                byte[] hash = Base64.getDecoder().decode(parts[1]);
+
+                // Hash the plain text password with the same salt
+                byte[] testHash = hashWithSalt(plainTextPassword, salt);
+
+                // Compare the hashes using constant-time comparison
+                if (hash.length != testHash.length) {
+                    return false;
+                }
+
+                int result = 0;
+                for (int i = 0; i < hash.length; i++) {
+                    result |= hash[i] ^ testHash[i]; // XOR will be 0 if bytes are the same
+                }
+
+                return result == 0; // If all bytes matched, result will be 0
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+  <h4>Notifications</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.Utilities;
+
+    import android.Manifest;
+
+    import android.annotation.SuppressLint;
+
+    import android.app.NotificationChannel;
+    import android.app.NotificationManager;
+    import android.app.PendingIntent;
+
+    import android.content.Context;
+    import android.content.Intent;
+    import android.content.pm.PackageManager;
+
+    import android.util.Log;
+    import java.util.Random;
+
+    import androidx.core.app.NotificationCompat;
+    import androidx.core.app.NotificationManagerCompat;
+    import androidx.core.content.ContextCompat;
+
+    import com.zybooks.weightlogger.MainActivity;
+
+
+    /**
+    * Helper class that manages the creation and sending of notifications related to weight goals.
+    * Handles notification channel setup and provides methods to send different types of
+    * motivational notifications based on user progress.
+    */
+    public class NotificationHelper {
+        private static final String CHANNEL_ID = "weight_goal_channel";
+        private static final String CHANNEL_NAME = "Weight Goal Notifications";
+        private static final String CHANNEL_DESC = "Notifications related to your weight goals";
+        private static final String TAG = "NotificationHelper";
+        private final Context context;
+        private static final Random random = new Random();
+
+        /**
+        * Creates a new NotificationHelper instance and initializes the notification channel.
+        *
+        * @param context The context used to access system services and resources
+        */
+        public NotificationHelper(Context context) {
+            this.context = context;
+            createNotificationChannel();
+        }
+
+        /**
+        * Creates the notification channel for weight goal notifications.
+        * This is required for notifications on Android 8.0 (API level 26) and higher.
+        */
+        private void createNotificationChannel() {
+
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_ID,
+                    CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+
+            // Register the channel with the system
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+
+        /**
+        * Checks if the app has permission to post notifications.
+        *
+        * @return true if notification permission is not granted, false otherwise
+        */
+        private boolean hasNotificationPermission() {
+
+            return ContextCompat.checkSelfPermission(context,
+                    Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED;
+
+        }
+
+        /**
+        * Sends a notification to inform the user about their progress toward their weight goal.
+        * Includes motivational messages based on how close they are to their goal.
+        *
+        * @param currentWeight The user's current weight
+        * @param goalWeight The user's goal weight
+        */
+        public void sendGoalProgressNotification(double currentWeight, double goalWeight) {
+            // Check permission before sending notification
+            if (hasNotificationPermission()) {
+                Log.d(TAG, "Cannot send notification: Permission not granted");
+                return;
+            }
+
+            // Create an explicit intent for the MainActivity
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context, 0, intent,
+                    PendingIntent.FLAG_IMMUTABLE);
+
+            String title = "You're making progress!";
+            String message;
+
+            // Calculate the difference
+            double difference = Math.abs(currentWeight - goalWeight);
+
+            // Choose a motivational message
+            @SuppressLint("DefaultLocale") String[] messages = {
+                    "Keep up the great work! You're getting closer to your goal weight.",
+                    "You're making amazing progress! Just " + String.format("%.1f", difference) + " lbs to go!",
+                    "Fantastic job on your weight journey! Keep going!",
+                    "You're getting closer to your goal of " + String.format("%.1f", goalWeight) + " lbs!"
+            };
+
+            message = messages[random.nextInt(messages.length)];
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            try {
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                notificationManager.notify(random.nextInt(1000), builder.build());
+            } catch (SecurityException e) {
+                Log.e(TAG, "Security exception when sending notification", e);
+            }
+        }
+
+        /**
+        * Sends a notification to congratulate the user on achieving their weight goal.
+        * Includes celebratory messages for this significant achievement.
+        */
+        public void sendGoalAchievedNotification() {
+            // Check permission before sending notification
+            if (hasNotificationPermission()) {
+                Log.d(TAG, "Cannot send notification: Permission not granted");
+                return;
+            }
+
+            // Create an explicit intent for the MainActivity
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context, 0, intent,
+                    PendingIntent.FLAG_IMMUTABLE);
+
+            String title = "Awesome Work!";
+
+            // Choose a congratulatory message
+            String[] messages = {
+                    "You've reached your goal weight! Amazing job!",
+                    "Goal achieved! You should be incredibly proud of yourself!",
+                    "You did it! You've reached your weight goal!",
+                    "Congratulations on achieving your weight goal! What an accomplishment!"
+            };
+
+            String message = messages[random.nextInt(messages.length)];
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                    .setSmallIcon(android.R.drawable.ic_dialog_info)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            try {
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                notificationManager.notify(random.nextInt(1000), builder.build());
+            } catch (SecurityException e) {
+                Log.e(TAG, "Security exception when sending notification", e);
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4>Progress Visualization</h4>
+  <pre><code class="language-java">
+    package com.zybooks.weightlogger.Utilities;
+
+    import android.content.Context;
+    import android.graphics.Canvas;
+    import android.graphics.Color;
+    import android.graphics.Paint;
+    import android.graphics.Path;
+    import android.graphics.PointF;
+    import android.util.AttributeSet;
+    import android.util.Log;
+    import android.view.View;
+
+    import androidx.annotation.NonNull;
+    import androidx.annotation.Nullable;
+    import androidx.core.content.ContextCompat;
+
+    import com.zybooks.weightlogger.Data.WeightDatabaseHelper;
+    import com.zybooks.weightlogger.R;
+
+    import java.text.ParseException;
+    import java.text.SimpleDateFormat;
+    import java.util.ArrayList;
+    import java.util.Date;
+    import java.util.List;
+    import java.util.Locale;
+
+    public class WeightChartView extends View {
+        private static final String TAG = "WeightChartView";
+
+        private List<WeightDatabaseHelper.WeightEntry> entries = new ArrayList<>();
+        private double goalWeight = 0;
+        private boolean hasData = false;
+
+        private final Paint linePaint = new Paint();
+        private final Paint pointPaint = new Paint();
+        private final Paint textPaint = new Paint();
+        private final Paint gridPaint = new Paint();
+        private final Paint goalPaint = new Paint();
+        private final Paint axisLabelPaint = new Paint();
+
+        private float minWeight = 0;
+        private float maxWeight = 0;
+        private final Path linePath = new Path();
+        private final List<PointF> pointsCache = new ArrayList<>();
+        private final int paddingLeft = 80;
+        private final int paddingRight = 40;
+        private final int paddingTop = 40;
+        private final int paddingBottom = 80;
+        private final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        private final SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd", Locale.US);
+
+        public WeightChartView(Context context) {
+            super(context);
+            init();
+        }
+
+        public WeightChartView(Context context, @Nullable AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public WeightChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            init();
+        }
+
+        private void init() {
+            // Line paint
+            linePaint.setColor(ContextCompat.getColor(getContext(), R.color.teal_700));
+            linePaint.setStyle(Paint.Style.STROKE);
+            linePaint.setStrokeWidth(4f);
+            linePaint.setAntiAlias(true);
+
+            // Point paint
+            pointPaint.setColor(ContextCompat.getColor(getContext(), R.color.teal_700));
+            pointPaint.setStyle(Paint.Style.FILL);
+            pointPaint.setAntiAlias(true);
+
+            // Text paint
+            textPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_primary_light));
+            textPaint.setTextSize(28f);
+            textPaint.setAntiAlias(true);
+
+            // Grid paint
+            gridPaint.setColor(Color.LTGRAY);
+            gridPaint.setStyle(Paint.Style.STROKE);
+            gridPaint.setStrokeWidth(1f);
+            gridPaint.setAlpha(100);
+
+            // Goal line paint
+            goalPaint.setColor(ContextCompat.getColor(getContext(), R.color.amber_700));
+            goalPaint.setStyle(Paint.Style.STROKE);
+            goalPaint.setStrokeWidth(3f);
+            goalPaint.setPathEffect(new android.graphics.DashPathEffect(new float[]{10, 10}, 0));
+
+            // Axis label paint
+            axisLabelPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_secondary_light));
+            axisLabelPaint.setTextSize(24f);
+            axisLabelPaint.setAntiAlias(true);
+        }
+
+        public void setData(List<WeightDatabaseHelper.WeightEntry> entries, double goalWeight) {
+            this.entries = new ArrayList<>(entries);
+            // Sort by date from oldest to newest
+            this.entries.sort((entry1, entry2) -> {
+                try {
+                    Date date1 = inputFormat.parse(entry1.getDate());
+                    Date date2 = inputFormat.parse(entry2.getDate());
+                    if (date1 != null && date2 != null) {
+                        return date1.compareTo(date2);
+                    }
+                } catch (ParseException e) {
+                    Log.e(TAG, "Error parsing date", e);
+                }
+                return 0;
+            });
+
+            this.goalWeight = goalWeight;
+
+            // Calculate min and max weight
+            if (!entries.isEmpty()) {
+                hasData = true;
+                minWeight = Float.MAX_VALUE;
+                maxWeight = Float.MIN_VALUE;
+
+                for (WeightDatabaseHelper.WeightEntry entry : entries) {
+                    float weight = (float) entry.getWeight();
+                    if (weight < minWeight) minWeight = weight;
+                    if (weight > maxWeight) maxWeight = weight;
+                }
+
+                // Include goal weight in range
+                if (goalWeight > 0) {
+                    if (goalWeight < minWeight) minWeight = (float) goalWeight;
+                    if (goalWeight > maxWeight) maxWeight = (float) goalWeight;
+                }
+
+                // Add padding to range
+                float range = maxWeight - minWeight;
+                minWeight = Math.max(0, minWeight - range * 0.1f);
+                maxWeight = maxWeight + range * 0.1f;
+            }
+
+            // Precalculate the points before drawing
+            calculatePoints();
+            invalidate();
+        }
+
+        private void calculatePoints() {
+            // Clear cached points
+            pointsCache.clear();
+
+            if (!hasData || entries.isEmpty()) {
+                return;
+            }
+
+            int width = getWidth();
+            int height = getHeight();
+
+            // Handle the case when the view size isn't set yet
+            if (width <= 0 || height <= 0) {
+                return;
+            }
+
+            int chartWidth = width - paddingLeft - paddingRight;
+            int chartHeight = height - paddingTop - paddingBottom;
+            float weightRange = maxWeight - minWeight;
+
+            // Calculate points for line
+            for (int i = 0; i < entries.size(); i++) {
+                WeightDatabaseHelper.WeightEntry entry = entries.get(i);
+                float x = paddingLeft + ((float) (chartWidth * i) / (entries.size() - 1));
+                if (entries.size() == 1) {
+                    x = paddingLeft + chartWidth / 2f;
+                }
+
+                float normalizedWeight = (float) ((entry.getWeight() - minWeight) / weightRange);
+                float y = height - paddingBottom - (normalizedWeight * chartHeight);
+
+                pointsCache.add(new PointF(x, y));
+            }
+        }
+
+        @Override
+        protected void onSizeChanged(int w, int h, int old_width, int old_height) {
+            super.onSizeChanged(w, h, old_width, old_height);
+            calculatePoints();
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
+            super.onDraw(canvas);
+
+            if (!hasData || entries.isEmpty()) {
+                // Draw no data message
+                textPaint.setTextAlign(Paint.Align.CENTER);
+                canvas.drawText("No weight data available", getWidth() / 2f, getHeight() / 2f, textPaint);
+                return;
+            }
+
+            int width = getWidth();
+            int height = getHeight();
+            int chartHeight = height - paddingTop - paddingBottom;
+
+            // Draw axes
+            canvas.drawLine(paddingLeft, height - paddingBottom, width - paddingRight, height - paddingBottom, gridPaint); // X-axis
+            canvas.drawLine(paddingLeft, paddingTop, paddingLeft, height - paddingBottom, gridPaint); // Y-axis
+
+            // Draw horizontal grid lines and Y-axis labels
+            int numYLabels = 5;
+            float weightRange = maxWeight - minWeight;
+            for (int i = 0; i <= numYLabels; i++) {
+                float y = height - paddingBottom - ((float) (chartHeight * i) / numYLabels);
+                canvas.drawLine(paddingLeft, y, width - paddingRight, y, gridPaint);
+
+                float labelValue = minWeight + (weightRange * i / numYLabels);
+                axisLabelPaint.setTextAlign(Paint.Align.RIGHT);
+                canvas.drawText(String.format(Locale.US, "%.1f", labelValue), paddingLeft - 10, y + axisLabelPaint.getTextSize() / 3, axisLabelPaint);
+            }
+
+            // Draw the weight data path
+            linePath.reset();
+            for (int i = 0; i < pointsCache.size(); i++) {
+                PointF point = pointsCache.get(i);
+                if (i == 0) {
+                    linePath.moveTo(point.x, point.y);
+                } else {
+                    linePath.lineTo(point.x, point.y);
+                }
+
+                // Draw point
+                canvas.drawCircle(point.x, point.y, 8, pointPaint);
+
+                // Draw weight value
+                textPaint.setTextAlign(Paint.Align.CENTER);
+                WeightDatabaseHelper.WeightEntry entry = entries.get(i);
+                canvas.drawText(String.format(Locale.US, "%.1f", entry.getWeight()), point.x, point.y - 15, textPaint);
+
+                // Draw X-axis label (date)
+                if (i == 0 || i == entries.size() - 1 || entries.size() <= 5 || i % (entries.size() / 5) == 0) {
+                    try {
+                        Date date = inputFormat.parse(entry.getDate());
+                        String formattedDate = date != null ? outputFormat.format(date) : entry.getDate();
+                        axisLabelPaint.setTextAlign(Paint.Align.CENTER);
+                        canvas.drawText(formattedDate, point.x, height - paddingBottom + 30, axisLabelPaint);
+                    } catch (ParseException e) {
+                        Log.e(TAG, "Error parsing date for label", e);
+                    }
+                }
+            }
+
+            // Draw the line connecting points
+            canvas.drawPath(linePath, linePaint);
+
+            // Draw goal weight line if available
+            if (goalWeight > 0) {
+                float normalizedGoal = (float) ((goalWeight - minWeight) / weightRange);
+                float goalY = height - paddingBottom - (normalizedGoal * chartHeight);
+
+                canvas.drawLine(paddingLeft, goalY, width - paddingRight, goalY, goalPaint);
+
+                // Draw goal label
+                textPaint.setColor(ContextCompat.getColor(getContext(), R.color.amber_700));
+                textPaint.setTextAlign(Paint.Align.LEFT);
+                canvas.drawText("Goal: " + String.format(Locale.US, "%.1f", goalWeight), paddingLeft + 10, goalY - 10, textPaint);
+                textPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_primary_light)); // Reset color
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  </div>
+  </div>
 ---

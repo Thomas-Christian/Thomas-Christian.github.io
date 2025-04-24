@@ -1,11 +1,1135 @@
 ---
 layout: default
-modal-id: 3
-date: 2014-07-16
-img: circus.png
-alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Use this area of the page to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+modal-id: 2
+date: 2023-04-20
+images:
+  
+category: Databases
+
+icon-img: Databases.png
+
+alt: Animal Shelter Dashboard
+project-date: January - March 2024
+client: IT 145
+
+description: "The Animal Rescue Management System is a Java application designed for tracking rescue animals and adoption processes. It includes animal record management, training status tracking, reservation handling, and advanced search capabilities with HashMap-based indexing for improved performance."
+
+# Artifact narrative
+artifact_narrative: |
+    <p> 
+    The artifact I've selected is an Animal Shelter Dashboard, originally developed as a python/mongo application with basic functionality for displaying and filtering animal data. The original version used a simple data presentation and limited visualization capabilities. My enhanced version transforms the system with a modern UI framework that significantly improves visual coherence, user experience, and overall system usability. While not implemented just yet, I also plan to add comprehensive security measures for data, and buff up the database. 
+
+    I selected this artifact because it demonstrates my ability to apply modern development techniques to create interfaces that effectively communicate data and support organizational decision-making. The enhanced dashboard uses components that provide a consistent design language, improved accessibility, and responsive layouts that work across different device sizes. 
+
+    The enhancements align with several course outcomes. For Outcome #1, the improved interface creates a collaborative environment that makes data more accessible, supporting better organizational decision-making. The clean, intuitive design allows staff with varying technical abilities to quickly filter and analyze animal data. For Outcome #2, the enhanced visual design delivers professional-quality visual communications that are coherent and appropriately adapted to the specific context. For Outcome #4, my use of Material UI demonstrates the ability to leverage industry-standard tools that deliver value, resulting in a more maintainable codebase and a more professional user experience.
+    
+    One of the most valuable aspects of this process was critically evaluating different frameworks based on their component libraries, accessibility features, and integration capabilities. I faced several challenges during the enhancement process. The most significant was adapting the existing application structure to incorporate the new component library while maintaining full functionality. This experience taught me the importance of understanding component lifecycles and state management. Another challenge was ensuring the enhanced interface remained intuitive while adding visual sophistication. I had to carefully consider how each design decision would impact usability. This reinforced the importance of keeping user needs at the center of design decisions.
+    
+    Through this artifact enhancement, I've gained a deeper understanding of how modern frameworks and technologies can be leveraged to create interfaces that not only look professional but also improve information access and decision-making. 
+
+    <p/>
+
+
+# Code snippets section
+code_snippets: |
+  <div class="code-snippets-grid">
+  <div class="row">
+  <div class="col-md-6">
+  <h4>Console Based Menu</h4>
+  <pre><code class="language-java">
+    package com.rescuesystem.ui;
+
+    import java.util.*;
+
+    import com.rescuesystem.data.AnimalManager;
+    import com.rescuesystem.operations.IntakeOperations;
+    import com.rescuesystem.operations.ManagementOperations;
+    import com.rescuesystem.operations.SearchOperations;
+    import com.rescuesystem.operations.ViewOperations;
+
+    /**
+    * MenuSystem - Manages the display and processing of all menus
+    */
+    public class MenuSystem {
+        private UIManager uiManager;
+        private AnimalManager animalManager;
+        private Scanner scanner;
+        private InputHandler inputHandler;
+        
+        // Operation handlers
+        private IntakeOperations intakeOps;
+        private ViewOperations viewOps;
+        private ManagementOperations managementOps;
+        private SearchOperations searchOps;
+        
+        // Constructor
+        public MenuSystem(UIManager uiManager) {
+            this.uiManager = uiManager;
+            this.animalManager = uiManager.getAnimalManager();
+            this.scanner = uiManager.getScanner();
+            this.inputHandler = uiManager.getInputHandler();
+            
+            // Initialize operation handlers
+            this.intakeOps = new IntakeOperations(animalManager, inputHandler);
+            this.viewOps = new ViewOperations(animalManager, inputHandler);
+            this.managementOps = new ManagementOperations(animalManager, inputHandler);
+            this.searchOps = new SearchOperations(animalManager, inputHandler);
+        }
+        
+        // Display main menu
+        public void displayMainMenu() {
+            System.out.println("\n\n");
+            System.out.println("\t\t\t\tRescue Animal System");
+            System.out.println("=======================================================");
+            System.out.println("[1] Animal Intake");
+            System.out.println("[2] View Animals");
+            System.out.println("[3] Animal Management");
+            System.out.println("[4] Search Options");
+            System.out.println("[q] Quit application");
+            System.out.println();
+            System.out.println("Enter a menu selection");
+        }
+        
+        // Process main menu selection
+        public void processMainMenu(String input) {
+            switch (input) {
+                case "1":
+                    handleIntakeMenu();
+                    break;
+                    
+                case "2":
+                    handleViewMenu();
+                    break;
+                    
+                case "3":
+                    handleManagementMenu();
+                    break;
+                    
+                case "4":
+                    handleSearchMenu();
+                    break;
+                    
+                case "q":
+                    uiManager.exit();
+                    break;
+                    
+                default:
+                    System.out.println("That's not a valid option!");
+                    break;
+            }
+        }
+        
+        // Handle intake menu
+        private void handleIntakeMenu() {
+            boolean subMenuActive = true;
+            
+            while (subMenuActive) {
+                displayIntakeMenu();
+                String input = scanner.nextLine();
+                
+                if (input.equals("b")) {
+                    subMenuActive = false;
+                } else {
+                    processIntakeMenu(input);
+                }
+            }
+        }
+        
+        // Display intake menu
+        private void displayIntakeMenu() {
+            System.out.println("\n\n");
+            System.out.println("\t\t\t\tAnimal Intake Menu");
+            System.out.println("=======================================================");
+            System.out.println("[1] Intake a new dog");
+            System.out.println("[2] Intake a new monkey");
+            System.out.println("[3] Intake a new cat");
+            System.out.println("[4] Intake a new bird");
+            System.out.println("[b] Back to main menu");
+            System.out.println();
+            System.out.println("Enter a menu selection");
+        }
+        
+        // Process intake menu selection
+        private void processIntakeMenu(String input) {
+            switch (input) {
+                case "1":
+                    intakeOps.intakeNewDog();
+                    break;
+                    
+                case "2":
+                    intakeOps.intakeNewMonkey();
+                    break;
+                    
+                case "3":
+                    intakeOps.intakeNewCat();
+                    break;
+                    
+                case "4":
+                    intakeOps.intakeNewBird();
+                    break;
+                    
+                default:
+                    System.out.println("That's not a valid option!");
+                    break;
+            }
+        }
+        
+        // Handle view menu
+        private void handleViewMenu() {
+            boolean subMenuActive = true;
+            
+            while (subMenuActive) {
+                displayViewMenu();
+                String input = scanner.nextLine();
+                
+                if (input.equals("b")) {
+                    subMenuActive = false;
+                } else {
+                    processViewMenu(input);
+                }
+            }
+        }
+        
+        // Display view menu
+        private void displayViewMenu() {
+            System.out.println("\n\n");
+            System.out.println("\t\t\t\tView Animals Menu");
+            System.out.println("=======================================================");
+            System.out.println("[1] View all dogs");
+            System.out.println("[2] View all monkeys");
+            System.out.println("[3] View all cats");
+            System.out.println("[4] View all birds");
+            System.out.println("[5] View all available animals");
+            System.out.println("[6] View all therapy animals");
+            System.out.println("[b] Back to main menu");
+            System.out.println();
+            System.out.println("Enter a menu selection");
+        }
+        
+        // Process view menu selection
+        private void processViewMenu(String input) {
+            switch (input) {
+                case "1":
+                    viewOps.printAnimals("Dog");
+                    break;
+                    
+                case "2":
+                    viewOps.printAnimals("Monkey");
+                    break;
+                    
+                case "3":
+                    viewOps.printAnimals("Cat");
+                    break;
+                    
+                case "4":
+                    viewOps.printAnimals("Bird");
+                    break;
+                    
+                case "5":
+                    viewOps.printAvailableAnimals();
+                    break;
+                    
+                case "6":
+                    viewOps.printTherapyAnimals();
+                    break;
+                    
+                default:
+                    System.out.println("That's not a valid option!");
+                    break;
+            }
+        }
+        
+        // Handle management menu
+        private void handleManagementMenu() {
+            boolean subMenuActive = true;
+            
+            while (subMenuActive) {
+                displayManagementMenu();
+                String input = scanner.nextLine();
+                
+                if (input.equals("b")) {
+                    subMenuActive = false;
+                } else {
+                    processManagementMenu(input);
+                }
+            }
+        }
+        
+        // Display management menu
+        private void displayManagementMenu() {
+            System.out.println("\n\n");
+            System.out.println("\t\t\t\tAnimal Management Menu");
+            System.out.println("=======================================================");
+            System.out.println("[1] Reserve an animal");
+            System.out.println("[2] Update animal training status");
+            System.out.println("[3] Animal relationship management");
+            System.out.println("[b] Back to main menu");
+            System.out.println();
+            System.out.println("Enter a menu selection");
+        }
+        
+        // Process management menu selection
+        private void processManagementMenu(String input) {
+            switch (input) {
+                case "1":
+                    managementOps.reserveAnimal();
+                    break;
+                    
+                case "2":
+                    managementOps.updateAnimalTraining();
+                    break;
+                    
+                case "3":
+                    managementOps.manageRelationships();
+                    break;
+                    
+                default:
+                    System.out.println("That's not a valid option!");
+                    break;
+            }
+        }
+        
+        // Handle search menu
+        private void handleSearchMenu() {
+            boolean subMenuActive = true;
+            
+            while (subMenuActive) {
+                displaySearchMenu();
+                String input = scanner.nextLine();
+                
+                if (input.equals("b")) {
+                    subMenuActive = false;
+                } else {
+                    processSearchMenu(input);
+                }
+            }
+        }
+        
+        // Display search menu
+        private void displaySearchMenu() {
+            System.out.println("\n\n");
+            System.out.println("\t\t\t\tSearch Options Menu");
+            System.out.println("=======================================================");
+            System.out.println("[1] Search by name (fuzzy search)");
+            System.out.println("[2] Search by type and country");
+            System.out.println("[3] Search by multiple criteria");
+            System.out.println("[4] Search by date range");
+            System.out.println("[b] Back to main menu");
+            System.out.println();
+            System.out.println("Enter a menu selection");
+        }
+        
+        // Process search menu selection
+        private void processSearchMenu(String input) {
+            switch (input) {
+                case "1":
+                    searchOps.searchByName();
+                    break;
+                    
+                case "2":
+                    searchOps.searchByTypeAndCountry();
+                    break;
+                    
+                case "3":
+                    searchOps.searchByMultipleCriteria();
+                    break;
+                    
+                case "4":
+                    searchOps.searchByDateRange();
+                    break;
+                    
+                default:
+                    System.out.println("That's not a valid option!");
+                    break;
+            }
+        }
+    }
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4>Seperate Operation Classes</h4>
+  <pre><code class="language-java">
+    package com.rescuesystem.operations;
+
+    import java.util.*;
+
+    import com.rescuesystem.data.AnimalManager;
+    import com.rescuesystem.model.RescueAnimal;
+    import com.rescuesystem.ui.InputHandler;
+
+    /**
+    * SearchOperations - Handles all search operations
+    */
+    public class SearchOperations {
+        private AnimalManager animalManager;
+        private InputHandler inputHandler;
+        private Scanner scanner;
+        
+        // Constructor
+        public SearchOperations(AnimalManager animalManager, InputHandler inputHandler) {
+            this.animalManager = animalManager;
+            this.inputHandler = inputHandler;
+            this.scanner = inputHandler.getScanner();
+        }
+        
+        // Search by name
+        public void searchByName() {
+            System.out.println("Enter partial name to search:");
+            String nameFragment = scanner.nextLine();
+            
+            List<RescueAnimal> fuzzyResults = animalManager.fuzzyNameSearch(nameFragment);
+            
+            if (!fuzzyResults.isEmpty()) {
+                System.out.println("\nMatching animals:");
+                System.out.println("----------------------------------------------------------");
+                System.out.printf("%-15s %-10s %-15s %-15s\n", "Name", "Type", "Status", "Location");
+                System.out.println("----------------------------------------------------------");
+                
+                for (RescueAnimal animal : fuzzyResults) {
+                    System.out.printf("%-15s %-10s %-15s %-15s\n", 
+                        animal.getName(), 
+                        animal.getAnimalType(), 
+                        animal.getTrainingStatus(), 
+                        animal.getInServiceLocation());
+                }
+            } else {
+                System.out.println("No animals found matching that name.");
+            }
+            
+            inputHandler.waitForEnter();
+        }
+        
+        // Search by type and country
+        public void searchByTypeAndCountry() {
+            Map<String, String> criteria = new HashMap<>();
+            
+            System.out.println("Enter animal type (Dog/Monkey/Cat/Bird):");
+            String type = scanner.nextLine();
+            
+            System.out.println("Enter country:");
+            String country = scanner.nextLine();
+            
+            criteria.put("type", type);
+            criteria.put("inServiceCountry", country);
+            
+            List<RescueAnimal> typeCountryResults = animalManager.multiCriteriaSearch(criteria);
+            
+            if (!typeCountryResults.isEmpty()) {
+                System.out.println("\nMatching animals:");
+                System.out.println("----------------------------------------------------------");
+                System.out.printf("%-15s %-15s %-15s\n", "Name", "Status", "Reserved");
+                System.out.println("----------------------------------------------------------");
+                
+                for (RescueAnimal animal : typeCountryResults) {
+                    System.out.printf("%-15s %-15s %-15s\n", 
+                        animal.getName(), 
+                        animal.getTrainingStatus(), 
+                        animal.getReserved() ? "Yes" : "No");
+                }
+            } else {
+                System.out.println("No animals found matching those criteria.");
+            }
+            
+            inputHandler.waitForEnter();
+        }
+        
+        // Search by multiple criteria
+        public void searchByMultipleCriteria() {
+            Map<String, String> criteria = new HashMap<>();
+            
+            System.out.println("Enter search criteria (leave blank to skip):");
+            
+            System.out.println("Type (Dog/Monkey/Cat/Bird):");
+            String multiType = scanner.nextLine();
+            if (!multiType.isEmpty()) criteria.put("type", multiType);
+            
+            System.out.println("Training Status:");
+            String status = scanner.nextLine();
+            if (!status.isEmpty()) criteria.put("trainingStatus", status);
+            
+            System.out.println("Country:");
+            String multiCountry = scanner.nextLine();
+            if (!multiCountry.isEmpty()) criteria.put("inServiceCountry", multiCountry);
+            
+            System.out.println("Reserved (true/false):");
+            String reserved = scanner.nextLine();
+            if (!reserved.isEmpty()) criteria.put("reserved", reserved);
+            
+            // Handle breed/species-specific criteria
+            if (multiType.equalsIgnoreCase("Dog")) {
+                System.out.println("Breed:");
+                String breed = scanner.nextLine();
+                if (!breed.isEmpty()) criteria.put("breed", breed);
+            } else if (multiType.equalsIgnoreCase("Cat")) {
+                System.out.println("Breed:");
+                String breed = scanner.nextLine();
+                if (!breed.isEmpty()) criteria.put("breed", breed);
+                
+                System.out.println("House Trained (true/false):");
+                String houseTrained = scanner.nextLine();
+                if (!houseTrained.isEmpty()) criteria.put("houseTrained", houseTrained);
+            } else if (multiType.equalsIgnoreCase("Monkey") || multiType.equalsIgnoreCase("Bird")) {
+                System.out.println("Species:");
+                String species = scanner.nextLine();
+                if (!species.isEmpty()) criteria.put("species", species);
+            }
+            
+            List<RescueAnimal> multiResults = animalManager.multiCriteriaSearch(criteria);
+            
+            if (!multiResults.isEmpty()) {
+                System.out.println("\nMatching animals:");
+                for (RescueAnimal animal : multiResults) {
+                    System.out.println(animal);
+                }
+            } else {
+                System.out.println("No animals found matching those criteria.");
+            }
+            
+            inputHandler.waitForEnter();
+        }
+        
+        // Search by date range
+        public void searchByDateRange() {
+            System.out.println("Enter start date (MM/DD/YYYY):");
+            String startDate = inputHandler.validateDateInput();
+            
+            System.out.println("Enter end date (MM/DD/YYYY):");
+            String endDate = inputHandler.validateDateInput();
+            
+            List<RescueAnimal> animals = animalManager.findAnimalsByDateRange(startDate, endDate);
+            
+            if (!animals.isEmpty()) {
+                System.out.println("\nAnimals acquired between " + startDate + " and " + endDate + ":");
+                System.out.println("----------------------------------------------------------");
+                System.out.printf("%-15s %-10s %-15s %-15s\n", "Name", "Type", "Date", "Location");
+                System.out.println("----------------------------------------------------------");
+                
+                for (RescueAnimal animal : animals) {
+                    System.out.printf("%-15s %-10s %-15s %-15s\n", 
+                        animal.getName(), 
+                        animal.getAnimalType(), 
+                        animal.getAcquisitionDate(), 
+                        animal.getAcquisitionLocation());
+                }
+            } else {
+                System.out.println("No animals found in that date range.");
+            }
+            
+            inputHandler.waitForEnter();
+        }
+    }
+  </code></pre>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+  <h4>New Animal Classes</h4>
+  <pre><code class="language-java">
+    package com.rescuesystem.model;
+
+    /**
+    * Cat class for rescue cats
+    */
+    public class Cat extends RescueAnimal {
+
+        // Instance variables
+        private String breed;
+        private boolean houseTrained;
+        private boolean declawed;
+        
+        // Constants for breeds
+        public static final String[] CAT_BREEDS = {
+            "Unknown", "Ragdoll", "Maine Coon", "Persian", "Birman",
+            "Scottish Fold", "Siamese", "British Shorthair", "Bengal",
+            "Sphynx", "American Shorthair", "Exotic Shorthair", "Devon Rex",
+            "Abyssinian", "Oriental", "Russian Blue", "Norwegian Forest Cat",
+            "Domestic Shorthair", "Domestic Longhair", "Himalayan"
+        };
+        
+        private static final String[] THERAPY_BREEDS = {
+            "Ragdoll", "Maine Coon", "Persian", "Birman",
+            "Scottish Fold", "Siamese", "British Shorthair"
+        };
+
+        // Constructor
+        public Cat(String name, String breed, String gender, String age,
+                String weight, String acquisitionDate, String acquisitionCountry,
+                String trainingStatus, boolean reserved, String inServiceCountry,
+                boolean houseTrained, boolean declawed) {
+            
+            setName(name);
+            setBreed(breed);
+            setGender(gender);
+            setAge(age);
+            setWeight(weight);
+            setAcquisitionDate(acquisitionDate);
+            setAcquisitionLocation(acquisitionCountry);
+            setTrainingStatus(trainingStatus);
+            setReserved(reserved);
+            setInServiceCountry(inServiceCountry);
+            setHouseTrained(houseTrained);
+            setDeclawed(declawed);
+            setAnimalType("Cat");
+        }
+
+        // Accessor Methods
+        public String getBreed() {
+            return breed;
+        }
+
+        public boolean isHouseTrained() {
+            return houseTrained;
+        }
+        
+        public boolean isDeclawed() {
+            return declawed;
+        }
+
+        // Mutator Methods
+        public void setBreed(String catBreed) {
+            breed = catBreed;
+        }
+        
+        public void setHouseTrained(boolean houseTrained) {
+            this.houseTrained = houseTrained;
+        }
+        
+        public void setDeclawed(boolean declawed) {
+            this.declawed = declawed;
+        }
+        
+        // Check if the cat is suitable for therapy
+        public boolean isTherapyCandidate() {
+            for (String therapyBreed : THERAPY_BREEDS) {
+                if (therapyBreed.equalsIgnoreCase(breed)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        // Get all available cat breeds
+        public static String[] getBreeds() {
+            return CAT_BREEDS;
+        }
+        
+        // Check if a breed is valid
+        public static boolean isValidBreed(String breed) {
+            for (String validBreed : CAT_BREEDS) {
+                if (validBreed.equalsIgnoreCase(breed)) {
+                    return true;
+                }
+            }
+            return true; // Accept any breed, even if not in predefined list
+        }
+        
+        // Match cat to criteria
+        @Override
+        public boolean matchesCriteria(String criteria, String value) {
+            // First check base criteria
+            if (super.matchesCriteria(criteria, value)) {
+                return true;
+            }
+            
+            // Then check cat-specific criteria
+            switch (criteria) {
+                case "breed": return breed.equalsIgnoreCase(value);
+                case "houseTrained": return houseTrained == Boolean.parseBoolean(value);
+                case "declawed": return declawed == Boolean.parseBoolean(value);
+                default: return false;
+            }
+        }
+        
+        // toString method
+        @Override
+        public String toString() {
+            return super.toString() + 
+                ", Breed: " + breed + 
+                ", House Trained: " + (houseTrained ? "Yes" : "No") +
+                ", Declawed: " + (declawed ? "Yes" : "No");
+        }
+    }
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4>Improved Algorithms</h4>
+  <pre><code class="language-java">
+    package com.rescuesystem.data;
+
+    import java.util.*;
+
+    import com.rescuesystem.model.Bird;
+    import com.rescuesystem.model.Cat;
+    import com.rescuesystem.model.Dog;
+    import com.rescuesystem.model.Monkey;
+    import com.rescuesystem.model.RescueAnimal;
+
+    import java.time.LocalDate;
+    import java.time.format.DateTimeFormatter;
+
+    /**
+    * Animal Manager - New class for managing animal collections using efficient data structures
+    * Implements advanced search algorithms and indexing for O(1) lookups
+    */
+    public class AnimalManager {
+        // Primary collection - HashMap for O(1) lookup by name
+        private Map<String, RescueAnimal> animalsByName;
+        
+        // Indexed collections for efficient filtering
+        private Map<String, List<RescueAnimal>> animalsByType;
+        private Map<String, List<RescueAnimal>> animalsByCountry;
+        private Map<String, List<RescueAnimal>> animalsByTrainingStatus;
+        
+        // New type-specific indexes
+        private Map<String, List<RescueAnimal>> dogsByBreed;
+        private Map<String, List<RescueAnimal>> catsByBreed;
+        private Map<String, List<RescueAnimal>> monkeysBySpecies;
+        private Map<String, List<RescueAnimal>> birdsBySpecies;
+        
+        // Standard date format
+        private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        
+        // Constructor
+        public AnimalManager() {
+            animalsByName = new HashMap<>();
+            animalsByType = new HashMap<>();
+            animalsByCountry = new HashMap<>();
+            animalsByTrainingStatus = new HashMap<>();
+            
+            // Initialize type-specific indexes
+            dogsByBreed = new HashMap<>();
+            catsByBreed = new HashMap<>();
+            monkeysBySpecies = new HashMap<>();
+            birdsBySpecies = new HashMap<>();
+        }
+        
+        /**
+        * Add an animal to all collections and indexes
+        * O(1) operation for adding to maps
+        */
+        public void addAnimal(RescueAnimal animal) {
+            // Add to primary collection
+            animalsByName.put(animal.getName().toLowerCase(), animal);
+            
+            // Add to type index
+            String type = animal.getAnimalType();
+            if (!animalsByType.containsKey(type)) {
+                animalsByType.put(type, new ArrayList<>());
+            }
+            animalsByType.get(type).add(animal);
+            
+            // Add to country index
+            String country = animal.getInServiceLocation();
+            if (!animalsByCountry.containsKey(country)) {
+                animalsByCountry.put(country, new ArrayList<>());
+            }
+            animalsByCountry.get(country).add(animal);
+            
+            // Add to training status index
+            String status = animal.getTrainingStatus();
+            if (!animalsByTrainingStatus.containsKey(status)) {
+                animalsByTrainingStatus.put(status, new ArrayList<>());
+            }
+            animalsByTrainingStatus.get(status).add(animal);
+            
+            // Add to type-specific indexes
+            if (animal instanceof Dog) {
+                Dog dog = (Dog) animal;
+                String breed = dog.getBreed();
+                
+                if (!dogsByBreed.containsKey(breed)) {
+                    dogsByBreed.put(breed, new ArrayList<>());
+                }
+                dogsByBreed.get(breed).add(animal);
+            } 
+            else if (animal instanceof Cat) {
+                Cat cat = (Cat) animal;
+                String breed = cat.getBreed();
+                
+                if (!catsByBreed.containsKey(breed)) {
+                    catsByBreed.put(breed, new ArrayList<>());
+                }
+                catsByBreed.get(breed).add(animal);
+            }
+            else if (animal instanceof Monkey) {
+                Monkey monkey = (Monkey) animal;
+                String species = monkey.getSpecies();
+                
+                if (!monkeysBySpecies.containsKey(species)) {
+                    monkeysBySpecies.put(species, new ArrayList<>());
+                }
+                monkeysBySpecies.get(species).add(animal);
+            }
+            else if (animal instanceof Bird) {
+                Bird bird = (Bird) animal;
+                String species = bird.getSpecies();
+                
+                if (!birdsBySpecies.containsKey(species)) {
+                    birdsBySpecies.put(species, new ArrayList<>());
+                }
+                birdsBySpecies.get(species).add(animal);
+            }
+        }
+        
+        /**
+        * Get animal by name - O(1) operation
+        */
+        public RescueAnimal getAnimal(String name) {
+            return animalsByName.get(name.toLowerCase());
+        }
+        
+        /**
+        * Get all animals of a specific type - O(1) operation
+        */
+        public List<RescueAnimal> getAnimalsByType(String type) {
+            return animalsByType.getOrDefault(type, new ArrayList<>());
+        }
+        
+        /**
+        * Get all animals in a specific country - O(1) operation
+        */
+        public List<RescueAnimal> getAnimalsByCountry(String country) {
+            return animalsByCountry.getOrDefault(country, new ArrayList<>());
+        }
+        
+        /**
+        * Get all animals with a specific training status - O(1) operation
+        */
+        public List<RescueAnimal> getAnimalsByStatus(String status) {
+            return animalsByTrainingStatus.getOrDefault(status, new ArrayList<>());
+        }
+        
+        /**
+        * Get all available animals (in service but not reserved)
+        * O(n) operation but uses indexed collection for better performance
+        */
+        public List<RescueAnimal> getAvailableAnimals() {
+            List<RescueAnimal> result = new ArrayList<>();
+            List<RescueAnimal> inServiceAnimals = animalsByTrainingStatus.getOrDefault("in service", new ArrayList<>());
+            
+            for (RescueAnimal animal : inServiceAnimals) {
+                if (!animal.getReserved()) {
+                    result.add(animal);
+                }
+            }
+            
+            return result;
+        }
+        
+        /**
+        * Get dogs by breed
+        */
+        public List<RescueAnimal> getDogsByBreed(String breed) {
+            return dogsByBreed.getOrDefault(breed, new ArrayList<>());
+        }
+        
+        /**
+        * Get cats by breed
+        */
+        public List<RescueAnimal> getCatsByBreed(String breed) {
+            return catsByBreed.getOrDefault(breed, new ArrayList<>());
+        }
+        
+        /**
+        * Get monkeys by species
+        */
+        public List<RescueAnimal> getMonkeysBySpecies(String species) {
+            return monkeysBySpecies.getOrDefault(species, new ArrayList<>());
+        }
+        
+        /**
+        * Get birds by species
+        */
+        public List<RescueAnimal> getBirdsBySpecies(String species) {
+            return birdsBySpecies.getOrDefault(species, new ArrayList<>());
+        }
+        
+        /**
+        * Get all therapy animals across all suitable types
+        */
+        public List<RescueAnimal> getTherapyAnimals() {
+            List<RescueAnimal> result = new ArrayList<>();
+            
+            // Get therapy dogs
+            for (RescueAnimal animal : animalsByType.getOrDefault("Dog", new ArrayList<>())) {
+                if (animal instanceof Dog && ((Dog) animal).isTherapyBreed()) {
+                    result.add(animal);
+                }
+            }
+            
+            // Get therapy cats
+            for (RescueAnimal animal : animalsByType.getOrDefault("Cat", new ArrayList<>())) {
+                if (animal instanceof Cat && ((Cat) animal).isTherapyCandidate()) {
+                    result.add(animal);
+                }
+            }
+            
+            // Get therapy birds
+            List<String> therapySpecies = Bird.getTherapySpecies();
+            for (String species : therapySpecies) {
+                result.addAll(birdsBySpecies.getOrDefault(species, new ArrayList<>()));
+            }
+            
+            return result;
+        }
+        
+        /**
+        * Reserve an animal by name and country
+        * O(1) operation for lookup
+        */
+        public boolean reserveAnimal(String name, String country) {
+            RescueAnimal animal = animalsByName.get(name.toLowerCase());
+            
+            if (animal != null && 
+                animal.getInServiceLocation().equalsIgnoreCase(country) && 
+                !animal.getReserved()) {
+                
+                animal.setReserved(true);
+                return true;
+            }
+            
+            return false;
+        }
+        
+        /**
+        * Update animal training status
+        * O(1) for lookup, requires reindexing
+        */
+        public boolean updateTrainingStatus(String name, String newStatus) {
+            RescueAnimal animal = animalsByName.get(name.toLowerCase());
+            
+            if (animal != null) {
+                String oldStatus = animal.getTrainingStatus();
+                
+                // Update status
+                animal.setTrainingStatus(newStatus);
+                
+                // Update training status index
+                if (animalsByTrainingStatus.containsKey(oldStatus)) {
+                    animalsByTrainingStatus.get(oldStatus).remove(animal);
+                }
+                
+                if (!animalsByTrainingStatus.containsKey(newStatus)) {
+                    animalsByTrainingStatus.put(newStatus, new ArrayList<>());
+                }
+                animalsByTrainingStatus.get(newStatus).add(animal);
+                
+                return true;
+            }
+            
+            return false;
+        }
+        
+        /**
+        * Find animals acquired in a specific date range
+        * Uses binary search for O(log n) operations if animals are sorted
+        */
+        public List<RescueAnimal> findAnimalsByDateRange(String startDateStr, String endDateStr) {
+            try {
+                LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMAT);
+                LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMAT);
+                
+                List<RescueAnimal> allAnimals = new ArrayList<>(animalsByName.values());
+                Collections.sort(allAnimals); // Sort by acquisition date
+                
+                List<RescueAnimal> result = new ArrayList<>();
+                
+                // Binary search for start index
+                int startIdx = Collections.binarySearch(allAnimals, new RescueAnimal() {
+                    { setAcquisitionDate(startDateStr); }
+                });
+                
+                if (startIdx < 0) {
+                    startIdx = -startIdx - 1;
+                }
+                
+                // Linear scan from start index (more practical than second binary search)
+                for (int i = startIdx; i < allAnimals.size(); i++) {
+                    RescueAnimal animal = allAnimals.get(i);
+                    try {
+                        LocalDate animalDate = LocalDate.parse(animal.getAcquisitionDate(), DATE_FORMAT);
+                        
+                        if (animalDate.isAfter(endDate)) {
+                            break;
+                        }
+                        
+                        if (!animalDate.isBefore(startDate) && !animalDate.isAfter(endDate)) {
+                            result.add(animal);
+                        }
+                    } catch (Exception e) {
+                        // Skip this animal if date parsing fails
+                    }
+                }
+                
+                return result;
+            } catch (Exception e) {
+                return new ArrayList<>();
+            }
+        }
+        
+        /**
+        * Find animals using fuzzy name search
+        * Uses Levenshtein distance algorithm
+        */
+        public List<RescueAnimal> fuzzyNameSearch(String nameFragment) {
+            List<RescueAnimal> result = new ArrayList<>();
+            
+            for (RescueAnimal animal : animalsByName.values()) {
+                if (calculateLevenshteinDistance(animal.getName().toLowerCase(), nameFragment.toLowerCase()) <= 2) {
+                    result.add(animal);
+                }
+            }
+            
+            return result;
+        }
+        
+        /**
+        * Calculate Levenshtein distance for fuzzy name matching
+        */
+        private int calculateLevenshteinDistance(String s1, String s2) {
+            int[][] distance = new int[s1.length() + 1][s2.length() + 1];
+            
+            for (int i = 0; i <= s1.length(); i++) {
+                distance[i][0] = i;
+            }
+            
+            for (int j = 0; j <= s2.length(); j++) {
+                distance[0][j] = j;
+            }
+            
+            for (int i = 1; i <= s1.length(); i++) {
+                for (int j = 1; j <= s2.length(); j++) {
+                    int cost = (s1.charAt(i - 1) == s2.charAt(j - 1)) ? 0 : 1;
+                    distance[i][j] = Math.min(
+                        Math.min(distance[i - 1][j] + 1, distance[i][j - 1] + 1),
+                        distance[i - 1][j - 1] + cost
+                    );
+                }
+            }
+            
+            return distance[s1.length()][s2.length()];
+        }
+        
+        /**
+        * Find animals using multi-criteria search
+        */
+        public List<RescueAnimal> multiCriteriaSearch(Map<String, String> criteria) {
+            List<RescueAnimal> candidates;
+            
+            // Start with most restrictive index if applicable
+            if (criteria.containsKey("type") && animalsByType.containsKey(criteria.get("type"))) {
+                candidates = new ArrayList<>(animalsByType.get(criteria.get("type")));
+            } else if (criteria.containsKey("trainingStatus") && 
+                    animalsByTrainingStatus.containsKey(criteria.get("trainingStatus"))) {
+                candidates = new ArrayList<>(animalsByTrainingStatus.get(criteria.get("trainingStatus")));
+            } else if (criteria.containsKey("inServiceCountry") && 
+                    animalsByCountry.containsKey(criteria.get("inServiceCountry"))) {
+                candidates = new ArrayList<>(animalsByCountry.get(criteria.get("inServiceCountry")));
+            } else {
+                candidates = new ArrayList<>(animalsByName.values());
+            }
+            
+            // Apply remaining filters
+            Iterator<RescueAnimal> iterator = candidates.iterator();
+            while (iterator.hasNext()) {
+                RescueAnimal animal = iterator.next();
+                boolean matches = true;
+                
+                for (Map.Entry<String, String> criterion : criteria.entrySet()) {
+                    if (!animal.matchesCriteria(criterion.getKey(), criterion.getValue())) {
+                        matches = false;
+                        break;
+                    }
+                }
+                
+                if (!matches) {
+                    iterator.remove();
+                }
+            }
+            
+            return candidates;
+        }
+        
+        /**
+        * Get all animals (for debugging or reporting)
+        */
+        public List<RescueAnimal> getAllAnimals() {
+            return new ArrayList<>(animalsByName.values());
+        }
+        
+        /**
+        * Get all dog breeds in the system
+        */
+        public Set<String> getAllDogBreeds() {
+            return dogsByBreed.keySet();
+        }
+        
+        /**
+        * Get all cat breeds in the system
+        */
+        public Set<String> getAllCatBreeds() {
+            return catsByBreed.keySet();
+        }
+        
+        /**
+        * Get all monkey species in the system
+        */
+        public Set<String> getAllMonkeySpecies() {
+            return monkeysBySpecies.keySet();
+        }
+        
+        /**
+        * Get all bird species in the system
+        */
+        public Set<String> getAllBirdSpecies() {
+            return birdsBySpecies.keySet();
+        }
+        
+        /**
+        * Find animals that share characteristics (same breed for dogs/cats, same species for monkeys/birds)
+        */
+        public List<RescueAnimal> findSimilarAnimals(RescueAnimal animal) {
+            List<RescueAnimal> result = new ArrayList<>();
+            
+            if (animal instanceof Dog) {
+                String breed = ((Dog) animal).getBreed();
+                for (RescueAnimal otherAnimal : dogsByBreed.getOrDefault(breed, new ArrayList<>())) {
+                    if (!otherAnimal.equals(animal)) {
+                        result.add(otherAnimal);
+                    }
+                }
+            } 
+            else if (animal instanceof Cat) {
+                String breed = ((Cat) animal).getBreed();
+                for (RescueAnimal otherAnimal : catsByBreed.getOrDefault(breed, new ArrayList<>())) {
+                    if (!otherAnimal.equals(animal)) {
+                        result.add(otherAnimal);
+                    }
+                }
+            }
+            else if (animal instanceof Monkey) {
+                String species = ((Monkey) animal).getSpecies();
+                for (RescueAnimal otherAnimal : monkeysBySpecies.getOrDefault(species, new ArrayList<>())) {
+                    if (!otherAnimal.equals(animal)) {
+                        result.add(otherAnimal);
+                    }
+                }
+            }
+            else if (animal instanceof Bird) {
+                String species = ((Bird) animal).getSpecies();
+                for (RescueAnimal otherAnimal : birdsBySpecies.getOrDefault(species, new ArrayList<>())) {
+                    if (!otherAnimal.equals(animal)) {
+                        result.add(otherAnimal);
+                    }
+                }
+            }
+            
+            return result;
+        }
+    }
+  </code></pre>
+  </div>
+  </div>
+  </div>
 ---
+

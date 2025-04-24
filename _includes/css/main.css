@@ -9,11 +9,11 @@ body {
 }
 
 p {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 p.small {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 a,
@@ -239,7 +239,7 @@ section.success {
 
 #portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
 #portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
-    margin: 0;
+    /* margin: 0; */
 }
 
 #portfolio * {
@@ -453,8 +453,9 @@ footer .footer-below {
 
 .portfolio-modal .close-modal .lr {
     z-index: 1051;
-    width: 1px;
-    height: 75px;
+    width: 5px;
+    height: 24px;
+    margin-top: 8px;
     margin-left: 35px;
     background-color: #{{ site.color.secondary }};
     -webkit-transform: rotate(45deg);
@@ -464,8 +465,8 @@ footer .footer-below {
 
 .portfolio-modal .close-modal .lr .rl {
     z-index: 1052;
-    width: 1px;
-    height: 75px;
+    width: 5px;
+    height: 24px;
     background-color: #{{ site.color.secondary }};
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -481,4 +482,185 @@ footer .footer-below {
 .modal.fade.in {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+}
+
+.artifact-narrative {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.code-snippets {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.code-snippets pre {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.code-snippets code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.code-snippets h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #{{ site.color.secondary }};
+}
+
+/* Add syntax highlighting */
+.language-java, .language-python, .language-javascript {
+    color: #333;
+}
+
+.language-java .keyword, 
+.language-python .keyword,
+.language-javascript .keyword {
+    color: #0000ff;
+}
+
+.language-java .string, 
+.language-python .string,
+.language-javascript .string {
+    color: #008000;
+}
+
+.language-java .comment, 
+.language-python .comment,
+.language-javascript .comment {
+    color: #808080;
+    font-style: italic;
+}
+
+.code-snippets-grid {
+    margin-bottom: 30px;
+}
+
+.code-snippets-grid .row {
+    margin-bottom: 20px;
+}
+
+.code-snippets-grid h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #{{ site.color.secondary }};
+}
+
+.code-snippets-grid pre {
+    margin-bottom: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.code-snippets-grid code {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+/* Responsive adjustments */
+@media(max-width:767px) {
+    .code-snippets-grid .col-md-6 {
+        margin-bottom: 20px;
+    }
+}
+
+/* Make sure the grid is visible in the modal */
+.portfolio-modal .modal-body .code-snippets-grid {
+    text-align: left;
+    width: 100%;
+}
+
+/* Add some shadow effect to the code blocks */
+.code-snippets-grid pre {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+/* Add a slight hover effect */
+.code-snippets-grid pre:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Styling for the project image carousel */
+.project-carousel {
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.project-carousel .carousel-inner {
+    border-radius: 4px;
+}
+
+.project-carousel .carousel-inner .item {
+    height: 600px;
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 16px;
+}
+
+.project-carousel .carousel-inner .item img {
+    max-height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.project-carousel .carousel-indicators {
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px 0;
+    margin-bottom: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+.project-carousel .carousel-control {
+    background-image: none;
+    color: #{{ site.color.primary }};
+    opacity: 0.7;
+    text-shadow: none;
+    background-color: rgba(255,255,255,0.3);
+    width: 10%;
+}
+
+.project-carousel .carousel-control:hover,
+.project-carousel .carousel-control:focus {
+    color: #{{ site.color.primary }};
+    opacity: 1;
+}
+
+.project-carousel .carousel-control i {
+    font-size: 24px;
+    margin-top: -10px;
+}
+
+/* Make carousel controls more visible on light backgrounds */
+.project-carousel .carousel-control i {
+    background-color: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 70%;
+    transform: translateY(250px);
+}
+
+/* Improved responsive handling for the carousel */
+@media (max-width: 767px) {
+    .project-carousel .carousel-inner .item {
+        height: 250px;
+    }
+    
+    .project-carousel .carousel-control .glyphicon {
+        font-size: 18px;
+        padding: 7px;
+    }
 }
