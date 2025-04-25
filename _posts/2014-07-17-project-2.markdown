@@ -2,9 +2,11 @@
 layout: default
 modal-id: 2
 date: 2023-04-20
+title: Animal Rescue Management System
 images:
   - ARS1.png
-
+  - ARS2.png
+  - ARS3.png
 
 category: Algorithms/Data Structures
 
@@ -19,6 +21,7 @@ description: "The Animal Rescue Management System is a Java application designed
 # Artifact narrative
 artifact_narrative: |
     <p> 
+
     The artifact I've selected is an Animal Rescue Management System, originally developed in IT 145 (Jan - Mar 2024). This Java application was designed to track rescue animals (dogs and monkeys), manage their training status, and handle reservations. The original version used simple ArrayLists to store animal records and implemented basic CRUD operations with linear search algorithms.The enhanced version transforms the system with advanced data structures and algorithms that significantly improve efficiency, functionality, and scalability.
 
     I selected this artifact because it demonstrates my ability to apply computer science concepts to solve real-world problems. The enhanced system uses multiple data structures including HashMap-based indexing for O(1) lookups and binary search for ordered collections. This shows my understanding of selecting appropriate data structures to optimize performance. I implemented several advanced algorithms including Levenshtein distance for fuzzy name matching, binary search for date-range queries, and multi-criteria search with optimized filtering. These enhancements demonstrate my ability to design efficient algorithms tailored to specific requirements. Lastly, the improved system follows object-oriented principles with a well-designed class hierarchy, appropriate encapsulation, and inheritance.
@@ -28,6 +31,7 @@ artifact_narrative: |
     One of the most valuable aspects of this process was critically evaluating different data structures based on their time complexity. While an ArrayList is simple to implement, it becomes inefficient as data scales. Replacing it with HashMap-based indexing for O(1) lookups made me appreciate how the right data structure can dramatically improve performance. I faced several challenges during the enhancement process. The most significant was maintaining compatibility with the original functionality while implementing advanced features. I had to carefully refactor code to ensure that existing operations continued to work correctly. This experience taught me the value of incremental changes and thorough testing when enhancing existing systems. Another challenge was balancing sophistication with usability. While I could have implemented even more complex algorithms, I chose to focus on enhancements that provided tangible benefits to users. This reinforced the importance of keeping the end-user in mind when designing software solutions.
 
     Through this artifact enhancement, I've gained a deeper understanding of how theoretical concepts in algorithms and data structures apply to practical software development. I've learned to look beyond the immediate functionality and consider performance, scalability, and maintainability—skills that will serve me well throughout my computer science career. 
+    
     <p/>
 
 
@@ -36,7 +40,7 @@ code_snippets: |
   <div class="code-snippets-grid">
   <div class="row">
   <div class="col-md-6">
-  <h4>Console Based Menu</h4>
+  <h4 style="font-style: italic"> Console Based Menu </h4>
   <pre><code class="language-java">
     package com.rescuesystem.ui;
 
@@ -348,7 +352,7 @@ code_snippets: |
   </code></pre>
   </div>
   <div class="col-md-6">
-  <h4>Seperate Operation Classes</h4>
+  <h4 style="font-style: italic"> Seperate Operation Classes </h4>
   <pre><code class="language-java">
     package com.rescuesystem.operations;
 
@@ -524,7 +528,7 @@ code_snippets: |
   </div>
   <div class="row">
   <div class="col-md-6">
-  <h4>New Animal Classes</h4>
+  <h4 style="font-style: italic"> New Animal Classes </h4>
   <pre><code class="language-java">
     package com.rescuesystem.model;
 
@@ -653,7 +657,7 @@ code_snippets: |
   </code></pre>
   </div>
   <div class="col-md-6">
-  <h4>Improved Algorithms</h4>
+  <h4 style="font-style: italic"> Improved Algorithms </h4>
   <pre><code class="language-java">
     package com.rescuesystem.data;
 

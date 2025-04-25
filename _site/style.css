@@ -16,7 +16,7 @@ body {
 }
 
 p {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 p.small {
@@ -41,46 +41,13 @@ h6 {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
+    padding: 4px;
 }
 
-hr.star-light,
-hr.star-primary {
-    margin: 25px auto 30px;
-    padding: 0;
-    max-width: 250px;
-    border: 0;
-    border-top: solid 5px;
-    text-align: center;
-    overflow: visible;
-}
-
-hr.star-light:after,
-hr.star-primary:after {
-    content: "\f005";
-    display: inline-block;
-    position: relative;
-    top: -.8em;
-    padding: 0 .25em;
-    font-family: FontAwesome;
-    font-size: 2em;
-}
-
-hr.star-light {
-    border-color: #fff;
-}
-
-hr.star-light:after {
-    color: #fff;
-    background-color: #18bc9c;
-}
-
-hr.star-primary {
-    border-color: #2c3e50;
-}
-
-hr.star-primary:after {
-    color: #2c3e50;
-    background-color: #fff;
+hr.artifact {
+    width: 85%; 
+    border: 1px solid #d1d5d6; 
+    margin: 22px auto;
 }
 
 .img-centered {
@@ -601,9 +568,12 @@ footer .footer-below {
 /* Styling for the project image carousel */
 .project-carousel {
     margin-bottom: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-left: auto;
+    margin-right: auto;
+    /* box-shadow: 0 4px 10px rgba(0,0,0,0.1); */
     border-radius: 4px;
     overflow: hidden;
+    width: 80%;
 }
 
 .project-carousel .carousel-inner {
@@ -612,15 +582,20 @@ footer .footer-below {
 
 .project-carousel .carousel-inner .item {
     height: 600px;
-    background-color: #f8f8f8;
     text-align: center;
     padding: 16px;
 }
 
 .project-carousel .carousel-inner .item img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     max-height: 100%;
-    max-width: 100%;
-    margin: 0 auto;
+    max-width: 90%;
+    margin:  auto;
+    padding: 16px;
     object-fit: contain;
 }
 
@@ -634,21 +609,20 @@ footer .footer-below {
 
 .project-carousel .carousel-control {
     background-image: none;
-    color: #18bc9c;
+    color: grey;
     opacity: 0.7;
     text-shadow: none;
     background-color: rgba(255,255,255,0.3);
     width: 10%;
 }
 
-.project-carousel .carousel-control:hover,
-.project-carousel .carousel-control:focus {
-    color: #18bc9c;
+.project-carousel .carousel-control:hover {
+    color: dimgray;
     opacity: 1;
 }
 
 .project-carousel .carousel-control i {
-    font-size: 24px;
+    font-size: 28px;
     margin-top: -10px;
 }
 

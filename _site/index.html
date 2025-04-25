@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>CS Portfolio</title>
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-  <meta name="keywords" content="your keywords, separated by commas" />
+  <meta name="description" content="">
+  <meta name="keywords" content="" />
   
   <meta name="author" content="Christian Thomas">
   <link rel="canonical" href="http://localhost:4000/">
@@ -63,7 +63,7 @@
           <a href="#about">About</a>
         </li>
         <li class="page-scroll">
-          <a href="#footer">Info</a>
+          <a href="#footer">Contact</a>
         </li>
       </ul>
     </div>
@@ -80,7 +80,7 @@
         <div class="intro-text">
           <span class="name">Thomas Christian</span>
           <hr class="star-light" />
-          <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+          <span class="skills">Full-Stack Developer - UI/UX Designer - Software Engineer</span>
         </div>
       </div>
     </div>
@@ -123,7 +123,7 @@
       </div>
       
       <div class="portfolio-flex-item portfolio-item">
-        <a href="#portfolioModal-2" class="portfolio-link" data-toggle="modal">
+        <a href="#portfolioModal-3" class="portfolio-link" data-toggle="modal">
           <div class="caption">
             <div class="caption-content">
               <i class="fa fa-search-plus fa-3x"></i>
@@ -174,7 +174,7 @@
 
   
   <!-- Footer -->
-<footer class="text-center">
+<footer id="footer" class="text-center">
   <div class="footer-above">
     <div class="container">
       <div class="row">
@@ -183,38 +183,20 @@
           <ul class="list-inline">
             
             <li>
-              <a href="http://twitter.com/jekyllrb" class="btn-social btn-outline">
-                <i class="fa-brands fa-fw fa-twitter"></i>
+              <a href="https://www.linkedin.com/in/tompchristian/" class="btn-social btn-outline">
+                <i class="fa-brands fa-fw fa-linkedin"></i>
               </a>
             </li>
             
             <li>
-              <a href="" class="btn-social btn-outline">
-                <i class="fa-brands fa-fw fa-facebook"></i>
-              </a>
-            </li>
-            
-            <li>
-              <a href="http://stackoverflow.com/questions/tagged/jekyll" class="btn-social btn-outline">
-                <i class="fa-brands fa-fw fa-stack-overflow"></i>
-              </a>
-            </li>
-            
-            <li>
-              <a href="http://bitbucket.org/jekyll" class="btn-social btn-outline">
-                <i class="fa-brands fa-fw fa-bitbucket"></i>
-              </a>
-            </li>
-            
-            <li>
-              <a href="http://github.com/jekyll" class="btn-social btn-outline">
+              <a href="https://github.com/Thomas-Christian" class="btn-social btn-outline">
                 <i class="fa-brands fa-fw fa-github"></i>
               </a>
             </li>
             
             <li>
               <a href="mailto:tompchristian123@gmail.com" class="btn-social btn-outline">
-                <i class="fa-brands fa-fw fa-envelope"></i>
+                <i class="fa-solid fa-envelope"></i>
               </a>
             </li>
             
@@ -247,8 +229,13 @@
       <div class="row">
         <div class="col">
           <div class="modal-body">
-            <h2>Project 1</h2>
-            <hr class="star-primary">
+            <h2>Weight Logger Android App</h2>
+
+            <!-- Project Description -->
+            
+            <p style="margin: auto; width: 70%; font-style: italic;">Weight Logger is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis.</p>
+            
+            <hr class="artifact">
             
             <!-- Image Handling - Check if post.images is an array or if using the traditional post.img -->
             
@@ -288,18 +275,14 @@
                 
               </div>
             
-            
-            <!-- Project Description -->
-            
-            <h3>Project Description</h3>
-            <p>Weight Logger is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis.</p>
-            
+            <hr class="artifact">
             
             <!-- Artifact Narrative Section -->
             
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
               <p> 
+
 The artifact, "Weight Logger," is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis. Initially developed in CS-360 (Jan–Mar), the application underwent significant enhancements to improve its structure, maintainability, and security. The most notable improvement was the implementation of the MVVM architectural pattern, which introduced better separation of concerns and improved the app’s scalability.
 
 This artifact was selected for inclusion in my ePortfolio because it effectively demonstrates my ability to design and implement a complete software solution while incorporating industry best practices. It highlights my proficiency in software engineering through its structured architecture and use of modern Android development techniques, such as LiveData for reactive UI updates and the repository pattern for data abstraction. The artifact also showcases algorithmic principles in features like password strength evaluation, weight trend analysis, and statistical calculations. Security enhancements, including the use of salted SHA-256 password hashing, input validation, and secure credential storage, reflect a strong understanding of secure software development practices.
@@ -307,29 +290,836 @@ This artifact was selected for inclusion in my ePortfolio because it effectively
 The enhancements aligned with the Computer Science program outcomes by strengthening my ability to design well-structured, maintainable software solutions and apply advanced computing techniques. The improvements in UI design and data visualization refined my ability to create professional-quality visual communications, making complex data more accessible to users. The restructuring of validation logic into a centralized service reinforced my understanding of clean architecture principles and the importance of modular, reusable code.
 
 Throughout the enhancement process, I gained a deeper appreciation for the trade-offs involved in software design. Refining the progress visualization required careful consideration of how to present data in a way that was both technically accurate and easy to interpret. Security improvements further reinforced the need to balance strong protection mechanisms with a seamless user experience. One of the biggest challenges was ensuring data consistency across multiple fragments, which I addressed using the observer pattern with LiveData. This experience deepened my understanding of proper state management in multi-view applications and helped me develop strategies for maintaining data integrity.
+
 <p/>
 
             </div>
             
+            <hr class="artifact">
             
-            <!-- Screenshots/Code Snippets Section -->
-            
-            <h3>Original Code</h3>
-            <div class="code-snippets">
-              
-            </div>
-            
-
+            <!-- Enhanced Code Snippets Section -->
             
             <h3>Enhancements</h3>
             <div class="code-snippets">
-              
+              <div class="code-snippets-grid">
+<div class="row">
+<div class="col-md-6">
+<h4 style="font-style: italic"> MVVM Architecture </h4>
+<pre><code class="language-java">
+  package com.zybooks.weightlogger.ViewModels;
+
+  import android.app.Application;
+  import androidx.annotation.NonNull;
+  import androidx.lifecycle.LiveData;
+  import androidx.lifecycle.MutableLiveData;
+  import com.zybooks.weightlogger.Data.UserRepository;
+  import com.zybooks.weightlogger.Data.UserSessionManager;
+
+  /**
+  * ViewModel for user registration with enhanced validation.
+  * Extends BaseValidationViewModel to leverage centralized validation logic.
+  */
+  public class RegisterViewModel extends BaseValidationViewModel {
+      private final UserRepository userRepository;
+      private final UserSessionManager sessionManager;
+
+      // Status indicators
+      private final MutableLiveData<Integer> passwordStrengthLiveData = new MutableLiveData<>(0);
+      private final MutableLiveData<Boolean> registrationSuccessLiveData = new MutableLiveData<>();
+      private final MutableLiveData<Boolean> loginSuccessLiveData = new MutableLiveData<>();
+
+      // Validation states
+      private final MutableLiveData<Boolean> usernameValidLiveData = new MutableLiveData<>(false);
+      private final MutableLiveData<Boolean> passwordValidLiveData = new MutableLiveData<>(false);
+      private final MutableLiveData<Boolean> confirmPasswordValidLiveData = new MutableLiveData<>(false);
+      private final MutableLiveData<Boolean> goalWeightValidLiveData = new MutableLiveData<>(true); // Optional field
+      private final MutableLiveData<Boolean> formValidLiveData = new MutableLiveData<>(false);
+
+      // Error messages
+      private final MutableLiveData<String> usernameErrorLiveData = new MutableLiveData<>();
+      private final MutableLiveData<String> passwordErrorLiveData = new MutableLiveData<>();
+      private final MutableLiveData<String> confirmPasswordErrorLiveData = new MutableLiveData<>();
+      private final MutableLiveData<String> goalWeightErrorLiveData = new MutableLiveData<>();
+
+      public RegisterViewModel(@NonNull Application application) {
+          super(application);
+          userRepository = new UserRepository(application);
+          sessionManager = new UserSessionManager(application);
+      }
+
+      // LiveData getters
+      public LiveData<String> getStatusMessageLiveData() { return statusMessageLiveData; }
+      public LiveData<Integer> getPasswordStrengthLiveData() { return passwordStrengthLiveData; }
+      public LiveData<Boolean> getRegistrationSuccessLiveData() { return registrationSuccessLiveData; }
+      public LiveData<Boolean> getFormValidLiveData() { return formValidLiveData; }
+      public LiveData<String> getUsernameErrorLiveData() { return usernameErrorLiveData; }
+      public LiveData<String> getPasswordErrorLiveData() { return passwordErrorLiveData; }
+      public LiveData<String> getConfirmPasswordErrorLiveData() { return confirmPasswordErrorLiveData; }
+      public LiveData<String> getGoalWeightErrorLiveData() { return goalWeightErrorLiveData; }
+
+      /**
+      * Validates username in real-time.
+      *
+      * @param username The username to validate
+      */
+      public void validateUsername(String username) {
+          validationService.validateUsername(
+                  username,
+                  usernameValidLiveData,
+                  usernameErrorLiveData
+          );
+          updateFormValidity();
+      }
+
+      /**
+      * Validates password in real-time and updates the password strength indicator.
+      *
+      * @param password The password to validate
+      */
+      public void validatePassword(String password) {
+          validationService.validatePassword(
+                  password,
+                  passwordValidLiveData,
+                  passwordErrorLiveData,
+                  passwordStrengthLiveData
+          );
+          updateFormValidity();
+      }
+
+      /**
+      * Validates that the confirmation password matches the original password.
+      *
+      * @param password The original password
+      * @param confirmPassword The confirmation password
+      */
+      public void validateConfirmPassword(String password, String confirmPassword) {
+          validationService.validatePasswordMatch(
+                  password,
+                  confirmPassword,
+                  confirmPasswordValidLiveData,
+                  confirmPasswordErrorLiveData
+          );
+          updateFormValidity();
+      }
+
+      /**
+      * Validates goal weight input.
+      * Since goal weight is optional, an empty string is considered valid.
+      *
+      * @param goalWeightStr The goal weight as a string
+      */
+      public void validateGoalWeight(String goalWeightStr) {
+          // Goal weight is optional, so an empty string is valid
+          if (goalWeightStr.isEmpty()) {
+              goalWeightValidLiveData.setValue(true);
+              goalWeightErrorLiveData.setValue(null);
+              updateFormValidity();
+              return;
+          }
+
+          validationService.validateWeight(
+                  goalWeightStr,
+                  goalWeightValidLiveData,
+                  goalWeightErrorLiveData
+          );
+          updateFormValidity();
+      }
+
+      /**
+      * Updates the overall form validity based on individual field validities.
+      */
+      private void updateFormValidity() {
+          super.updateFormValidity(
+                  formValidLiveData,
+                  usernameValidLiveData.getValue(),
+                  passwordValidLiveData.getValue(),
+                  confirmPasswordValidLiveData.getValue(),
+                  goalWeightValidLiveData.getValue()
+          );
+      }
+
+      /**
+      * Registers a new user after performing validation on all inputs.
+      *
+      * @param username The username for the new account
+      * @param password The password for the new account
+      * @param confirmPassword The confirmation password
+      * @param goalWeightStr The goal weight as a string (optional)
+      */
+      public void registerUser(String username, String password, String confirmPassword, String goalWeightStr) {
+          // Validate all fields
+          validateUsername(username);
+          validatePassword(password);
+          validateConfirmPassword(password, confirmPassword);
+          validateGoalWeight(goalWeightStr);
+
+          // Check if form is valid
+          if (Boolean.FALSE.equals(formValidLiveData.getValue())) {
+              statusMessageLiveData.setValue("Please correct the errors before registering.");
+              return;
+          }
+
+          // Check for username uniqueness
+          if (userRepository.userExists(username)) {
+              usernameErrorLiveData.setValue("This username is already taken.");
+              usernameValidLiveData.setValue(false);
+              updateFormValidity();
+              statusMessageLiveData.setValue("Username already exists. Please choose another.");
+              return;
+          }
+
+          // Process goal weight
+          double goalWeight = 0;
+          if (!goalWeightStr.isEmpty()) {
+              try {
+                  goalWeight = Double.parseDouble(goalWeightStr);
+              } catch (NumberFormatException e) {
+                  goalWeightErrorLiveData.setValue("Invalid weight format.");
+                  goalWeightValidLiveData.setValue(false);
+                  updateFormValidity();
+                  return;
+              }
+          }
+
+          // Register the user
+          boolean success = userRepository.insertUser(username, password, goalWeight);
+          if (success) {
+              statusMessageLiveData.setValue("Registration successful! You can now log in.");
+              registrationSuccessLiveData.setValue(true);
+              loginUser(username, password);
+          } else {
+              statusMessageLiveData.setValue("Registration failed. Please try again later.");
+              registrationSuccessLiveData.setValue(false);
+          }
+      }
+
+      /**
+      * Attempts to log in the newly registered user.
+      */
+      private void loginUser(String username, String password) {
+          if (userRepository.validateUser(username, password)) {
+              sessionManager.saveLoginSession(username);
+              loginSuccessLiveData.setValue(true);
+          }
+      }
+
+      /**
+      * Resets all validation states and error messages.
+      */
+      public void resetValidation() {
+          usernameValidLiveData.setValue(false);
+          passwordValidLiveData.setValue(false);
+          confirmPasswordValidLiveData.setValue(false);
+          goalWeightValidLiveData.setValue(true); // Optional field
+          formValidLiveData.setValue(false);
+
+          usernameErrorLiveData.setValue(null);
+          passwordErrorLiveData.setValue(null);
+          confirmPasswordErrorLiveData.setValue(null);
+          goalWeightErrorLiveData.setValue(null);
+
+          passwordStrengthLiveData.setValue(0);
+      }
+  }
+</code></pre>
+</div>
+<div class="col-md-6">
+<h4 style="font-style: italic"> Password Hashing </h4>
+<pre><code class="language-java">
+  package com.zybooks.weightlogger.Utilities;
+
+  import java.nio.charset.StandardCharsets;
+
+  import java.security.MessageDigest;
+  import java.security.NoSuchAlgorithmException;
+  import java.security.SecureRandom;
+
+  import java.util.Base64;
+
+  /**
+  * Utility class for securely hashing and verifying passwords.
+  * Implements salted SHA-256 hashing for increased security.
+  * Provides methods for creating password hashes and verifying passwords against stored hashes.
+  */
+  public class PasswordHash {
+      // Number of bytes in the salt
+      private static final int SALT_LENGTH = 16;
+
+      /**
+      * Generates a cryptographically secure random salt for password hashing.
+      *
+      * @return A random salt as a byte array
+      */
+      private static byte[] generateSalt() {
+          SecureRandom random = new SecureRandom();
+          byte[] salt = new byte[SALT_LENGTH];
+          random.nextBytes(salt);
+          return salt;
+      }
+
+      /**
+      * Hashes a password with a randomly generated salt.
+      * Uses SHA-256 algorithm to create a secure hash.
+      *
+      * @param password The password to hash
+      * @return A string in the format "salt:hash" where both salt and hash are Base64 encoded,
+      *         or null if an error occurs during hashing
+      */
+      public static String hashPassword(String password) {
+          try {
+              // Generate a new salt
+              byte[] salt = generateSalt();
+
+              // Hash the password with the salt
+              byte[] hash = hashWithSalt(password, salt);
+
+              // Encode salt and hash to Base64 for storage
+              String saltString = Base64.getEncoder().encodeToString(salt);
+              String hashString = Base64.getEncoder().encodeToString(hash);
+
+              // Return the combined string
+              return saltString + ":" + hashString;
+          } catch (Exception e) {
+              e.printStackTrace();
+              return null;
+          }
+      }
+
+      /**
+      * Hashes a password with a provided salt using the SHA-256 algorithm.
+      *
+      * @param password The password to hash
+      * @param salt The salt to use in the hashing process
+      * @return The hashed password as a byte array
+      * @throws NoSuchAlgorithmException If the SHA-256 algorithm is not available
+      */
+      private static byte[] hashWithSalt(String password, byte[] salt) throws NoSuchAlgorithmException {
+          // Create a SHA-256 MessageDigest instance
+          MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+          // Add the salt to the digest
+          digest.update(salt);
+
+          // Add the password bytes
+          byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+
+          // Get the hash
+          return digest.digest(passwordBytes);
+      }
+
+      /**
+      * Verifies that a plain text password matches a stored salted hash.
+      * Uses a constant-time comparison to prevent timing attacks.
+      *
+      * @param plainTextPassword The plain text password to verify
+      * @param storedHash The stored hash in the format "salt:hash"
+      * @return True if the passwords match, false otherwise
+      */
+      public static boolean verifyPassword(String plainTextPassword, String storedHash) {
+          try {
+              // Split the stored hash into salt and hash
+              String[] parts = storedHash.split(":");
+
+              if (parts.length != 2) {
+                  return false; // Invalid format
+              }
+
+              // Decode the salt and hash from Base64
+              byte[] salt = Base64.getDecoder().decode(parts[0]);
+              byte[] hash = Base64.getDecoder().decode(parts[1]);
+
+              // Hash the plain text password with the same salt
+              byte[] testHash = hashWithSalt(plainTextPassword, salt);
+
+              // Compare the hashes using constant-time comparison
+              if (hash.length != testHash.length) {
+                  return false;
+              }
+
+              int result = 0;
+              for (int i = 0; i < hash.length; i++) {
+                  result |= hash[i] ^ testHash[i]; // XOR will be 0 if bytes are the same
+              }
+
+              return result == 0; // If all bytes matched, result will be 0
+          } catch (Exception e) {
+              e.printStackTrace();
+              return false;
+          }
+      }
+  }
+</code></pre>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<h4 style="font-style: italic"> Notifications </h4>
+<pre><code class="language-java">
+  package com.zybooks.weightlogger.Utilities;
+
+  import android.Manifest;
+
+  import android.annotation.SuppressLint;
+
+  import android.app.NotificationChannel;
+  import android.app.NotificationManager;
+  import android.app.PendingIntent;
+
+  import android.content.Context;
+  import android.content.Intent;
+  import android.content.pm.PackageManager;
+
+  import android.util.Log;
+  import java.util.Random;
+
+  import androidx.core.app.NotificationCompat;
+  import androidx.core.app.NotificationManagerCompat;
+  import androidx.core.content.ContextCompat;
+
+  import com.zybooks.weightlogger.MainActivity;
+
+
+  /**
+  * Helper class that manages the creation and sending of notifications related to weight goals.
+  * Handles notification channel setup and provides methods to send different types of
+  * motivational notifications based on user progress.
+  */
+  public class NotificationHelper {
+      private static final String CHANNEL_ID = "weight_goal_channel";
+      private static final String CHANNEL_NAME = "Weight Goal Notifications";
+      private static final String CHANNEL_DESC = "Notifications related to your weight goals";
+      private static final String TAG = "NotificationHelper";
+      private final Context context;
+      private static final Random random = new Random();
+
+      /**
+      * Creates a new NotificationHelper instance and initializes the notification channel.
+      *
+      * @param context The context used to access system services and resources
+      */
+      public NotificationHelper(Context context) {
+          this.context = context;
+          createNotificationChannel();
+      }
+
+      /**
+      * Creates the notification channel for weight goal notifications.
+      * This is required for notifications on Android 8.0 (API level 26) and higher.
+      */
+      private void createNotificationChannel() {
+
+          NotificationChannel channel = new NotificationChannel(
+                  CHANNEL_ID,
+                  CHANNEL_NAME,
+                  NotificationManager.IMPORTANCE_DEFAULT);
+          channel.setDescription(CHANNEL_DESC);
+
+          // Register the channel with the system
+          NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+          if (notificationManager != null) {
+              notificationManager.createNotificationChannel(channel);
+          }
+      }
+
+      /**
+      * Checks if the app has permission to post notifications.
+      *
+      * @return true if notification permission is not granted, false otherwise
+      */
+      private boolean hasNotificationPermission() {
+
+          return ContextCompat.checkSelfPermission(context,
+                  Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED;
+
+      }
+
+      /**
+      * Sends a notification to inform the user about their progress toward their weight goal.
+      * Includes motivational messages based on how close they are to their goal.
+      *
+      * @param currentWeight The user's current weight
+      * @param goalWeight The user's goal weight
+      */
+      public void sendGoalProgressNotification(double currentWeight, double goalWeight) {
+          // Check permission before sending notification
+          if (hasNotificationPermission()) {
+              Log.d(TAG, "Cannot send notification: Permission not granted");
+              return;
+          }
+
+          // Create an explicit intent for the MainActivity
+          Intent intent = new Intent(context, MainActivity.class);
+          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+          PendingIntent pendingIntent = PendingIntent.getActivity(
+                  context, 0, intent,
+                  PendingIntent.FLAG_IMMUTABLE);
+
+          String title = "You're making progress!";
+          String message;
+
+          // Calculate the difference
+          double difference = Math.abs(currentWeight - goalWeight);
+
+          // Choose a motivational message
+          @SuppressLint("DefaultLocale") String[] messages = {
+                  "Keep up the great work! You're getting closer to your goal weight.",
+                  "You're making amazing progress! Just " + String.format("%.1f", difference) + " lbs to go!",
+                  "Fantastic job on your weight journey! Keep going!",
+                  "You're getting closer to your goal of " + String.format("%.1f", goalWeight) + " lbs!"
+          };
+
+          message = messages[random.nextInt(messages.length)];
+
+          NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                  .setSmallIcon(android.R.drawable.ic_dialog_info)
+                  .setContentTitle(title)
+                  .setContentText(message)
+                  .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                  .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                  .setContentIntent(pendingIntent)
+                  .setAutoCancel(true);
+
+          try {
+              NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+              notificationManager.notify(random.nextInt(1000), builder.build());
+          } catch (SecurityException e) {
+              Log.e(TAG, "Security exception when sending notification", e);
+          }
+      }
+
+      /**
+      * Sends a notification to congratulate the user on achieving their weight goal.
+      * Includes celebratory messages for this significant achievement.
+      */
+      public void sendGoalAchievedNotification() {
+          // Check permission before sending notification
+          if (hasNotificationPermission()) {
+              Log.d(TAG, "Cannot send notification: Permission not granted");
+              return;
+          }
+
+          // Create an explicit intent for the MainActivity
+          Intent intent = new Intent(context, MainActivity.class);
+          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+          PendingIntent pendingIntent = PendingIntent.getActivity(
+                  context, 0, intent,
+                  PendingIntent.FLAG_IMMUTABLE);
+
+          String title = "Awesome Work!";
+
+          // Choose a congratulatory message
+          String[] messages = {
+                  "You've reached your goal weight! Amazing job!",
+                  "Goal achieved! You should be incredibly proud of yourself!",
+                  "You did it! You've reached your weight goal!",
+                  "Congratulations on achieving your weight goal! What an accomplishment!"
+          };
+
+          String message = messages[random.nextInt(messages.length)];
+
+          NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                  .setSmallIcon(android.R.drawable.ic_dialog_info)
+                  .setContentTitle(title)
+                  .setContentText(message)
+                  .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                  .setPriority(NotificationCompat.PRIORITY_HIGH)
+                  .setContentIntent(pendingIntent)
+                  .setAutoCancel(true);
+
+          try {
+              NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+              notificationManager.notify(random.nextInt(1000), builder.build());
+          } catch (SecurityException e) {
+              Log.e(TAG, "Security exception when sending notification", e);
+          }
+      }
+  }
+</code></pre>
+</div>
+<div class="col-md-6">
+<h4 style="font-style: italic"> Progress Visualization </h4>
+<pre><code class="language-java">
+  package com.zybooks.weightlogger.Utilities;
+
+  import android.content.Context;
+  import android.graphics.Canvas;
+  import android.graphics.Color;
+  import android.graphics.Paint;
+  import android.graphics.Path;
+  import android.graphics.PointF;
+  import android.util.AttributeSet;
+  import android.util.Log;
+  import android.view.View;
+
+  import androidx.annotation.NonNull;
+  import androidx.annotation.Nullable;
+  import androidx.core.content.ContextCompat;
+
+  import com.zybooks.weightlogger.Data.WeightDatabaseHelper;
+  import com.zybooks.weightlogger.R;
+
+  import java.text.ParseException;
+  import java.text.SimpleDateFormat;
+  import java.util.ArrayList;
+  import java.util.Date;
+  import java.util.List;
+  import java.util.Locale;
+
+  public class WeightChartView extends View {
+      private static final String TAG = "WeightChartView";
+
+      private List<WeightDatabaseHelper.WeightEntry> entries = new ArrayList<>();
+      private double goalWeight = 0;
+      private boolean hasData = false;
+
+      private final Paint linePaint = new Paint();
+      private final Paint pointPaint = new Paint();
+      private final Paint textPaint = new Paint();
+      private final Paint gridPaint = new Paint();
+      private final Paint goalPaint = new Paint();
+      private final Paint axisLabelPaint = new Paint();
+
+      private float minWeight = 0;
+      private float maxWeight = 0;
+      private final Path linePath = new Path();
+      private final List<PointF> pointsCache = new ArrayList<>();
+      private final int paddingLeft = 80;
+      private final int paddingRight = 40;
+      private final int paddingTop = 40;
+      private final int paddingBottom = 80;
+      private final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+      private final SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd", Locale.US);
+
+      public WeightChartView(Context context) {
+          super(context);
+          init();
+      }
+
+      public WeightChartView(Context context, @Nullable AttributeSet attrs) {
+          super(context, attrs);
+          init();
+      }
+
+      public WeightChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+          super(context, attrs, defStyleAttr);
+          init();
+      }
+
+      private void init() {
+          // Line paint
+          linePaint.setColor(ContextCompat.getColor(getContext(), R.color.teal_700));
+          linePaint.setStyle(Paint.Style.STROKE);
+          linePaint.setStrokeWidth(4f);
+          linePaint.setAntiAlias(true);
+
+          // Point paint
+          pointPaint.setColor(ContextCompat.getColor(getContext(), R.color.teal_700));
+          pointPaint.setStyle(Paint.Style.FILL);
+          pointPaint.setAntiAlias(true);
+
+          // Text paint
+          textPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_primary_light));
+          textPaint.setTextSize(28f);
+          textPaint.setAntiAlias(true);
+
+          // Grid paint
+          gridPaint.setColor(Color.LTGRAY);
+          gridPaint.setStyle(Paint.Style.STROKE);
+          gridPaint.setStrokeWidth(1f);
+          gridPaint.setAlpha(100);
+
+          // Goal line paint
+          goalPaint.setColor(ContextCompat.getColor(getContext(), R.color.amber_700));
+          goalPaint.setStyle(Paint.Style.STROKE);
+          goalPaint.setStrokeWidth(3f);
+          goalPaint.setPathEffect(new android.graphics.DashPathEffect(new float[]{10, 10}, 0));
+
+          // Axis label paint
+          axisLabelPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_secondary_light));
+          axisLabelPaint.setTextSize(24f);
+          axisLabelPaint.setAntiAlias(true);
+      }
+
+      public void setData(List<WeightDatabaseHelper.WeightEntry> entries, double goalWeight) {
+          this.entries = new ArrayList<>(entries);
+          // Sort by date from oldest to newest
+          this.entries.sort((entry1, entry2) -> {
+              try {
+                  Date date1 = inputFormat.parse(entry1.getDate());
+                  Date date2 = inputFormat.parse(entry2.getDate());
+                  if (date1 != null && date2 != null) {
+                      return date1.compareTo(date2);
+                  }
+              } catch (ParseException e) {
+                  Log.e(TAG, "Error parsing date", e);
+              }
+              return 0;
+          });
+
+          this.goalWeight = goalWeight;
+
+          // Calculate min and max weight
+          if (!entries.isEmpty()) {
+              hasData = true;
+              minWeight = Float.MAX_VALUE;
+              maxWeight = Float.MIN_VALUE;
+
+              for (WeightDatabaseHelper.WeightEntry entry : entries) {
+                  float weight = (float) entry.getWeight();
+                  if (weight < minWeight) minWeight = weight;
+                  if (weight > maxWeight) maxWeight = weight;
+              }
+
+              // Include goal weight in range
+              if (goalWeight > 0) {
+                  if (goalWeight < minWeight) minWeight = (float) goalWeight;
+                  if (goalWeight > maxWeight) maxWeight = (float) goalWeight;
+              }
+
+              // Add padding to range
+              float range = maxWeight - minWeight;
+              minWeight = Math.max(0, minWeight - range * 0.1f);
+              maxWeight = maxWeight + range * 0.1f;
+          }
+
+          // Precalculate the points before drawing
+          calculatePoints();
+          invalidate();
+      }
+
+      private void calculatePoints() {
+          // Clear cached points
+          pointsCache.clear();
+
+          if (!hasData || entries.isEmpty()) {
+              return;
+          }
+
+          int width = getWidth();
+          int height = getHeight();
+
+          // Handle the case when the view size isn't set yet
+          if (width <= 0 || height <= 0) {
+              return;
+          }
+
+          int chartWidth = width - paddingLeft - paddingRight;
+          int chartHeight = height - paddingTop - paddingBottom;
+          float weightRange = maxWeight - minWeight;
+
+          // Calculate points for line
+          for (int i = 0; i < entries.size(); i++) {
+              WeightDatabaseHelper.WeightEntry entry = entries.get(i);
+              float x = paddingLeft + ((float) (chartWidth * i) / (entries.size() - 1));
+              if (entries.size() == 1) {
+                  x = paddingLeft + chartWidth / 2f;
+              }
+
+              float normalizedWeight = (float) ((entry.getWeight() - minWeight) / weightRange);
+              float y = height - paddingBottom - (normalizedWeight * chartHeight);
+
+              pointsCache.add(new PointF(x, y));
+          }
+      }
+
+      @Override
+      protected void onSizeChanged(int w, int h, int old_width, int old_height) {
+          super.onSizeChanged(w, h, old_width, old_height);
+          calculatePoints();
+      }
+
+      @Override
+      protected void onDraw(@NonNull Canvas canvas) {
+          super.onDraw(canvas);
+
+          if (!hasData || entries.isEmpty()) {
+              // Draw no data message
+              textPaint.setTextAlign(Paint.Align.CENTER);
+              canvas.drawText("No weight data available", getWidth() / 2f, getHeight() / 2f, textPaint);
+              return;
+          }
+
+          int width = getWidth();
+          int height = getHeight();
+          int chartHeight = height - paddingTop - paddingBottom;
+
+          // Draw axes
+          canvas.drawLine(paddingLeft, height - paddingBottom, width - paddingRight, height - paddingBottom, gridPaint); // X-axis
+          canvas.drawLine(paddingLeft, paddingTop, paddingLeft, height - paddingBottom, gridPaint); // Y-axis
+
+          // Draw horizontal grid lines and Y-axis labels
+          int numYLabels = 5;
+          float weightRange = maxWeight - minWeight;
+          for (int i = 0; i <= numYLabels; i++) {
+              float y = height - paddingBottom - ((float) (chartHeight * i) / numYLabels);
+              canvas.drawLine(paddingLeft, y, width - paddingRight, y, gridPaint);
+
+              float labelValue = minWeight + (weightRange * i / numYLabels);
+              axisLabelPaint.setTextAlign(Paint.Align.RIGHT);
+              canvas.drawText(String.format(Locale.US, "%.1f", labelValue), paddingLeft - 10, y + axisLabelPaint.getTextSize() / 3, axisLabelPaint);
+          }
+
+          // Draw the weight data path
+          linePath.reset();
+          for (int i = 0; i < pointsCache.size(); i++) {
+              PointF point = pointsCache.get(i);
+              if (i == 0) {
+                  linePath.moveTo(point.x, point.y);
+              } else {
+                  linePath.lineTo(point.x, point.y);
+              }
+
+              // Draw point
+              canvas.drawCircle(point.x, point.y, 8, pointPaint);
+
+              // Draw weight value
+              textPaint.setTextAlign(Paint.Align.CENTER);
+              WeightDatabaseHelper.WeightEntry entry = entries.get(i);
+              canvas.drawText(String.format(Locale.US, "%.1f", entry.getWeight()), point.x, point.y - 15, textPaint);
+
+              // Draw X-axis label (date)
+              if (i == 0 || i == entries.size() - 1 || entries.size() <= 5 || i % (entries.size() / 5) == 0) {
+                  try {
+                      Date date = inputFormat.parse(entry.getDate());
+                      String formattedDate = date != null ? outputFormat.format(date) : entry.getDate();
+                      axisLabelPaint.setTextAlign(Paint.Align.CENTER);
+                      canvas.drawText(formattedDate, point.x, height - paddingBottom + 30, axisLabelPaint);
+                  } catch (ParseException e) {
+                      Log.e(TAG, "Error parsing date for label", e);
+                  }
+              }
+          }
+
+          // Draw the line connecting points
+          canvas.drawPath(linePath, linePaint);
+
+          // Draw goal weight line if available
+          if (goalWeight > 0) {
+              float normalizedGoal = (float) ((goalWeight - minWeight) / weightRange);
+              float goalY = height - paddingBottom - (normalizedGoal * chartHeight);
+
+              canvas.drawLine(paddingLeft, goalY, width - paddingRight, goalY, goalPaint);
+
+              // Draw goal label
+              textPaint.setColor(ContextCompat.getColor(getContext(), R.color.amber_700));
+              textPaint.setTextAlign(Paint.Align.LEFT);
+              canvas.drawText("Goal: " + String.format(Locale.US, "%.1f", goalWeight), paddingLeft + 10, goalY - 10, textPaint);
+              textPaint.setColor(ContextCompat.getColor(getContext(), R.color.text_primary_light)); // Reset color
+          }
+      }
+  }
+</code></pre>
+</div>
+</div>
+</div>
+
             </div>
             
+            <hr class="artifact">
             
             <ul class="list-inline item-details">
               
-              <li>Client:
+              <li>Class:
                 <strong>CS-360 Mobile Architecture & Programming</strong>
               </li>
               
@@ -339,7 +1129,7 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
               </li>
               
               
-              <li>Service:
+              <li>Category:
                 <strong>Software Design</strong>
               </li>
               
@@ -364,8 +1154,13 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
       <div class="row">
         <div class="col">
           <div class="modal-body">
-            <h2>Project 2</h2>
-            <hr class="star-primary">
+            <h2>Animal Rescue Management System</h2>
+
+            <!-- Project Description -->
+            
+            <p style="margin: auto; width: 70%; font-style: italic;">The Animal Rescue Management System is a Java application designed for tracking rescue animals and adoption processes. It includes animal record management, training status tracking, reservation handling, and advanced search capabilities with HashMap-based indexing for improved performance.</p>
+            
+            <hr class="artifact">
             
             <!-- Image Handling - Check if post.images is an array or if using the traditional post.img -->
             
@@ -376,6 +1171,10 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
                   
                     <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
                   
+                    <li data-target="#carousel-2" data-slide-to="1" ></li>
+                  
+                    <li data-target="#carousel-2" data-slide-to="2" ></li>
+                  
                 </ol> -->
 
                 <!-- Wrapper for slides -->
@@ -383,6 +1182,14 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
                   
                     <div class="item active">
                       <img src="img/portfolio/ARS1.png" class="img-responsive img-centered" alt="Animal Rescue Management System - Image 1">
+                    </div>
+                  
+                    <div class="item ">
+                      <img src="img/portfolio/ARS2.png" class="img-responsive img-centered" alt="Animal Rescue Management System - Image 2">
+                    </div>
+                  
+                    <div class="item ">
+                      <img src="img/portfolio/ARS3.png" class="img-responsive img-centered" alt="Animal Rescue Management System - Image 3">
                     </div>
                   
                 </div>
@@ -399,18 +1206,14 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
                 
               </div>
             
-            
-            <!-- Project Description -->
-            
-            <h3>Project Description</h3>
-            <p>The Animal Rescue Management System is a Java application designed for tracking rescue animals and adoption processes. It includes animal record management, training status tracking, reservation handling, and advanced search capabilities with HashMap-based indexing for improved performance.</p>
-            
+            <hr class="artifact">
             
             <!-- Artifact Narrative Section -->
             
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
               <p> 
+
 The artifact I've selected is an Animal Rescue Management System, originally developed in IT 145 (Jan - Mar 2024). This Java application was designed to track rescue animals (dogs and monkeys), manage their training status, and handle reservations. The original version used simple ArrayLists to store animal records and implemented basic CRUD operations with linear search algorithms.The enhanced version transforms the system with advanced data structures and algorithms that significantly improve efficiency, functionality, and scalability.
 
 I selected this artifact because it demonstrates my ability to apply computer science concepts to solve real-world problems. The enhanced system uses multiple data structures including HashMap-based indexing for O(1) lookups and binary search for ordered collections. This shows my understanding of selecting appropriate data structures to optimize performance. I implemented several advanced algorithms including Levenshtein distance for fuzzy name matching, binary search for date-range queries, and multi-criteria search with optimized filtering. These enhancements demonstrate my ability to design efficient algorithms tailored to specific requirements. Lastly, the improved system follows object-oriented principles with a well-designed class hierarchy, appropriate encapsulation, and inheritance.
@@ -420,19 +1223,1124 @@ The enhancements align with the planned course outcomes: Outcome #3 “Design an
 One of the most valuable aspects of this process was critically evaluating different data structures based on their time complexity. While an ArrayList is simple to implement, it becomes inefficient as data scales. Replacing it with HashMap-based indexing for O(1) lookups made me appreciate how the right data structure can dramatically improve performance. I faced several challenges during the enhancement process. The most significant was maintaining compatibility with the original functionality while implementing advanced features. I had to carefully refactor code to ensure that existing operations continued to work correctly. This experience taught me the value of incremental changes and thorough testing when enhancing existing systems. Another challenge was balancing sophistication with usability. While I could have implemented even more complex algorithms, I chose to focus on enhancements that provided tangible benefits to users. This reinforced the importance of keeping the end-user in mind when designing software solutions.
 
 Through this artifact enhancement, I've gained a deeper understanding of how theoretical concepts in algorithms and data structures apply to practical software development. I've learned to look beyond the immediate functionality and consider performance, scalability, and maintainability—skills that will serve me well throughout my computer science career. 
+
 <p/>
 
             </div>
             
+            <hr class="artifact">
             
-            <!-- Screenshots/Code Snippets Section -->
+            <!-- Enhanced Code Snippets Section -->
             
+            <h3>Enhancements</h3>
+            <div class="code-snippets">
+              <div class="code-snippets-grid">
+<div class="row">
+<div class="col-md-6">
+<h4 style="font-style: italic"> Console Based Menu </h4>
+<pre><code class="language-java">
+  package com.rescuesystem.ui;
 
+  import java.util.*;
+
+  import com.rescuesystem.data.AnimalManager;
+  import com.rescuesystem.operations.IntakeOperations;
+  import com.rescuesystem.operations.ManagementOperations;
+  import com.rescuesystem.operations.SearchOperations;
+  import com.rescuesystem.operations.ViewOperations;
+
+  /**
+  * MenuSystem - Manages the display and processing of all menus
+  */
+  public class MenuSystem {
+      private UIManager uiManager;
+      private AnimalManager animalManager;
+      private Scanner scanner;
+      private InputHandler inputHandler;
+      
+      // Operation handlers
+      private IntakeOperations intakeOps;
+      private ViewOperations viewOps;
+      private ManagementOperations managementOps;
+      private SearchOperations searchOps;
+      
+      // Constructor
+      public MenuSystem(UIManager uiManager) {
+          this.uiManager = uiManager;
+          this.animalManager = uiManager.getAnimalManager();
+          this.scanner = uiManager.getScanner();
+          this.inputHandler = uiManager.getInputHandler();
+          
+          // Initialize operation handlers
+          this.intakeOps = new IntakeOperations(animalManager, inputHandler);
+          this.viewOps = new ViewOperations(animalManager, inputHandler);
+          this.managementOps = new ManagementOperations(animalManager, inputHandler);
+          this.searchOps = new SearchOperations(animalManager, inputHandler);
+      }
+      
+      // Display main menu
+      public void displayMainMenu() {
+          System.out.println("\n\n");
+          System.out.println("\t\t\t\tRescue Animal System");
+          System.out.println("=======================================================");
+          System.out.println("[1] Animal Intake");
+          System.out.println("[2] View Animals");
+          System.out.println("[3] Animal Management");
+          System.out.println("[4] Search Options");
+          System.out.println("[q] Quit application");
+          System.out.println();
+          System.out.println("Enter a menu selection");
+      }
+      
+      // Process main menu selection
+      public void processMainMenu(String input) {
+          switch (input) {
+              case "1":
+                  handleIntakeMenu();
+                  break;
+                  
+              case "2":
+                  handleViewMenu();
+                  break;
+                  
+              case "3":
+                  handleManagementMenu();
+                  break;
+                  
+              case "4":
+                  handleSearchMenu();
+                  break;
+                  
+              case "q":
+                  uiManager.exit();
+                  break;
+                  
+              default:
+                  System.out.println("That's not a valid option!");
+                  break;
+          }
+      }
+      
+      // Handle intake menu
+      private void handleIntakeMenu() {
+          boolean subMenuActive = true;
+          
+          while (subMenuActive) {
+              displayIntakeMenu();
+              String input = scanner.nextLine();
+              
+              if (input.equals("b")) {
+                  subMenuActive = false;
+              } else {
+                  processIntakeMenu(input);
+              }
+          }
+      }
+      
+      // Display intake menu
+      private void displayIntakeMenu() {
+          System.out.println("\n\n");
+          System.out.println("\t\t\t\tAnimal Intake Menu");
+          System.out.println("=======================================================");
+          System.out.println("[1] Intake a new dog");
+          System.out.println("[2] Intake a new monkey");
+          System.out.println("[3] Intake a new cat");
+          System.out.println("[4] Intake a new bird");
+          System.out.println("[b] Back to main menu");
+          System.out.println();
+          System.out.println("Enter a menu selection");
+      }
+      
+      // Process intake menu selection
+      private void processIntakeMenu(String input) {
+          switch (input) {
+              case "1":
+                  intakeOps.intakeNewDog();
+                  break;
+                  
+              case "2":
+                  intakeOps.intakeNewMonkey();
+                  break;
+                  
+              case "3":
+                  intakeOps.intakeNewCat();
+                  break;
+                  
+              case "4":
+                  intakeOps.intakeNewBird();
+                  break;
+                  
+              default:
+                  System.out.println("That's not a valid option!");
+                  break;
+          }
+      }
+      
+      // Handle view menu
+      private void handleViewMenu() {
+          boolean subMenuActive = true;
+          
+          while (subMenuActive) {
+              displayViewMenu();
+              String input = scanner.nextLine();
+              
+              if (input.equals("b")) {
+                  subMenuActive = false;
+              } else {
+                  processViewMenu(input);
+              }
+          }
+      }
+      
+      // Display view menu
+      private void displayViewMenu() {
+          System.out.println("\n\n");
+          System.out.println("\t\t\t\tView Animals Menu");
+          System.out.println("=======================================================");
+          System.out.println("[1] View all dogs");
+          System.out.println("[2] View all monkeys");
+          System.out.println("[3] View all cats");
+          System.out.println("[4] View all birds");
+          System.out.println("[5] View all available animals");
+          System.out.println("[6] View all therapy animals");
+          System.out.println("[b] Back to main menu");
+          System.out.println();
+          System.out.println("Enter a menu selection");
+      }
+      
+      // Process view menu selection
+      private void processViewMenu(String input) {
+          switch (input) {
+              case "1":
+                  viewOps.printAnimals("Dog");
+                  break;
+                  
+              case "2":
+                  viewOps.printAnimals("Monkey");
+                  break;
+                  
+              case "3":
+                  viewOps.printAnimals("Cat");
+                  break;
+                  
+              case "4":
+                  viewOps.printAnimals("Bird");
+                  break;
+                  
+              case "5":
+                  viewOps.printAvailableAnimals();
+                  break;
+                  
+              case "6":
+                  viewOps.printTherapyAnimals();
+                  break;
+                  
+              default:
+                  System.out.println("That's not a valid option!");
+                  break;
+          }
+      }
+      
+      // Handle management menu
+      private void handleManagementMenu() {
+          boolean subMenuActive = true;
+          
+          while (subMenuActive) {
+              displayManagementMenu();
+              String input = scanner.nextLine();
+              
+              if (input.equals("b")) {
+                  subMenuActive = false;
+              } else {
+                  processManagementMenu(input);
+              }
+          }
+      }
+      
+      // Display management menu
+      private void displayManagementMenu() {
+          System.out.println("\n\n");
+          System.out.println("\t\t\t\tAnimal Management Menu");
+          System.out.println("=======================================================");
+          System.out.println("[1] Reserve an animal");
+          System.out.println("[2] Update animal training status");
+          System.out.println("[3] Animal relationship management");
+          System.out.println("[b] Back to main menu");
+          System.out.println();
+          System.out.println("Enter a menu selection");
+      }
+      
+      // Process management menu selection
+      private void processManagementMenu(String input) {
+          switch (input) {
+              case "1":
+                  managementOps.reserveAnimal();
+                  break;
+                  
+              case "2":
+                  managementOps.updateAnimalTraining();
+                  break;
+                  
+              case "3":
+                  managementOps.manageRelationships();
+                  break;
+                  
+              default:
+                  System.out.println("That's not a valid option!");
+                  break;
+          }
+      }
+      
+      // Handle search menu
+      private void handleSearchMenu() {
+          boolean subMenuActive = true;
+          
+          while (subMenuActive) {
+              displaySearchMenu();
+              String input = scanner.nextLine();
+              
+              if (input.equals("b")) {
+                  subMenuActive = false;
+              } else {
+                  processSearchMenu(input);
+              }
+          }
+      }
+      
+      // Display search menu
+      private void displaySearchMenu() {
+          System.out.println("\n\n");
+          System.out.println("\t\t\t\tSearch Options Menu");
+          System.out.println("=======================================================");
+          System.out.println("[1] Search by name (fuzzy search)");
+          System.out.println("[2] Search by type and country");
+          System.out.println("[3] Search by multiple criteria");
+          System.out.println("[4] Search by date range");
+          System.out.println("[b] Back to main menu");
+          System.out.println();
+          System.out.println("Enter a menu selection");
+      }
+      
+      // Process search menu selection
+      private void processSearchMenu(String input) {
+          switch (input) {
+              case "1":
+                  searchOps.searchByName();
+                  break;
+                  
+              case "2":
+                  searchOps.searchByTypeAndCountry();
+                  break;
+                  
+              case "3":
+                  searchOps.searchByMultipleCriteria();
+                  break;
+                  
+              case "4":
+                  searchOps.searchByDateRange();
+                  break;
+                  
+              default:
+                  System.out.println("That's not a valid option!");
+                  break;
+          }
+      }
+  }
+</code></pre>
+</div>
+<div class="col-md-6">
+<h4 style="font-style: italic"> Seperate Operation Classes </h4>
+<pre><code class="language-java">
+  package com.rescuesystem.operations;
+
+  import java.util.*;
+
+  import com.rescuesystem.data.AnimalManager;
+  import com.rescuesystem.model.RescueAnimal;
+  import com.rescuesystem.ui.InputHandler;
+
+  /**
+  * SearchOperations - Handles all search operations
+  */
+  public class SearchOperations {
+      private AnimalManager animalManager;
+      private InputHandler inputHandler;
+      private Scanner scanner;
+      
+      // Constructor
+      public SearchOperations(AnimalManager animalManager, InputHandler inputHandler) {
+          this.animalManager = animalManager;
+          this.inputHandler = inputHandler;
+          this.scanner = inputHandler.getScanner();
+      }
+      
+      // Search by name
+      public void searchByName() {
+          System.out.println("Enter partial name to search:");
+          String nameFragment = scanner.nextLine();
+          
+          List<RescueAnimal> fuzzyResults = animalManager.fuzzyNameSearch(nameFragment);
+          
+          if (!fuzzyResults.isEmpty()) {
+              System.out.println("\nMatching animals:");
+              System.out.println("----------------------------------------------------------");
+              System.out.printf("%-15s %-10s %-15s %-15s\n", "Name", "Type", "Status", "Location");
+              System.out.println("----------------------------------------------------------");
+              
+              for (RescueAnimal animal : fuzzyResults) {
+                  System.out.printf("%-15s %-10s %-15s %-15s\n", 
+                      animal.getName(), 
+                      animal.getAnimalType(), 
+                      animal.getTrainingStatus(), 
+                      animal.getInServiceLocation());
+              }
+          } else {
+              System.out.println("No animals found matching that name.");
+          }
+          
+          inputHandler.waitForEnter();
+      }
+      
+      // Search by type and country
+      public void searchByTypeAndCountry() {
+          Map<String, String> criteria = new HashMap<>();
+          
+          System.out.println("Enter animal type (Dog/Monkey/Cat/Bird):");
+          String type = scanner.nextLine();
+          
+          System.out.println("Enter country:");
+          String country = scanner.nextLine();
+          
+          criteria.put("type", type);
+          criteria.put("inServiceCountry", country);
+          
+          List<RescueAnimal> typeCountryResults = animalManager.multiCriteriaSearch(criteria);
+          
+          if (!typeCountryResults.isEmpty()) {
+              System.out.println("\nMatching animals:");
+              System.out.println("----------------------------------------------------------");
+              System.out.printf("%-15s %-15s %-15s\n", "Name", "Status", "Reserved");
+              System.out.println("----------------------------------------------------------");
+              
+              for (RescueAnimal animal : typeCountryResults) {
+                  System.out.printf("%-15s %-15s %-15s\n", 
+                      animal.getName(), 
+                      animal.getTrainingStatus(), 
+                      animal.getReserved() ? "Yes" : "No");
+              }
+          } else {
+              System.out.println("No animals found matching those criteria.");
+          }
+          
+          inputHandler.waitForEnter();
+      }
+      
+      // Search by multiple criteria
+      public void searchByMultipleCriteria() {
+          Map<String, String> criteria = new HashMap<>();
+          
+          System.out.println("Enter search criteria (leave blank to skip):");
+          
+          System.out.println("Type (Dog/Monkey/Cat/Bird):");
+          String multiType = scanner.nextLine();
+          if (!multiType.isEmpty()) criteria.put("type", multiType);
+          
+          System.out.println("Training Status:");
+          String status = scanner.nextLine();
+          if (!status.isEmpty()) criteria.put("trainingStatus", status);
+          
+          System.out.println("Country:");
+          String multiCountry = scanner.nextLine();
+          if (!multiCountry.isEmpty()) criteria.put("inServiceCountry", multiCountry);
+          
+          System.out.println("Reserved (true/false):");
+          String reserved = scanner.nextLine();
+          if (!reserved.isEmpty()) criteria.put("reserved", reserved);
+          
+          // Handle breed/species-specific criteria
+          if (multiType.equalsIgnoreCase("Dog")) {
+              System.out.println("Breed:");
+              String breed = scanner.nextLine();
+              if (!breed.isEmpty()) criteria.put("breed", breed);
+          } else if (multiType.equalsIgnoreCase("Cat")) {
+              System.out.println("Breed:");
+              String breed = scanner.nextLine();
+              if (!breed.isEmpty()) criteria.put("breed", breed);
+              
+              System.out.println("House Trained (true/false):");
+              String houseTrained = scanner.nextLine();
+              if (!houseTrained.isEmpty()) criteria.put("houseTrained", houseTrained);
+          } else if (multiType.equalsIgnoreCase("Monkey") || multiType.equalsIgnoreCase("Bird")) {
+              System.out.println("Species:");
+              String species = scanner.nextLine();
+              if (!species.isEmpty()) criteria.put("species", species);
+          }
+          
+          List<RescueAnimal> multiResults = animalManager.multiCriteriaSearch(criteria);
+          
+          if (!multiResults.isEmpty()) {
+              System.out.println("\nMatching animals:");
+              for (RescueAnimal animal : multiResults) {
+                  System.out.println(animal);
+              }
+          } else {
+              System.out.println("No animals found matching those criteria.");
+          }
+          
+          inputHandler.waitForEnter();
+      }
+      
+      // Search by date range
+      public void searchByDateRange() {
+          System.out.println("Enter start date (MM/DD/YYYY):");
+          String startDate = inputHandler.validateDateInput();
+          
+          System.out.println("Enter end date (MM/DD/YYYY):");
+          String endDate = inputHandler.validateDateInput();
+          
+          List<RescueAnimal> animals = animalManager.findAnimalsByDateRange(startDate, endDate);
+          
+          if (!animals.isEmpty()) {
+              System.out.println("\nAnimals acquired between " + startDate + " and " + endDate + ":");
+              System.out.println("----------------------------------------------------------");
+              System.out.printf("%-15s %-10s %-15s %-15s\n", "Name", "Type", "Date", "Location");
+              System.out.println("----------------------------------------------------------");
+              
+              for (RescueAnimal animal : animals) {
+                  System.out.printf("%-15s %-10s %-15s %-15s\n", 
+                      animal.getName(), 
+                      animal.getAnimalType(), 
+                      animal.getAcquisitionDate(), 
+                      animal.getAcquisitionLocation());
+              }
+          } else {
+              System.out.println("No animals found in that date range.");
+          }
+          
+          inputHandler.waitForEnter();
+      }
+  }
+</code></pre>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<h4 style="font-style: italic"> New Animal Classes </h4>
+<pre><code class="language-java">
+  package com.rescuesystem.model;
+
+  /**
+  * Cat class for rescue cats
+  */
+  public class Cat extends RescueAnimal {
+
+      // Instance variables
+      private String breed;
+      private boolean houseTrained;
+      private boolean declawed;
+      
+      // Constants for breeds
+      public static final String[] CAT_BREEDS = {
+          "Unknown", "Ragdoll", "Maine Coon", "Persian", "Birman",
+          "Scottish Fold", "Siamese", "British Shorthair", "Bengal",
+          "Sphynx", "American Shorthair", "Exotic Shorthair", "Devon Rex",
+          "Abyssinian", "Oriental", "Russian Blue", "Norwegian Forest Cat",
+          "Domestic Shorthair", "Domestic Longhair", "Himalayan"
+      };
+      
+      private static final String[] THERAPY_BREEDS = {
+          "Ragdoll", "Maine Coon", "Persian", "Birman",
+          "Scottish Fold", "Siamese", "British Shorthair"
+      };
+
+      // Constructor
+      public Cat(String name, String breed, String gender, String age,
+              String weight, String acquisitionDate, String acquisitionCountry,
+              String trainingStatus, boolean reserved, String inServiceCountry,
+              boolean houseTrained, boolean declawed) {
+          
+          setName(name);
+          setBreed(breed);
+          setGender(gender);
+          setAge(age);
+          setWeight(weight);
+          setAcquisitionDate(acquisitionDate);
+          setAcquisitionLocation(acquisitionCountry);
+          setTrainingStatus(trainingStatus);
+          setReserved(reserved);
+          setInServiceCountry(inServiceCountry);
+          setHouseTrained(houseTrained);
+          setDeclawed(declawed);
+          setAnimalType("Cat");
+      }
+
+      // Accessor Methods
+      public String getBreed() {
+          return breed;
+      }
+
+      public boolean isHouseTrained() {
+          return houseTrained;
+      }
+      
+      public boolean isDeclawed() {
+          return declawed;
+      }
+
+      // Mutator Methods
+      public void setBreed(String catBreed) {
+          breed = catBreed;
+      }
+      
+      public void setHouseTrained(boolean houseTrained) {
+          this.houseTrained = houseTrained;
+      }
+      
+      public void setDeclawed(boolean declawed) {
+          this.declawed = declawed;
+      }
+      
+      // Check if the cat is suitable for therapy
+      public boolean isTherapyCandidate() {
+          for (String therapyBreed : THERAPY_BREEDS) {
+              if (therapyBreed.equalsIgnoreCase(breed)) {
+                  return true;
+              }
+          }
+          return false;
+      }
+      
+      // Get all available cat breeds
+      public static String[] getBreeds() {
+          return CAT_BREEDS;
+      }
+      
+      // Check if a breed is valid
+      public static boolean isValidBreed(String breed) {
+          for (String validBreed : CAT_BREEDS) {
+              if (validBreed.equalsIgnoreCase(breed)) {
+                  return true;
+              }
+          }
+          return true; // Accept any breed, even if not in predefined list
+      }
+      
+      // Match cat to criteria
+      @Override
+      public boolean matchesCriteria(String criteria, String value) {
+          // First check base criteria
+          if (super.matchesCriteria(criteria, value)) {
+              return true;
+          }
+          
+          // Then check cat-specific criteria
+          switch (criteria) {
+              case "breed": return breed.equalsIgnoreCase(value);
+              case "houseTrained": return houseTrained == Boolean.parseBoolean(value);
+              case "declawed": return declawed == Boolean.parseBoolean(value);
+              default: return false;
+          }
+      }
+      
+      // toString method
+      @Override
+      public String toString() {
+          return super.toString() + 
+              ", Breed: " + breed + 
+              ", House Trained: " + (houseTrained ? "Yes" : "No") +
+              ", Declawed: " + (declawed ? "Yes" : "No");
+      }
+  }
+</code></pre>
+</div>
+<div class="col-md-6">
+<h4 style="font-style: italic"> Improved Algorithms </h4>
+<pre><code class="language-java">
+  package com.rescuesystem.data;
+
+  import java.util.*;
+
+  import com.rescuesystem.model.Bird;
+  import com.rescuesystem.model.Cat;
+  import com.rescuesystem.model.Dog;
+  import com.rescuesystem.model.Monkey;
+  import com.rescuesystem.model.RescueAnimal;
+
+  import java.time.LocalDate;
+  import java.time.format.DateTimeFormatter;
+
+  /**
+  * Animal Manager - New class for managing animal collections using efficient data structures
+  * Implements advanced search algorithms and indexing for O(1) lookups
+  */
+  public class AnimalManager {
+      // Primary collection - HashMap for O(1) lookup by name
+      private Map<String, RescueAnimal> animalsByName;
+      
+      // Indexed collections for efficient filtering
+      private Map<String, List<RescueAnimal>> animalsByType;
+      private Map<String, List<RescueAnimal>> animalsByCountry;
+      private Map<String, List<RescueAnimal>> animalsByTrainingStatus;
+      
+      // New type-specific indexes
+      private Map<String, List<RescueAnimal>> dogsByBreed;
+      private Map<String, List<RescueAnimal>> catsByBreed;
+      private Map<String, List<RescueAnimal>> monkeysBySpecies;
+      private Map<String, List<RescueAnimal>> birdsBySpecies;
+      
+      // Standard date format
+      private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+      
+      // Constructor
+      public AnimalManager() {
+          animalsByName = new HashMap<>();
+          animalsByType = new HashMap<>();
+          animalsByCountry = new HashMap<>();
+          animalsByTrainingStatus = new HashMap<>();
+          
+          // Initialize type-specific indexes
+          dogsByBreed = new HashMap<>();
+          catsByBreed = new HashMap<>();
+          monkeysBySpecies = new HashMap<>();
+          birdsBySpecies = new HashMap<>();
+      }
+      
+      /**
+      * Add an animal to all collections and indexes
+      * O(1) operation for adding to maps
+      */
+      public void addAnimal(RescueAnimal animal) {
+          // Add to primary collection
+          animalsByName.put(animal.getName().toLowerCase(), animal);
+          
+          // Add to type index
+          String type = animal.getAnimalType();
+          if (!animalsByType.containsKey(type)) {
+              animalsByType.put(type, new ArrayList<>());
+          }
+          animalsByType.get(type).add(animal);
+          
+          // Add to country index
+          String country = animal.getInServiceLocation();
+          if (!animalsByCountry.containsKey(country)) {
+              animalsByCountry.put(country, new ArrayList<>());
+          }
+          animalsByCountry.get(country).add(animal);
+          
+          // Add to training status index
+          String status = animal.getTrainingStatus();
+          if (!animalsByTrainingStatus.containsKey(status)) {
+              animalsByTrainingStatus.put(status, new ArrayList<>());
+          }
+          animalsByTrainingStatus.get(status).add(animal);
+          
+          // Add to type-specific indexes
+          if (animal instanceof Dog) {
+              Dog dog = (Dog) animal;
+              String breed = dog.getBreed();
+              
+              if (!dogsByBreed.containsKey(breed)) {
+                  dogsByBreed.put(breed, new ArrayList<>());
+              }
+              dogsByBreed.get(breed).add(animal);
+          } 
+          else if (animal instanceof Cat) {
+              Cat cat = (Cat) animal;
+              String breed = cat.getBreed();
+              
+              if (!catsByBreed.containsKey(breed)) {
+                  catsByBreed.put(breed, new ArrayList<>());
+              }
+              catsByBreed.get(breed).add(animal);
+          }
+          else if (animal instanceof Monkey) {
+              Monkey monkey = (Monkey) animal;
+              String species = monkey.getSpecies();
+              
+              if (!monkeysBySpecies.containsKey(species)) {
+                  monkeysBySpecies.put(species, new ArrayList<>());
+              }
+              monkeysBySpecies.get(species).add(animal);
+          }
+          else if (animal instanceof Bird) {
+              Bird bird = (Bird) animal;
+              String species = bird.getSpecies();
+              
+              if (!birdsBySpecies.containsKey(species)) {
+                  birdsBySpecies.put(species, new ArrayList<>());
+              }
+              birdsBySpecies.get(species).add(animal);
+          }
+      }
+      
+      /**
+      * Get animal by name - O(1) operation
+      */
+      public RescueAnimal getAnimal(String name) {
+          return animalsByName.get(name.toLowerCase());
+      }
+      
+      /**
+      * Get all animals of a specific type - O(1) operation
+      */
+      public List<RescueAnimal> getAnimalsByType(String type) {
+          return animalsByType.getOrDefault(type, new ArrayList<>());
+      }
+      
+      /**
+      * Get all animals in a specific country - O(1) operation
+      */
+      public List<RescueAnimal> getAnimalsByCountry(String country) {
+          return animalsByCountry.getOrDefault(country, new ArrayList<>());
+      }
+      
+      /**
+      * Get all animals with a specific training status - O(1) operation
+      */
+      public List<RescueAnimal> getAnimalsByStatus(String status) {
+          return animalsByTrainingStatus.getOrDefault(status, new ArrayList<>());
+      }
+      
+      /**
+      * Get all available animals (in service but not reserved)
+      * O(n) operation but uses indexed collection for better performance
+      */
+      public List<RescueAnimal> getAvailableAnimals() {
+          List<RescueAnimal> result = new ArrayList<>();
+          List<RescueAnimal> inServiceAnimals = animalsByTrainingStatus.getOrDefault("in service", new ArrayList<>());
+          
+          for (RescueAnimal animal : inServiceAnimals) {
+              if (!animal.getReserved()) {
+                  result.add(animal);
+              }
+          }
+          
+          return result;
+      }
+      
+      /**
+      * Get dogs by breed
+      */
+      public List<RescueAnimal> getDogsByBreed(String breed) {
+          return dogsByBreed.getOrDefault(breed, new ArrayList<>());
+      }
+      
+      /**
+      * Get cats by breed
+      */
+      public List<RescueAnimal> getCatsByBreed(String breed) {
+          return catsByBreed.getOrDefault(breed, new ArrayList<>());
+      }
+      
+      /**
+      * Get monkeys by species
+      */
+      public List<RescueAnimal> getMonkeysBySpecies(String species) {
+          return monkeysBySpecies.getOrDefault(species, new ArrayList<>());
+      }
+      
+      /**
+      * Get birds by species
+      */
+      public List<RescueAnimal> getBirdsBySpecies(String species) {
+          return birdsBySpecies.getOrDefault(species, new ArrayList<>());
+      }
+      
+      /**
+      * Get all therapy animals across all suitable types
+      */
+      public List<RescueAnimal> getTherapyAnimals() {
+          List<RescueAnimal> result = new ArrayList<>();
+          
+          // Get therapy dogs
+          for (RescueAnimal animal : animalsByType.getOrDefault("Dog", new ArrayList<>())) {
+              if (animal instanceof Dog && ((Dog) animal).isTherapyBreed()) {
+                  result.add(animal);
+              }
+          }
+          
+          // Get therapy cats
+          for (RescueAnimal animal : animalsByType.getOrDefault("Cat", new ArrayList<>())) {
+              if (animal instanceof Cat && ((Cat) animal).isTherapyCandidate()) {
+                  result.add(animal);
+              }
+          }
+          
+          // Get therapy birds
+          List<String> therapySpecies = Bird.getTherapySpecies();
+          for (String species : therapySpecies) {
+              result.addAll(birdsBySpecies.getOrDefault(species, new ArrayList<>()));
+          }
+          
+          return result;
+      }
+      
+      /**
+      * Reserve an animal by name and country
+      * O(1) operation for lookup
+      */
+      public boolean reserveAnimal(String name, String country) {
+          RescueAnimal animal = animalsByName.get(name.toLowerCase());
+          
+          if (animal != null && 
+              animal.getInServiceLocation().equalsIgnoreCase(country) && 
+              !animal.getReserved()) {
+              
+              animal.setReserved(true);
+              return true;
+          }
+          
+          return false;
+      }
+      
+      /**
+      * Update animal training status
+      * O(1) for lookup, requires reindexing
+      */
+      public boolean updateTrainingStatus(String name, String newStatus) {
+          RescueAnimal animal = animalsByName.get(name.toLowerCase());
+          
+          if (animal != null) {
+              String oldStatus = animal.getTrainingStatus();
+              
+              // Update status
+              animal.setTrainingStatus(newStatus);
+              
+              // Update training status index
+              if (animalsByTrainingStatus.containsKey(oldStatus)) {
+                  animalsByTrainingStatus.get(oldStatus).remove(animal);
+              }
+              
+              if (!animalsByTrainingStatus.containsKey(newStatus)) {
+                  animalsByTrainingStatus.put(newStatus, new ArrayList<>());
+              }
+              animalsByTrainingStatus.get(newStatus).add(animal);
+              
+              return true;
+          }
+          
+          return false;
+      }
+      
+      /**
+      * Find animals acquired in a specific date range
+      * Uses binary search for O(log n) operations if animals are sorted
+      */
+      public List<RescueAnimal> findAnimalsByDateRange(String startDateStr, String endDateStr) {
+          try {
+              LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMAT);
+              LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMAT);
+              
+              List<RescueAnimal> allAnimals = new ArrayList<>(animalsByName.values());
+              Collections.sort(allAnimals); // Sort by acquisition date
+              
+              List<RescueAnimal> result = new ArrayList<>();
+              
+              // Binary search for start index
+              int startIdx = Collections.binarySearch(allAnimals, new RescueAnimal() {
+                  { setAcquisitionDate(startDateStr); }
+              });
+              
+              if (startIdx < 0) {
+                  startIdx = -startIdx - 1;
+              }
+              
+              // Linear scan from start index (more practical than second binary search)
+              for (int i = startIdx; i < allAnimals.size(); i++) {
+                  RescueAnimal animal = allAnimals.get(i);
+                  try {
+                      LocalDate animalDate = LocalDate.parse(animal.getAcquisitionDate(), DATE_FORMAT);
+                      
+                      if (animalDate.isAfter(endDate)) {
+                          break;
+                      }
+                      
+                      if (!animalDate.isBefore(startDate) && !animalDate.isAfter(endDate)) {
+                          result.add(animal);
+                      }
+                  } catch (Exception e) {
+                      // Skip this animal if date parsing fails
+                  }
+              }
+              
+              return result;
+          } catch (Exception e) {
+              return new ArrayList<>();
+          }
+      }
+      
+      /**
+      * Find animals using fuzzy name search
+      * Uses Levenshtein distance algorithm
+      */
+      public List<RescueAnimal> fuzzyNameSearch(String nameFragment) {
+          List<RescueAnimal> result = new ArrayList<>();
+          
+          for (RescueAnimal animal : animalsByName.values()) {
+              if (calculateLevenshteinDistance(animal.getName().toLowerCase(), nameFragment.toLowerCase()) <= 2) {
+                  result.add(animal);
+              }
+          }
+          
+          return result;
+      }
+      
+      /**
+      * Calculate Levenshtein distance for fuzzy name matching
+      */
+      private int calculateLevenshteinDistance(String s1, String s2) {
+          int[][] distance = new int[s1.length() + 1][s2.length() + 1];
+          
+          for (int i = 0; i <= s1.length(); i++) {
+              distance[i][0] = i;
+          }
+          
+          for (int j = 0; j <= s2.length(); j++) {
+              distance[0][j] = j;
+          }
+          
+          for (int i = 1; i <= s1.length(); i++) {
+              for (int j = 1; j <= s2.length(); j++) {
+                  int cost = (s1.charAt(i - 1) == s2.charAt(j - 1)) ? 0 : 1;
+                  distance[i][j] = Math.min(
+                      Math.min(distance[i - 1][j] + 1, distance[i][j - 1] + 1),
+                      distance[i - 1][j - 1] + cost
+                  );
+              }
+          }
+          
+          return distance[s1.length()][s2.length()];
+      }
+      
+      /**
+      * Find animals using multi-criteria search
+      */
+      public List<RescueAnimal> multiCriteriaSearch(Map<String, String> criteria) {
+          List<RescueAnimal> candidates;
+          
+          // Start with most restrictive index if applicable
+          if (criteria.containsKey("type") && animalsByType.containsKey(criteria.get("type"))) {
+              candidates = new ArrayList<>(animalsByType.get(criteria.get("type")));
+          } else if (criteria.containsKey("trainingStatus") && 
+                  animalsByTrainingStatus.containsKey(criteria.get("trainingStatus"))) {
+              candidates = new ArrayList<>(animalsByTrainingStatus.get(criteria.get("trainingStatus")));
+          } else if (criteria.containsKey("inServiceCountry") && 
+                  animalsByCountry.containsKey(criteria.get("inServiceCountry"))) {
+              candidates = new ArrayList<>(animalsByCountry.get(criteria.get("inServiceCountry")));
+          } else {
+              candidates = new ArrayList<>(animalsByName.values());
+          }
+          
+          // Apply remaining filters
+          Iterator<RescueAnimal> iterator = candidates.iterator();
+          while (iterator.hasNext()) {
+              RescueAnimal animal = iterator.next();
+              boolean matches = true;
+              
+              for (Map.Entry<String, String> criterion : criteria.entrySet()) {
+                  if (!animal.matchesCriteria(criterion.getKey(), criterion.getValue())) {
+                      matches = false;
+                      break;
+                  }
+              }
+              
+              if (!matches) {
+                  iterator.remove();
+              }
+          }
+          
+          return candidates;
+      }
+      
+      /**
+      * Get all animals (for debugging or reporting)
+      */
+      public List<RescueAnimal> getAllAnimals() {
+          return new ArrayList<>(animalsByName.values());
+      }
+      
+      /**
+      * Get all dog breeds in the system
+      */
+      public Set<String> getAllDogBreeds() {
+          return dogsByBreed.keySet();
+      }
+      
+      /**
+      * Get all cat breeds in the system
+      */
+      public Set<String> getAllCatBreeds() {
+          return catsByBreed.keySet();
+      }
+      
+      /**
+      * Get all monkey species in the system
+      */
+      public Set<String> getAllMonkeySpecies() {
+          return monkeysBySpecies.keySet();
+      }
+      
+      /**
+      * Get all bird species in the system
+      */
+      public Set<String> getAllBirdSpecies() {
+          return birdsBySpecies.keySet();
+      }
+      
+      /**
+      * Find animals that share characteristics (same breed for dogs/cats, same species for monkeys/birds)
+      */
+      public List<RescueAnimal> findSimilarAnimals(RescueAnimal animal) {
+          List<RescueAnimal> result = new ArrayList<>();
+          
+          if (animal instanceof Dog) {
+              String breed = ((Dog) animal).getBreed();
+              for (RescueAnimal otherAnimal : dogsByBreed.getOrDefault(breed, new ArrayList<>())) {
+                  if (!otherAnimal.equals(animal)) {
+                      result.add(otherAnimal);
+                  }
+              }
+          } 
+          else if (animal instanceof Cat) {
+              String breed = ((Cat) animal).getBreed();
+              for (RescueAnimal otherAnimal : catsByBreed.getOrDefault(breed, new ArrayList<>())) {
+                  if (!otherAnimal.equals(animal)) {
+                      result.add(otherAnimal);
+                  }
+              }
+          }
+          else if (animal instanceof Monkey) {
+              String species = ((Monkey) animal).getSpecies();
+              for (RescueAnimal otherAnimal : monkeysBySpecies.getOrDefault(species, new ArrayList<>())) {
+                  if (!otherAnimal.equals(animal)) {
+                      result.add(otherAnimal);
+                  }
+              }
+          }
+          else if (animal instanceof Bird) {
+              String species = ((Bird) animal).getSpecies();
+              for (RescueAnimal otherAnimal : birdsBySpecies.getOrDefault(species, new ArrayList<>())) {
+                  if (!otherAnimal.equals(animal)) {
+                      result.add(otherAnimal);
+                  }
+              }
+          }
+          
+          return result;
+      }
+  }
+</code></pre>
+</div>
+</div>
+</div>
+
+            </div>
             
+            <hr class="artifact">
             
             <ul class="list-inline item-details">
               
-              <li>Client:
+              <li>Class:
                 <strong>IT 145</strong>
               </li>
               
@@ -442,7 +2350,7 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
               </li>
               
               
-              <li>Service:
+              <li>Category:
                 <strong>Algorithms/Data Structures</strong>
               </li>
               
@@ -454,7 +2362,7 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
   </div>
 </div>
 
-<div class="portfolio-modal modal fade" id="portfolioModal-2" tabindex="-1" role="dialog"
+<div class="portfolio-modal modal fade" id="portfolioModal-3" tabindex="-1" role="dialog"
   aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
@@ -468,48 +2376,1147 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
         <div class="col">
           <div class="modal-body">
             <h2>Project 3</h2>
-            <hr class="star-primary">
+
+            <!-- Project Description -->
+            
+            <p style="margin: auto; width: 70%; font-style: italic;">Animal Shelter Dashboard is a MERN application that provides comprehensive tracking and visualization for animal shelter data. Features include secure authentication with role-based access, animal record management, interactive data visualization, and robust security measures. The dashboard allows users to efficiently track animals through filtering, searching, and geographic mapping, while maintaining detailed audit trails for compliance purposes.</p>
+            
+            <hr class="artifact">
             
             <!-- Image Handling - Check if post.images is an array or if using the traditional post.img -->
             
-              <!-- Single Image - Traditional approach -->
-              <img src="img/portfolio/" class="img-responsive img-centered" alt="Animal Shelter Dashboard">
+              <!-- Multiple Images - Create a carousel -->
+              <div id="carousel-3" class="carousel slide project-carousel" data-ride="carousel">
+                <!-- Indicators
+                <ol class="carousel-indicators">
+                  
+                    <li data-target="#carousel-3" data-slide-to="0" class="active"></li>
+                  
+                    <li data-target="#carousel-3" data-slide-to="1" ></li>
+                  
+                    <li data-target="#carousel-3" data-slide-to="2" ></li>
+                  
+                </ol> -->
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  
+                    <div class="item active">
+                      <img src="img/portfolio/MERN1.png" class="img-responsive img-centered" alt="Animal Shelter Dashboard - Image 1">
+                    </div>
+                  
+                    <div class="item ">
+                      <img src="img/portfolio/MERN2.png" class="img-responsive img-centered" alt="Animal Shelter Dashboard - Image 2">
+                    </div>
+                  
+                    <div class="item ">
+                      <img src="img/portfolio/MERN3.png" class="img-responsive img-centered" alt="Animal Shelter Dashboard - Image 3">
+                    </div>
+                  
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-3" role="button" data-slide="prev">
+                  <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-3" role="button" data-slide="next">
+                  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+                
+              </div>
             
-            
-            <!-- Project Description -->
-            
-            <h3>Project Description</h3>
-            <p>The Animal Rescue Management System is a Java application designed for tracking rescue animals and adoption processes. It includes animal record management, training status tracking, reservation handling, and advanced search capabilities with HashMap-based indexing for improved performance.</p>
-            
+            <hr class="artifact">
             
             <!-- Artifact Narrative Section -->
             
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
               <p> 
-The artifact I've selected is an Animal Shelter Dashboard, originally developed as a python/mongo application with basic functionality for displaying and filtering animal data. The original version used a simple data presentation and limited visualization capabilities. My enhanced version transforms the system with a modern UI framework that significantly improves visual coherence, user experience, and overall system usability. While not implemented just yet, I also plan to add comprehensive security measures for data, and buff up the database. 
 
-I selected this artifact because it demonstrates my ability to apply modern development techniques to create interfaces that effectively communicate data and support organizational decision-making. The enhanced dashboard uses components that provide a consistent design language, improved accessibility, and responsive layouts that work across different device sizes. 
+The artifact I selected is an Animal Shelter Dashboard, originally a basic Python/Mongo application for displaying and filtering animal data. My enhanced version evolved into a full-stack web application with an interactive dashboard, user authentication, role-based access control, and modern security features. This artifact demonstrates my full-stack development skills, with a React.js frontend that highlights responsive design, data visualization, and modular architecture, and a Node.js/Express backend that showcases RESTful API design, middleware use, and clean separation of concerns. The MongoDB integration reflects my understanding of NoSQL data modeling, indexing, and aggregation. I also implemented robust security through JWT authentication, input sanitization, and protection against vulnerabilities like XSS and NoSQL injection, all following industry best practices. The audit logging system ensures accountability by capturing key actions with contextual detail. Improvements included enhanced visualization with interactive filters, refined error handling, input validation, responsive design for all device types, and better code organization and documentation.
 
-The enhancements align with several course outcomes. For Outcome #1, the improved interface creates a collaborative environment that makes data more accessible, supporting better organizational decision-making. The clean, intuitive design allows staff with varying technical abilities to quickly filter and analyze animal data. For Outcome #2, the enhanced visual design delivers professional-quality visual communications that are coherent and appropriately adapted to the specific context. For Outcome #4, my use of Material UI demonstrates the ability to leverage industry-standard tools that deliver value, resulting in a more maintainable codebase and a more professional user experience.
+This project addresses all five course outcomes. Role-based access control supports diverse user needs, enabling collaboration across user types. The dashboard's clean, intuitive interface reflects professional communication of complex data, with visual hierarchy and drill-down capabilities. Algorithmic logic powers data filtering, sorting, and aggregation while balancing performance and usability through pagination and caching. Industry-standard frameworks and tools were used throughout, adhering to best practices in modular architecture and testing. Security was central, with measures like input validation, CSRF protection, and rate limiting built into every layer, and an audit log supporting transparency and incident tracking.
 
-One of the most valuable aspects of this process was critically evaluating different frameworks based on their component libraries, accessibility features, and integration capabilities. I faced several challenges during the enhancement process. The most significant was adapting the existing application structure to incorporate the new component library while maintaining full functionality. This experience taught me the importance of understanding component lifecycles and state management. Another challenge was ensuring the enhanced interface remained intuitive while adding visual sophistication. I had to carefully consider how each design decision would impact usability. This reinforced the importance of keeping user needs at the center of design decisions.
+Developing this artifact deepened my understanding of the MERN stack, especially around secure authentication and role-based access across the frontend and backend. Implementing middleware for route protection and using React context for managing auth state were key technical challenges. The project significantly sharpened my security skills, particularly in mitigating common web vulnerabilities and incorporating protective measures at every stage of development.
 
-Through this artifact enhancement, I've gained a deeper understanding of how modern frameworks and technologies can be leveraged to create interfaces that not only look professional but also improve information access and decision-making. 
+The iterative development process reinforced the importance of testing, feedback, and continuous improvement, offering valuable lessons in UI refinement and database optimization. Ultimately, this artifact reflects my growth as a developer and readiness to build secure, scalable, and user-friendly applications for real-world environments.
 
 <p/>
 
             </div>
             
+            <hr class="artifact">
             
-            <!-- Screenshots/Code Snippets Section -->
+            <!-- Enhanced Code Snippets Section -->
             
+            <h3>Enhancements</h3>
+            <div class="code-snippets">
+              <div class="code-snippets-grid">
+<div class="row">
+<div class="col-md-6">
+<h4 style="font-style: italic"> Authorization Middleware </h4>
+<pre><code class="language-java">
+  const jwt = require('jsonwebtoken');
+  const User = require('../models/User');
+  const { createAuditLog } = require('../utils/auditLogger');
 
+  // Protect routes
+  exports.protect = async (req, res, next) => {
+  let token;
+
+  // Check header for authorization token
+  if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith('Bearer')
+  ) {
+      // Set token from Bearer token in header
+      token = req.headers.authorization.split(' ')[1];
+  }
+  // Check for token in cookies
+  else if (req.cookies.token) {
+      token = req.cookies.token;
+  }
+
+  // Make sure token exists
+  if (!token) {
+      return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+      });
+  }
+
+  try {
+      // Verify token
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      // Add user to req object
+      req.user = await User.findById(decoded.id);
+
+      // If user doesn't exist anymore
+      if (!req.user) {
+      return res.status(401).json({
+          success: false,
+          message: 'User no longer exists'
+      });
+      }
+
+      next();
+  } catch (err) {
+      // Create audit log for invalid token
+      await createAuditLog({
+      action: 'AUTH_FAILURE',
+      actionType: 'READ',
+      user: null,
+      targetModel: 'Auth',
+      targetId: null,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { error: 'Invalid token' }
+      });
+
+      return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+      });
+  }
+  };
+
+  // Grant access to specific roles
+  exports.authorize = (...roles) => {
+  return (req, res, next) => {
+      if (!roles.includes(req.user.role)) {
+      // Create audit log for authorization failure
+      createAuditLog({
+          action: 'AUTHORIZATION_FAILURE',
+          actionType: 'READ',
+          user: req.user.id,
+          targetModel: req.originalUrl.split('/')[2] || 'Unknown',
+          targetId: null,
+          ip: req.ip,
+          userAgent: req.headers['user-agent'],
+          details: { 
+          requiredRoles: roles.join(','), 
+          userRole: req.user.role 
+          }
+      });
+
+      return res.status(403).json({
+          success: false,
+          message: `User role ${req.user.role} is not authorized to access this route`
+      });
+      }
+      next();
+  };
+  };
+</code></pre>
+</div>
+<div class="col-md-6">
+<h4 style="font-style: italic"> Controller Example </h4>
+<pre><code class="language-java">
+  const Animal = require('../models/Animal');
+  const { createAuditLog } = require('../utils/auditLogger');
+
+  // @desc    Get all animals with advanced filtering, sorting, and pagination
+  // @route   GET /api/animals
+  // @access  Private
+  exports.getAnimals = async (req, res) => {
+  try {
+      // Copy req.query
+      const reqQuery = { ...req.query };
+
+      // Fields to exclude from filtering
+      const removeFields = ['select', 'sort', 'page', 'limit'];
+      removeFields.forEach(param => delete reqQuery[param]);
+
+      // Create query string
+      let queryStr = JSON.stringify(reqQuery);
+      
+      // Create operators ($gt, $gte, etc)
+      queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+      
+      // Finding resource
+      let query = Animal.find(JSON.parse(queryStr));
+
+      // Select Fields
+      if (req.query.select) {
+      const fields = req.query.select.split(',').join(' ');
+      query = query.select(fields);
+      }
+
+      // Sort
+      if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+      } else {
+      query = query.sort('-datetime');
+      }
+
+      // Pagination
+      const page = parseInt(req.query.page, 10) || 1;
+      const limit = parseInt(req.query.limit, 10) || 25;
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+      const total = await Animal.countDocuments(JSON.parse(queryStr));
+
+      query = query.skip(startIndex).limit(limit);
+
+      // Execute query
+      const animals = await query;
+
+      // Pagination result
+      const pagination = {};
+
+      if (endIndex < total) {
+      pagination.next = {
+          page: page + 1,
+          limit
+      };
+      }
+
+      if (startIndex > 0) {
+      pagination.prev = {
+          page: page - 1,
+          limit
+      };
+      }
+
+      // Create audit log for viewing animals
+      await createAuditLog({
+      action: 'ANIMAL_VIEW',
+      actionType: 'READ',
+      user: req.user ? req.user.id : null,
+      targetModel: 'Animal',
+      targetId: null,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          filters: reqQuery,
+          pagination: { page, limit },
+          sort: req.query.sort || '-datetime',
+          select: req.query.select
+      }
+      });
+
+      res.status(200).json({
+      success: true,
+      count: animals.length,
+      pagination: {
+          total,
+          page,
+          limit,
+          pages: Math.ceil(total / limit)
+      },
+      data: animals
+      });
+  } catch (error) {
+      res.status(500).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Get filtered animals with advanced options
+  // @route   GET /api/animals/filter/:filterType
+  // @access  Private
+  exports.getFilteredAnimals = async (req, res) => {
+
+  try {
+      const { filterType } = req.params;
+
+      const decodedFilter = decodeURIComponent(filterType);
+
+      let query = {};
+
+      const waterBreeds = ["Labrador Retriever Mix", "Chesapeake Bay Retriever", "Newfoundland"]
+      const mountianWildernessBreeds = ["German Shepherd", "Alaskan Malamute", "Old English Sheepdog", "Siberian Husky", "Rottweiler"]
+      const disasterTrackingBreeds = ["Doberman Pinscher", "German Shepherd", "Golden Retriever", "Bloodhound", "Rottweiler"]
+  
+      if (decodedFilter === 'Water Rescue') {
+          query = { $or: waterBreeds.map(breed => ({ breed })) }
+
+      } else if (decodedFilter === 'Mountain/Wilderness') {
+          query = { $or: mountianWildernessBreeds.map(breed => ({ breed })) }
+
+      } else if (decodedFilter === 'Disaster/Tracking') {
+          query = { $or: disasterTrackingBreeds.map(breed => ({ breed })) }
+          
+      } else {
+      return res.status(400).json({
+          success: false,
+          message: 'Invalid filter type'
+      });
+      }
+
+      // Add additional filtering options from query params
+      const additionalFilters = { ...req.query };
+      
+      // Fields to exclude from filtering
+      const removeFields = ['select', 'sort', 'page', 'limit'];
+      removeFields.forEach(param => delete additionalFilters[param]);
+      
+      // Merge queries if additional filters provided
+      if (Object.keys(additionalFilters).length > 0) {
+      Object.keys(additionalFilters).forEach(key => {
+          if (!query[key]) {
+          query[key] = additionalFilters[key];
+          }
+      });
+      }
+
+      // Pagination
+      const page = parseInt(req.query.page, 10) || 1;
+      const limit = parseInt(req.query.limit, 10) || 25;
+      const startIndex = (page - 1) * limit;
+      const total = await Animal.countDocuments(query);
+
+      // Sorting
+      const sortBy = req.query.sort ? req.query.sort.split(',').join(' ') : '-datetime';
+
+      // Execute query
+      const animals = await Animal.find(query)
+      .sort(sortBy)
+      .skip(startIndex)
+      .limit(limit);
+
+      // Create audit log for filtered animal search
+      await createAuditLog({
+      action: 'ANIMAL_FILTER_SEARCH',
+      actionType: 'READ',
+      user: req.user ? req.user.id : null,
+      targetModel: 'Animal',
+      targetId: null,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          filterType,
+          additionalFilters,
+          pagination: { page, limit },
+          sort: sortBy,
+          resultCount: animals.length
+      }
+      });
+
+      res.status(200).json({
+      success: true,
+      count: animals.length,
+      pagination: {
+          total,
+          page,
+          limit,
+          pages: Math.ceil(total / limit)
+      },
+      data: animals
+      });
+  } catch (error) {
+      res.status(500).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Get single animal
+  // @route   GET /api/animals/:id
+  // @access  Private
+  exports.getAnimal = async (req, res) => {
+  try {
+      const animal = await Animal.findById(req.params.id);
+
+      if (!animal) {
+      return res.status(404).json({ 
+          success: false, 
+          message: 'Animal not found' 
+      });
+      }
+
+      // Create audit log for viewing single animal
+      await createAuditLog({
+      action: 'ANIMAL_VIEW',
+      actionType: 'READ',
+      user: req.user ? req.user.id : null,
+      targetModel: 'Animal',
+      targetId: animal._id,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          name: animal.name,
+          animal_id: animal.animal_id,
+          breed: animal.breed
+      }
+      });
+
+      res.status(200).json({
+      success: true,
+      data: animal
+      });
+  } catch (error) {
+      res.status(500).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Create a new animal
+  // @route   POST /api/animals
+  // @access  Private/Admin or Staff
+  exports.createAnimal = async (req, res) => {
+  try {
+      const animal = new Animal(req.body);
+      
+      // Add geocoding logic here if needed for location_lat and location_long
+      
+      // Calculate age_upon_outcome_in_weeks if not provided
+      if (!animal.age_upon_outcome_in_weeks && animal.date_of_birth && animal.datetime) {
+      const ageInMs = animal.datetime - animal.date_of_birth;
+      const ageInWeeks = Math.floor(ageInMs / (1000 * 60 * 60 * 24 * 7));
+      animal.age_upon_outcome_in_weeks = ageInWeeks;
+      }
+      
+      const newAnimal = await animal.save();
+
+      // Create audit log for animal creation
+      await createAuditLog({
+      action: 'ANIMAL_CREATE',
+      actionType: 'CREATE',
+      user: req.user.id,
+      targetModel: 'Animal',
+      targetId: newAnimal._id,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          name: newAnimal.name,
+          animal_id: newAnimal.animal_id,
+          animal_type: newAnimal.animal_type,
+          breed: newAnimal.breed
+      }
+      });
+
+      res.status(201).json({
+      success: true,
+      data: newAnimal
+      });
+  } catch (error) {
+      res.status(400).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Update an animal
+  // @route   PUT /api/animals/:id
+  // @access  Private/Admin or Staff
+  exports.updateAnimal = async (req, res) => {
+  try {
+      // Get original animal for audit log
+      const originalAnimal = await Animal.findById(req.params.id);
+      
+      if (!originalAnimal) {
+      return res.status(404).json({ 
+          success: false, 
+          message: 'Animal not found' 
+      });
+      }
+
+      // Update animal
+      const animal = await Animal.findByIdAndUpdate(
+      req.params.id, 
+      req.body, 
+      { 
+          new: true, 
+          runValidators: true 
+      }
+      );
+
+      // Create audit log for animal update
+      await createAuditLog({
+      action: 'ANIMAL_UPDATE',
+      actionType: 'UPDATE',
+      user: req.user.id,
+      targetModel: 'Animal',
+      targetId: animal._id,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          before: {
+          name: originalAnimal.name,
+          outcome_type: originalAnimal.outcome_type,
+          outcome_subtype: originalAnimal.outcome_subtype,
+          sex_upon_outcome: originalAnimal.sex_upon_outcome
+          },
+          after: {
+          name: animal.name,
+          outcome_type: animal.outcome_type,
+          outcome_subtype: animal.outcome_subtype,
+          sex_upon_outcome: animal.sex_upon_outcome
+          }
+      }
+      });
+
+      res.status(200).json({
+      success: true,
+      data: animal
+      });
+  } catch (error) {
+      res.status(400).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Delete an animal
+  // @route   DELETE /api/animals/:id
+  // @access  Private/Admin
+  exports.deleteAnimal = async (req, res) => {
+  try {
+      const animal = await Animal.findById(req.params.id);
+      
+      if (!animal) {
+      return res.status(404).json({ 
+          success: false, 
+          message: 'Animal not found' 
+      });
+      }
+
+      // Create audit log before deletion
+      await createAuditLog({
+      action: 'ANIMAL_DELETE',
+      actionType: 'DELETE',
+      user: req.user.id,
+      targetModel: 'Animal',
+      targetId: animal._id,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          name: animal.name,
+          animal_id: animal.animal_id,
+          animal_type: animal.animal_type,
+          breed: animal.breed
+      }
+      });
+
+      await animal.deleteOne();
+
+      res.status(200).json({
+      success: true,
+      data: {}
+      });
+  } catch (error) {
+      res.status(500).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Get animals by location (geospatial query)
+  // @route   GET /api/animals/radius/:zipcode/:distance
+  // @access  Private
+  exports.getAnimalsInRadius = async (req, res) => {
+  try {
+      const { zipcode, distance } = req.params;
+
+      // Get lat/lng from zipcode using a geocoding service
+      // For simplicity, let's assume we have a utility function for this
+      // const loc = await geocoder.geocode(zipcode);
+      // const lat = loc[0].latitude;
+      // const lng = loc[0].longitude;
+
+      // For demo purposes, using hardcoded coordinates
+      const lat = 30.75;
+      const lng = -97.5;
+
+      // Calculate radius using radians
+      // Earth radius is 3,963 miles / 6,378 km
+      const radius = distance / 3963;
+
+      const animals = await Animal.find({
+      location: {
+          $geoWithin: { $centerSphere: [[lng, lat], radius] }
+      }
+      });
+
+      // Create audit log for geospatial search
+      await createAuditLog({
+      action: 'ANIMAL_GEOSPATIAL_SEARCH',
+      actionType: 'READ',
+      user: req.user ? req.user.id : null,
+      targetModel: 'Animal',
+      targetId: null,
+      ip: req.ip,
+      userAgent: req.headers['user-agent'],
+      details: { 
+          zipcode,
+          distance,
+          resultCount: animals.length
+      }
+      });
+
+      res.status(200).json({
+      success: true,
+      count: animals.length,
+      data: animals
+      });
+  } catch (error) {
+      res.status(500).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+
+  // @desc    Get animal statistics
+  // @route   GET /api/animals/stats
+  // @access  Private
+  exports.getAnimalStats = async (req, res) => {
+  try {
+      // Advanced aggregation pipeline
+      const stats = await Animal.aggregate([
+      {
+          $facet: {
+          // Count by animal type
+          'animalTypes': [
+              { $group: { _id: '$animal_type', count: { $sum: 1 } } },
+              { $sort: { count: -1 } }
+          ],
+          // Count by outcome type
+          'outcomeTypes': [
+              { $group: { _id: '$outcome_type', count: { $sum: 1 } } },
+              { $sort: { count: -1 } }
+          ],
+          // Count by breed (top 10)
+          'topBreeds': [
+              { $group: { _id: '$breed', count: { $sum: 1 } } },
+              { $sort: { count: -1 } },
+              { $limit: 10 }
+          ],
+          // Count by month
+          'monthlyStats': [
+              {
+              $group: {
+                  _id: { $dateToString: { format: '%Y-%m', date: '$datetime' } },
+                  count: { $sum: 1 }
+              }
+              },
+              { $sort: { _id: 1 } }
+          ],
+          // Age statistics
+          'ageStats': [
+              {
+              $group: {
+                  _id: null,
+                  avgAge: { $avg: '$age_upon_outcome_in_weeks' },
+                  minAge: { $min: '$age_upon_outcome_in_weeks' },
+                  maxAge: { $max: '$age_upon_outcome_in_weeks' }
+              }
+              }
+          ]
+          }
+      }
+      ]);
+
+      // Create audit log for stats access
+      await createAuditLog({
+      action: 'ANIMAL_STATS_VIEW',
+      actionType: 'READ',
+      user: req.user ? req.user.id : null,
+      targetModel: 'Animal',
+      targetId: null,
+      ip: req.ip,
+      userAgent: req.headers['user-agent']
+      });
+
+      res.status(200).json({
+      success: true,
+      data: stats[0]
+      });
+  } catch (error) {
+      res.status(500).json({ 
+      success: false, 
+      message: error.message 
+      });
+  }
+  };
+</code></pre>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<h4 style="font-style: italic"> React Components with MaterialUI </h4>
+<pre><code class="language-java">
+      import React, { useEffect } from "react";
+      import {
+      Stack,
+      CircularProgress,
+      Button,
+      Typography,
+      Pagination,
+      Box,
+      Chip,
+      Table,
+      TableBody,
+      TableCell,
+      TableContainer,
+      TableHead,
+      TableRow,
+      Paper,
+      Alert,
+      FormControl,
+      InputLabel,
+      Select,
+      MenuItem,
+      Grid,
+      Snackbar
+      } from "@mui/material";
+      import MuiAlert from '@mui/material/Alert';
+      import FilterAltIcon from '@mui/icons-material/FilterAlt';
+      import { useNavigate, useLocation } from 'react-router-dom';
+      import { useAuth } from '../context/AuthContext';
+      import { useAnimal } from '../context/AnimalContext'; // Add this import
+
+      const DataTable = () => {
+      // Get animal context
+      const { 
+          animals, 
+          loading, 
+          error, 
+          page, 
+          setPage, 
+          totalPages, 
+          totalItems, 
+          selectedAnimal, 
+          setSelectedAnimal, 
+          snackbar, 
+          handleCloseSnackbar,
+          fetchAnimals
+      } = useAnimal();
+      
+      // Get auth context
+      const { isAuthenticated, user, token } = useAuth();
+      const navigate = useNavigate();
+      const location = useLocation();
+      
+      // Get the current filter from the URL query params
+      const params = new URLSearchParams(location.search);
+      const currentFilter = params.get('filter') || '';
+
+      const handleFilterChange = (e) => {
+          const filterValue = e.target.value;
+          
+          // Update the URL with the selected filter
+          if (filterValue) {
+          navigate(`?filter=${filterValue}`);
+          } else {
+          navigate('/');
+          }
+      };
+
+      const clearFilter = () => {
+          navigate('/');
+      };
+
+      // Fetch animals based on authentication status and filter
+      useEffect(() => {
+          fetchAnimals(currentFilter, page);
+      }, [currentFilter, page, fetchAnimals]);
+
+      // Get outcome badge color
+      const getOutcomeBadgeColor = (outcome) => {
+          switch (outcome) {
+          case 'Adoption':
+              return 'success';
+          case 'Transfer':
+              return 'primary';
+          case 'Return to Owner':
+              return 'secondary';
+          case 'Euthanasia':
+              return 'error';
+          case 'Died':
+              return 'default';
+          default:
+              return 'info';
+          }
+      };
+
+      // Get role badge color
+      const getRoleBadgeColor = (role) => {
+          switch (role) {
+          case 'admin':
+              return 'error';
+          case 'staff':
+              return 'success';
+          case 'volunteer':
+              return 'primary';
+          default:
+              return 'default';
+          }
+      };
+
+      if (loading && page === 1) {
+          return (
+          <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              height="200px"
+          >
+              <CircularProgress size={40} thickness={4} color="primary" />
+          </Box>
+          );
+      }
+
+      if (error) {
+          return (
+          <Box p={2} sx={{ bgcolor: '#fff1f0', borderRadius: 1, boxShadow: 1 }}>
+              <Typography variant="h6" color="error">
+              {error}
+              </Typography>
+          </Box>
+          );
+      }
+
+      return (
+          <Paper 
+          elevation={2} 
+          sx={{ 
+              p: 3, 
+              borderRadius: 1,
+              boxShadow: 1
+          }}
+          >
+          <Stack spacing={3} width="100%">
+              {/* Header with title and filter */}
+              <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={12} md={4}>
+                  <Typography variant="h5">Animals</Typography>
+              </Grid>
+              
+              <Grid item xs={12} md={4}>
+                  <FormControl fullWidth variant="outlined" size="small">
+                  <InputLabel id="filter-label"></InputLabel>
+                  <Select
+                      labelId="filter-label"
+                      id="filter-select"
+                      value={currentFilter}
+                      onChange={handleFilterChange}
+                      label="Filter by Training Type"
+                      startAdornment={<FilterAltIcon sx={{ mr: 1, ml: -0.5, color: 'action.active' }} />}
+                  >
+                      <MenuItem value="">All Animals</MenuItem>
+                      <MenuItem value="Water Rescue">Water Rescue</MenuItem>
+                      <MenuItem value="Mountain/Wilderness">Mountain/Wilderness</MenuItem>
+                      <MenuItem value="Disaster/Tracking">Disaster/Tracking</MenuItem>
+                  </Select>
+                  </FormControl>
+              </Grid>
+              
+
+              </Grid>
+              
+              {/* Active filter indicator */}
+              {currentFilter && (
+              <Alert 
+                  severity="info" 
+                  sx={{ mt: 1 }}
+                  action={
+                  <Button 
+                      color="inherit" 
+                      size="small" 
+                      onClick={clearFilter}
+                  >
+                      Clear
+                  </Button>
+                  }
+              >
+                  <Typography variant="body2">
+                  <strong>Active Filter:</strong> {currentFilter}
+                  </Typography>
+              </Alert>
+              )}
+
+              <TableContainer>
+              <Table size="small">
+                  <TableHead>
+                  <TableRow>
+                      <TableCell>ID</TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Type</TableCell>
+                      <TableCell>Breed</TableCell>
+                      <TableCell>Color</TableCell>
+                      <TableCell>Age</TableCell>
+                      <TableCell>Sex</TableCell>
+                      <TableCell>Outcome</TableCell>
+                  </TableRow>
+                  </TableHead>
+                  <TableBody>
+                  {animals.length > 0 ? (
+                      animals.map((animal) => (
+                      <TableRow
+                          key={animal.animal_id || animal._id}
+                          onClick={() => setSelectedAnimal(animal)}
+                          hover
+                          sx={{ 
+                          cursor: 'pointer',
+                          transition: 'background-color 0.2s'
+                          }}
+                      >
+                          <TableCell>{animal.animal_id}</TableCell>
+                          <TableCell>{animal.name || 'Unknown'}</TableCell>
+                          <TableCell>{animal.animal_type}</TableCell>
+                          <TableCell>{animal.breed}</TableCell>
+                          <TableCell>{animal.color}</TableCell>
+                          <TableCell>{animal.age_upon_outcome}</TableCell>
+                          <TableCell>{animal.sex_upon_outcome}</TableCell>
+                          <TableCell>
+                          <Chip 
+                              label={animal.outcome_type}
+                              color={getOutcomeBadgeColor(animal.outcome_type)}
+                              size="small"
+                          />
+                          </TableCell>
+                      </TableRow>
+                      ))
+                  ) : (
+                      <TableRow>
+                      <TableCell colSpan={8} align="center" sx={{ py: 2 }}>
+                          No animals found
+                      </TableCell>
+                      </TableRow>
+                  )}
+                  </TableBody>
+              </Table>
+              </TableContainer>
+
+              <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              flexWrap="wrap"
+              >
+              <Typography variant="body2">
+                  Showing {animals.length} of {totalItems} animals
+              </Typography>
+              
+              <Pagination
+                  count={totalPages}
+                  page={page}
+                  onChange={(_, newPage) => setPage(newPage)}
+                  color="primary"
+                  size="small"
+                  showFirstButton
+                  showLastButton
+              />
+              </Box>
+          </Stack>
+
+          {/* Snackbar for notifications */}
+          <Snackbar
+              open={snackbar.open}
+              autoHideDuration={6000}
+              onClose={handleCloseSnackbar}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+          >
+              <MuiAlert
+              elevation={6}
+              variant="filled"
+              onClose={handleCloseSnackbar}
+              severity={snackbar.severity}
+              >
+              {snackbar.message}
+              </MuiAlert>
+          </Snackbar>
+          </Paper>
+      );
+      };
+
+      export default DataTable;
+  </code></pre>
+  </div>
+  <div class="col-md-6">
+  <h4 style="font-style: italic"> Authorization Context </h4>
+  <pre><code class="language-java">
+  import React, { createContext, useState, useEffect, useContext } from 'react';
+  import axios from 'axios';
+  const AuthContext = createContext();
+
+  var AUTH_API='http://localhost:5000/api/auth'
+
+  export const useAuth = () => useContext(AuthContext);
+
+  export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Configure axios defaults when token changes
+  useEffect(() => {
+      if (token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      localStorage.setItem('token', token);
+      } else {
+      delete axios.defaults.headers.common['Authorization'];
+      localStorage.removeItem('token');
+      }
+  }, [token]);
+
+  // Load user data on mount if token exists
+  useEffect(() => {
+      const loadUser = async () => {
+      if (!token) {
+          setLoading(false);
+          return;
+      }
+
+      try {
+          const res = await axios.get(`${AUTH_API}/me`);
+          setUser(res.data.data);
+          setLoading(false);
+      } catch (err) {
+          console.error('Failed to load user:', err.response?.data || err.message);
+          setToken(null); // Clear invalid token
+          setUser(null);
+          setLoading(false);
+      }
+      };
+
+      loadUser();
+  }, [token]);
+
+  // Register user
+  const register = async (userData) => {
+      setLoading(true);
+      setError(null);
+      
+      try {
+      const res = await axios.post(`${AUTH_API}/register`, userData);
+      setToken(res.data.token);
+      return res.data;
+      } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed');
+      throw err;
+      } finally {
+      setLoading(false);
+      }
+  };
+
+  // Login user
+  const login = async (credentials) => {
+      setLoading(true);
+      setError(null);
+      
+      try {
+      const res = await axios.post(`${AUTH_API}/login`, credentials);
+      setToken(res.data.token);
+      return res.data;
+      } catch (err) {
+      setError(err.response?.data?.message || 'Login failed');
+      throw err;
+      } finally {
+      setLoading(false);
+      }
+  };
+
+  // Logout user
+  const logout = async () => {
+      try {
+      if (token) {
+          await axios.get(`${AUTH_API}/logout`);
+      }
+      } catch (err) {
+      console.error('Logout error:', err.response?.data || err.message);
+      } finally {
+      setToken(null);
+      setUser(null);
+      }
+  };
+
+  // Check if user has specific role
+  const hasRole = (role) => {
+      if (!user) return false;
+      if (Array.isArray(role)) {
+      return role.includes(user.role);
+      }
+      return user.role === role;
+  };
+
+  const authValues = {
+      user,
+      token,
+      loading,
+      error,
+      login,
+      register,
+      logout,
+      hasRole,
+      isAuthenticated: !!token
+  };
+
+  return (
+      <AuthContext.Provider value={authValues}>
+      {children}
+      </AuthContext.Provider>
+  );
+  };
+
+  export default AuthContext;
+</code></pre>
+</div>
+</div>
+</div>
+
+            </div>
             
+            <hr class="artifact">
             
             <ul class="list-inline item-details">
               
-              <li>Client:
+              <li>Class:
                 <strong>IT 145</strong>
               </li>
               
@@ -519,7 +3526,7 @@ Through this artifact enhancement, I've gained a deeper understanding of how mod
               </li>
               
               
-              <li>Service:
+              <li>Category:
                 <strong>Databases</strong>
               </li>
               

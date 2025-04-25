@@ -1,12 +1,12 @@
 # Site settings
 title: CS Portfolio
 email: tompchristian123@gmail.com
-# url: https://github.com/jeromelachaud/freelancer-theme
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
-keywords: "your keywords, separated by commas"
-skills: "Web Developer - Graphic Artist - User Experience Designer"
+description: ""
+keywords: ""
+skills: "Full-Stack Developer - UI/UX Designer - Software Engineer"
 meta_author: Christian Thomas
 name: Thomas Christian
+# url: https://github.com/jeromelachaud/freelancer-theme
 
 # Google webmaster tools
 google_verify:
@@ -31,17 +31,11 @@ footer:
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
-  - title: twitter
-    url: http://twitter.com/jekyllrb
-  - title: facebook
-    url:
-  - title: stack-overflow
-    url: http://stackoverflow.com/questions/tagged/jekyll
-  - title: bitbucket
-    url: http://bitbucket.org/jekyll
-  - title: github
-    url: http://github.com/jekyll
-  - title: envelope # Added Gmail icon
+  - title: fa-brands fa-fw fa-linkedin
+    url: https://www.linkedin.com/in/tompchristian/
+  - title: fa-brands fa-fw fa-github
+    url: https://github.com/Thomas-Christian
+  - title: fa-solid fa-envelope
     url: mailto:tompchristian123@gmail.com
 
 
