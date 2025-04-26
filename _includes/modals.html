@@ -4,12 +4,9 @@
   aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
-        </div>
-      </div>
+      <i class="fa-solid fa-xmark"></i>
     </div>
-    <div class="container" style="margin: 8px; padding: 8px; width: 100%;">
+    <div class="container">
       <div class="row">
         <div class="col">
           <div class="modal-body">
@@ -62,7 +59,21 @@
             {% if post.artifact_narrative %}
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
-              {{ post.artifact_narrative }}
+              <div class="narrative-summary" id="narrative-summary-{{ post.modal-id }}">
+                 <p> {{ post.artifact_narrative | strip_html | truncatewords: 45 }} </p> 
+                  <br>
+              <div style="text-align: center;"> 
+                  <button class="btn btn-primary btn-sm" onclick="expandNarrative({{ post.modal-id }})">Read More</button>
+              </div>
+                </div>
+
+              <div class="narrative-full" id="narrative-full-{{ post.modal-id }}" style="display:none;">
+                {{ post.artifact_narrative }}
+                <br>
+              <div style="text-align: center;"> 
+                <button class="btn btn-secondary btn-sm" onclick="collapseNarrative({{ post.modal-id }})">Show Less</button>
+              </div>
+              </div>
             </div>
             {% endif %}
             <hr class="artifact">
@@ -92,6 +103,16 @@
                 <strong>{{ post.category }}</strong>
               </li>
               {% endif %}
+              {% if post.link %}
+              <li>Full Code:
+                <strong> 
+                  <a target="_blank" href="{{post.link}}" class="btn-link"> 
+                    GitHub
+                  </a>
+                </strong>
+              </li>
+              {% endif %}
+              
             </ul>
           </div>
         </div>

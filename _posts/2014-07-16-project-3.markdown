@@ -2,6 +2,8 @@
 layout: default
 modal-id: 3
 date: 2023-04-20
+title: Animal Shelter Dashboard
+
 images:
     - MERN1.png
     - MERN2.png
@@ -12,10 +14,12 @@ category: Databases
 icon-img: Databases.png
 
 alt: Animal Shelter Dashboard
-project-date: January - March 2024
-client: IT 145
+project-date: October - December 2024
+client: CS-340
 
-description: "Animal Shelter Dashboard is a MERN application that provides comprehensive tracking and visualization for animal shelter data. Features include secure authentication with role-based access, animal record management, interactive data visualization, and robust security measures. The dashboard allows users to efficiently track animals through filtering, searching, and geographic mapping, while maintaining detailed audit trails for compliance purposes."
+link: https://github.com/Thomas-Christian/cs499-database
+
+description: "A MERN application with features that include: role-based access, record management, interactive data visualization, and robust security measures."
 
 # Artifact narrative
 artifact_narrative: |

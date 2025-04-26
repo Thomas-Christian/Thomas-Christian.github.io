@@ -3,6 +3,7 @@ layout: default
 modal-id: 2
 date: 2023-04-20
 title: Animal Rescue Management System
+
 images:
   - ARS1.png
   - ARS2.png
@@ -13,10 +14,14 @@ category: Algorithms/Data Structures
 icon-img: Algorithms.png
 
 alt: Animal Rescue Management System
-project-date: January - March 2024
-client: IT 145
 
-description: "The Animal Rescue Management System is a Java application designed for tracking rescue animals and adoption processes. It includes animal record management, training status tracking, reservation handling, and advanced search capabilities with HashMap-based indexing for improved performance."
+project-date: January - March 2024
+
+client: IT-145
+
+link: https://github.com/Thomas-Christian/CS499-AlgosDataStructures
+
+description: "A Java application with features that include: record management, training status tracking, reservation handling, and advanced search capabilities."
 
 # Artifact narrative
 artifact_narrative: |

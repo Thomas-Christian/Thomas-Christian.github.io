@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CS Portfolio</title>
+  <title>ePortfolio</title>
   <meta name="viewport" content="width=device-width">
   <meta name="description" content="">
   <meta name="keywords" content="" />
@@ -35,6 +35,18 @@
 </head>
 
 
+<script>
+  function expandNarrative(id) {
+    document.getElementById('narrative-summary-' + id).style.display = 'none';
+    document.getElementById('narrative-full-' + id).style.display = 'block';
+  }
+  
+  function collapseNarrative(id) {
+    document.getElementById('narrative-full-' + id).style.display = 'none';
+    document.getElementById('narrative-summary-' + id).style.display = 'block';
+  }
+</script>
+
 <body id="page-top" class="index">
   <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -47,7 +59,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#page-top">CS Portfolio</a>
+      <a class="navbar-brand" href="#page-top">ePortfolio</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,7 +88,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <img class="img-responsive" src="img/profile.png" alt="profile-pic" />
+        <img class="img-responsive" style="width: 400px;" src="img/profile.png" alt="profile-pic" />
         <div class="intro-text">
           <span class="name">Thomas Christian</span>
           <hr class="star-light" />
@@ -220,12 +232,9 @@
   aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
-        </div>
-      </div>
+      <i class="fa-solid fa-xmark"></i>
     </div>
-    <div class="container" style="margin: 8px; padding: 8px; width: 100%;">
+    <div class="container">
       <div class="row">
         <div class="col">
           <div class="modal-body">
@@ -233,7 +242,7 @@
 
             <!-- Project Description -->
             
-            <p style="margin: auto; width: 70%; font-style: italic;">Weight Logger is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis.</p>
+            <p style="margin: auto; width: 70%; font-style: italic;">An Android application features that include: user authentication, weight management, goal setting, progress visualization, and statistical analysis.</p>
             
             <hr class="artifact">
             
@@ -281,7 +290,16 @@
             
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
-              <p> 
+              <div class="narrative-summary" id="narrative-summary-1">
+                 <p> The artifact, "Weight Logger," is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis. Initially developed in CS-360 (Jan–Mar), the application underwent significant enhancements to improve its structure, maintainability, and security. The... </p> 
+                  <br>
+              <div style="text-align: center;"> 
+                  <button class="btn btn-primary btn-sm" onclick="expandNarrative(1)">Read More</button>
+              </div>
+                </div>
+
+              <div class="narrative-full" id="narrative-full-1" style="display:none;">
+                <p> 
 
 The artifact, "Weight Logger," is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis. Initially developed in CS-360 (Jan–Mar), the application underwent significant enhancements to improve its structure, maintainability, and security. The most notable improvement was the implementation of the MVVM architectural pattern, which introduced better separation of concerns and improved the app’s scalability.
 
@@ -293,6 +311,11 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
 
 <p/>
 
+                <br>
+              <div style="text-align: center;"> 
+                <button class="btn btn-secondary btn-sm" onclick="collapseNarrative(1)">Show Less</button>
+              </div>
+              </div>
             </div>
             
             <hr class="artifact">
@@ -1120,7 +1143,7 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
             <ul class="list-inline item-details">
               
               <li>Class:
-                <strong>CS-360 Mobile Architecture & Programming</strong>
+                <strong>CS-360</strong>
               </li>
               
               
@@ -1132,6 +1155,16 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
               <li>Category:
                 <strong>Software Design</strong>
               </li>
+              
+              
+              <li>Full Code:
+                <strong> 
+                  <a target="_blank" href="https://github.com/Thomas-Christian/CS-360" class="btn-link"> 
+                    GitHub
+                  </a>
+                </strong>
+              </li>
+              
               
             </ul>
           </div>
@@ -1145,12 +1178,9 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
   aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
-        </div>
-      </div>
+      <i class="fa-solid fa-xmark"></i>
     </div>
-    <div class="container" style="margin: 8px; padding: 8px; width: 100%;">
+    <div class="container">
       <div class="row">
         <div class="col">
           <div class="modal-body">
@@ -1158,7 +1188,7 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
 
             <!-- Project Description -->
             
-            <p style="margin: auto; width: 70%; font-style: italic;">The Animal Rescue Management System is a Java application designed for tracking rescue animals and adoption processes. It includes animal record management, training status tracking, reservation handling, and advanced search capabilities with HashMap-based indexing for improved performance.</p>
+            <p style="margin: auto; width: 70%; font-style: italic;">A Java application with features that include: record management, training status tracking, reservation handling, and advanced search capabilities.</p>
             
             <hr class="artifact">
             
@@ -1212,7 +1242,16 @@ Throughout the enhancement process, I gained a deeper appreciation for the trade
             
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
-              <p> 
+              <div class="narrative-summary" id="narrative-summary-2">
+                 <p> The artifact I've selected is an Animal Rescue Management System, originally developed in IT 145 (Jan - Mar 2024). This Java application was designed to track rescue animals (dogs and monkeys), manage their training status, and handle reservations. The original version used simple ArrayLists to... </p> 
+                  <br>
+              <div style="text-align: center;"> 
+                  <button class="btn btn-primary btn-sm" onclick="expandNarrative(2)">Read More</button>
+              </div>
+                </div>
+
+              <div class="narrative-full" id="narrative-full-2" style="display:none;">
+                <p> 
 
 The artifact I've selected is an Animal Rescue Management System, originally developed in IT 145 (Jan - Mar 2024). This Java application was designed to track rescue animals (dogs and monkeys), manage their training status, and handle reservations. The original version used simple ArrayLists to store animal records and implemented basic CRUD operations with linear search algorithms.The enhanced version transforms the system with advanced data structures and algorithms that significantly improve efficiency, functionality, and scalability.
 
@@ -1226,6 +1265,11 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
 
 <p/>
 
+                <br>
+              <div style="text-align: center;"> 
+                <button class="btn btn-secondary btn-sm" onclick="collapseNarrative(2)">Show Less</button>
+              </div>
+              </div>
             </div>
             
             <hr class="artifact">
@@ -2341,7 +2385,7 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
             <ul class="list-inline item-details">
               
               <li>Class:
-                <strong>IT 145</strong>
+                <strong>IT-145</strong>
               </li>
               
               
@@ -2353,6 +2397,16 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
               <li>Category:
                 <strong>Algorithms/Data Structures</strong>
               </li>
+              
+              
+              <li>Full Code:
+                <strong> 
+                  <a target="_blank" href="https://github.com/Thomas-Christian/CS499-AlgosDataStructures" class="btn-link"> 
+                    GitHub
+                  </a>
+                </strong>
+              </li>
+              
               
             </ul>
           </div>
@@ -2366,20 +2420,17 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
   aria-hidden="true">
   <div class="modal-content">
     <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
-        </div>
-      </div>
+      <i class="fa-solid fa-xmark"></i>
     </div>
-    <div class="container" style="margin: 8px; padding: 8px; width: 100%;">
+    <div class="container">
       <div class="row">
         <div class="col">
           <div class="modal-body">
-            <h2>Project 3</h2>
+            <h2>Animal Shelter Dashboard</h2>
 
             <!-- Project Description -->
             
-            <p style="margin: auto; width: 70%; font-style: italic;">Animal Shelter Dashboard is a MERN application that provides comprehensive tracking and visualization for animal shelter data. Features include secure authentication with role-based access, animal record management, interactive data visualization, and robust security measures. The dashboard allows users to efficiently track animals through filtering, searching, and geographic mapping, while maintaining detailed audit trails for compliance purposes.</p>
+            <p style="margin: auto; width: 70%; font-style: italic;">A MERN application with features that include: role-based access, record management, interactive data visualization, and robust security measures.</p>
             
             <hr class="artifact">
             
@@ -2433,7 +2484,16 @@ Through this artifact enhancement, I've gained a deeper understanding of how the
             
             <h3>Artifact Narrative</h3>
             <div class="artifact-narrative">
-              <p> 
+              <div class="narrative-summary" id="narrative-summary-3">
+                 <p> The artifact I selected is an Animal Shelter Dashboard, originally a basic Python/Mongo application for displaying and filtering animal data. My enhanced version evolved into a full-stack web application with an interactive dashboard, user authentication, role-based access control, and modern security features. This artifact demonstrates... </p> 
+                  <br>
+              <div style="text-align: center;"> 
+                  <button class="btn btn-primary btn-sm" onclick="expandNarrative(3)">Read More</button>
+              </div>
+                </div>
+
+              <div class="narrative-full" id="narrative-full-3" style="display:none;">
+                <p> 
 
 The artifact I selected is an Animal Shelter Dashboard, originally a basic Python/Mongo application for displaying and filtering animal data. My enhanced version evolved into a full-stack web application with an interactive dashboard, user authentication, role-based access control, and modern security features. This artifact demonstrates my full-stack development skills, with a React.js frontend that highlights responsive design, data visualization, and modular architecture, and a Node.js/Express backend that showcases RESTful API design, middleware use, and clean separation of concerns. The MongoDB integration reflects my understanding of NoSQL data modeling, indexing, and aggregation. I also implemented robust security through JWT authentication, input sanitization, and protection against vulnerabilities like XSS and NoSQL injection, all following industry best practices. The audit logging system ensures accountability by capturing key actions with contextual detail. Improvements included enhanced visualization with interactive filters, refined error handling, input validation, responsive design for all device types, and better code organization and documentation.
 
@@ -2445,6 +2505,11 @@ The iterative development process reinforced the importance of testing, feedback
 
 <p/>
 
+                <br>
+              <div style="text-align: center;"> 
+                <button class="btn btn-secondary btn-sm" onclick="collapseNarrative(3)">Show Less</button>
+              </div>
+              </div>
             </div>
             
             <hr class="artifact">
@@ -3517,18 +3582,28 @@ The iterative development process reinforced the importance of testing, feedback
             <ul class="list-inline item-details">
               
               <li>Class:
-                <strong>IT 145</strong>
+                <strong>CS-340</strong>
               </li>
               
               
               <li>Date:
-                <strong>January - March 2024</strong>
+                <strong>October - December 2024</strong>
               </li>
               
               
               <li>Category:
                 <strong>Databases</strong>
               </li>
+              
+              
+              <li>Full Code:
+                <strong> 
+                  <a target="_blank" href="https://github.com/Thomas-Christian/cs499-database" class="btn-link"> 
+                    GitHub
+                  </a>
+                </strong>
+              </li>
+              
               
             </ul>
           </div>

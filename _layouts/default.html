@@ -2,6 +2,18 @@
 <html>
 {% include head.html %}
 
+<script>
+  function expandNarrative(id) {
+    document.getElementById('narrative-summary-' + id).style.display = 'none';
+    document.getElementById('narrative-full-' + id).style.display = 'block';
+  }
+  
+  function collapseNarrative(id) {
+    document.getElementById('narrative-full-' + id).style.display = 'none';
+    document.getElementById('narrative-summary-' + id).style.display = 'block';
+  }
+</script>
+
 <body id="page-top" class="index">
   {% include nav.html %}
   {% include header.html %}

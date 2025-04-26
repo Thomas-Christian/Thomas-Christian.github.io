@@ -3,16 +3,24 @@ layout: default
 modal-id: 1
 date: 2023-04-20
 title: Weight Logger Android App
+
 images:
   - WeightLogger1.png
   - WeightLogger2.png
-category: Software Design
-icon-img: SoftwareDesign.png
-alt: Weight Logger Android App
-project-date: January - March 2023
-client: CS-360 Mobile Architecture & Programming
 
-description: "Weight Logger is an Android application designed for tracking weight over time. It includes user authentication, weight management, goal setting, progress visualization, and statistical analysis."
+category: Software Design
+
+icon-img: SoftwareDesign.png
+
+alt: Weight Logger Android App
+
+project-date: January - March 2023
+
+client: CS-360
+
+link: https://github.com/Thomas-Christian/CS-360
+
+description: "An Android application features that include: user authentication, weight management, goal setting, progress visualization, and statistical analysis."
 
 # Artifact narrative
 artifact_narrative: |
