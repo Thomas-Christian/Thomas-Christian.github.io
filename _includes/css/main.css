@@ -4,12 +4,13 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
- body {
+body {
     overflow-x: hidden;
 }
 
 p {
     font-size: 18px;
+    padding: 4px;
 }
 
 p.small {
@@ -35,9 +36,10 @@ h6 {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     padding: 4px;
+    
 }
 
-hr.artifact {
+hr {
     width: 85%; 
     border: 1px solid #d1d5d6; 
     margin: 22px auto;
@@ -138,6 +140,10 @@ header .intro-text .skills {
     border: 0;
 }
 
+section .text-section{
+    padding: 8px 0;
+}
+
 section {
     padding: 100px 0;
 }
@@ -145,6 +151,7 @@ section {
 section h2 {
     margin: 0;
     font-size: 3em;
+    margin-bottom: 20px;
 }
 
 section.success {
@@ -154,11 +161,60 @@ section.success {
 
 @media(max-width:767px) {
     section {
-        padding: 75px 0;
+        padding: 50px 0;
     }
 
     section.first {
-        padding-top: 75px;
+        padding-top: 60px;
+    }
+    
+    /* Better text readability */
+    p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    
+    /* Smaller headings on mobile */
+    section h2 {
+        font-size: 2.2em;
+        margin-bottom: 15px;
+    }
+    
+    /* Better nav touch targets */
+    .navbar-nav > li > a {
+        padding: 12px 15px;
+    }
+    
+    /* Improved header text */
+    header .intro-text .name {
+        font-size: 2.75em;
+    }
+    
+    header .intro-text .skills {
+        font-size: 1.25em;
+    }
+    
+    /* Better social button spacing */
+    .btn-social {
+        margin: 5px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        line-height: 40px;
+    }
+    
+    /* Improved portfolio items */
+    #portfolio .portfolio-item {
+        margin: 0 0 15px;
+    }
+    
+    /* Adjust footer spacing */
+    footer .footer-above {
+        padding-top: 30px;
+    }
+    
+    footer .footer-col {
+        margin-bottom: 30px;
     }
 }
 
@@ -204,10 +260,6 @@ section.success {
     margin-top: -12px;
 }
 
-#portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
-#portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
-    /* margin: 0; */
-}
 
 #portfolio * {
     z-index: 2;
@@ -592,14 +644,30 @@ footer .footer-below {
     transform: translateY(250px);
 }
 
-
-
 /* Improved responsive handling for the carousel */
 @media (max-width: 767px) {
     .project-carousel .carousel-inner .item {
-        height: 250px;
+        height: auto;
+        min-height: 200px;
     }
     
+    .project-carousel .carousel-control i {
+        font-size: 20px;
+        padding: 8px;
+        transform: translateY(100px);
+        background-color: rgba(34, 34, 34, 0.3);
+        border-radius: 50%;
+    }
+}
+
+.container {
+    width: 92%;
+    margin: auto;
+}
+
+.container.portfolio-flex-grid {
+    width: 80%;
+    margin: auto;
 }
 
 /* Modal Mobile Adjustments */
@@ -607,7 +675,7 @@ footer .footer-below {
   
     /* Shrink modal padding */
     .portfolio-modal .modal-content {
-      padding: 20px 0;
+      padding: 15px 0;
     }
   
     /* Container inside modal */
@@ -642,7 +710,107 @@ footer .footer-below {
     .project-carousel .carousel-control i {
       transform: translateY(120px);
       font-size: 22px;
+      padding: 8px;
+      background-color: rgba(34, 34, 34, 0.3);
+      border-radius: 50%;
     }
+    
+    /* Better text readability in modals */
+    .artifact-narrative p {
+      font-size: 15px;
+      line-height: 1.4;
+      text-align: left;
+    }
+    
+    /* Smaller code snippets for mobile */
+    .code-snippets pre {
+      max-height: 200px;
+      font-size: 12px;
+    }
+    
+    /* Improved modal titles */
+    .portfolio-modal .modal-content h2 {
+      font-size: 2.2em;
+      margin-top: 10px;
+    }
+    
+    /* Better spacing for modal elements */
+    .portfolio-modal .item-details {
+      margin: 15px 0;
+      font-size: 14px;
+    }
+    
+    /* Make close button easier to tap */
+    .portfolio-modal .close-modal {
+      top: 15px;
+      right: 15px;
+      padding: 5px;
+    }
+}
 
+/* Mobile Responsive Enhancements */
+
+/* Modal responsiveness */
+@media (max-width: 767px) {
+  .portfolio-modal .modal-content {
+    padding: 15px 0;
   }
   
+  .artifact-narrative p {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  
+  .code-snippets pre {
+    max-height: 200px;
+  }
+}
+
+/* Better image handling for mobile */
+@media (max-width: 767px) {
+  #portfolio .portfolio-item .portfolio-link {
+    max-width: 100%;
+  }
+  
+  .project-carousel .carousel-inner .item {
+    height: auto;
+    min-height: 200px;
+  }
+  
+  .project-carousel .carousel-control i {
+    font-size: 20px;
+    padding: 8px;
+    transform: translateY(100px);
+  }
+}
+
+/* Improve text layout for small screens */
+@media (max-width: 767px) {
+  p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  
+  section h2 {
+    font-size: 2.2em;
+  }
+  
+  header .intro-text .name {
+    font-size: 2.75em;
+  }
+  
+  header .intro-text .skills {
+    font-size: 1.25em;
+  }
+}
+
+/* Better touch targets for navigation */
+@media (max-width: 767px) {
+  .navbar-nav > li > a {
+    padding: 15px;
+  }
+  
+  .btn-social {
+    margin: 5px;
+  }
+}

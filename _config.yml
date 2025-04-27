@@ -53,3 +53,10 @@ defaults:
       type: "posts"
     values:
       permalink: ""
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - postcss.config.js
+  - tailwind.config.js
