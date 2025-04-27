@@ -433,7 +433,6 @@ footer .footer-below {
 }
 
 .portfolio-modal .modal-content {
-    padding: 100px 0;
     min-height: 100%;
     border: 0;
     border-radius: 0;
@@ -458,8 +457,8 @@ footer .footer-below {
 
 .portfolio-modal .close-modal {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0.5%;
+    right: 2%;
     font-size: 32px; /* Icon size */
     background: none;
     border: none;
@@ -570,12 +569,21 @@ footer .footer-below {
     .code-snippets-grid .col-md-6 {
         margin-bottom: 20px;
     }
+
+    .code-snippets code {
+        font-size: smaller;
+    }
 }
 
 /* Make sure the grid is visible in the modal */
 .portfolio-modal .modal-body .code-snippets-grid {
     text-align: left;
     width: 100%;
+    padding: 1%;
+}
+
+.modal-body {
+    padding: 4%;
 }
 
 /* Add some shadow effect to the code blocks */
@@ -675,7 +683,6 @@ footer .footer-below {
   
     /* Shrink modal padding */
     .portfolio-modal .modal-content {
-      padding: 15px 0;
     }
   
     /* Container inside modal */
@@ -742,8 +749,8 @@ footer .footer-below {
     
     /* Make close button easier to tap */
     .portfolio-modal .close-modal {
-      top: 15px;
-      right: 15px;
+      top: 0%;
+      right: 2%;
       padding: 5px;
     }
 }
@@ -753,7 +760,7 @@ footer .footer-below {
 /* Modal responsiveness */
 @media (max-width: 767px) {
   .portfolio-modal .modal-content {
-    padding: 15px 0;
+    /* padding: 15px 0; */
   }
   
   .artifact-narrative p {
